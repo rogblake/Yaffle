@@ -1,0 +1,41 @@
+<div class="bar bar-header bar-assertive">
+  <div class="h1 title">Welcome to Yaffle 2015</div>
+</div>
+<ion-view>
+  <ion-content id="signin-screen">
+    <div class="list" id="login-form-inputs" >
+      <label class="item item-input">
+        <i class="icon ion-at"></i>
+        <span class="input-label">Email</span>
+        <input type="email" ng-model="user.email">
+      </label>
+      <label class="item item-input">
+        <i class="icon ion-locked"></i>
+        <span class="input-label">Pin</span>
+        <input type="password" ng-model="user.password">
+      </label>
+      <label>
+    
+      </label>
+    </div>
+    <div id="login-button-div" class="padding"> 
+      <button class="button button-block button-full button-assertive" ng-click="signIn(user)">
+        Sign-In
+      </button>
+     <!--   <img src="/img/Yaffle15_Logo_280x280.png" width="50%" text-align="center"></img> -->
+       
+<!--        <div id="login-forgot">
+         <p class="text-center">
+         
+        </p>-->
+      </div>
+      <div class="button bar button-clear" id="forgot-button-bar">
+         <button class="button button-small button-dark" ng-click="location.href='#/forgot-password'">Forgot your PIN?
+         </button>
+         <button class="button button-small button-dark item-button-left" >What is Yaffle?</button>
+         <button class="button button-small button-dark item-button-right" ng-click="openHelp()"> Help</button>
+      </div>
+  <!--   </div> -->
+  </ion-content>
+   <div id="login-footer" class="bar bar-footer"><p>Modified Image courtesy of &nbsp; <a target="_new" href="http://commons.wikimedia.org/wiki/File:RO_B_Carol_Park_green_woodpecker.jpg"> Andrei Stroe </a>.  Used under the <a target="_new" href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons SA-3 License</a></p></div>
+</ion-view>

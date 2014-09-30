@@ -1,0 +1,37 @@
+<html>
+<head>
+	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+</head>
+<p><input type="button" id="submitData" onclick="onPost()"/>Submit</p>
+<p>Name<input id="playerName" type="text"/></p>
+<p>Nickname<input id="playerNickname" type="text"/></p>
+<p>Email<input id="playerEmail" type="text"/></p>
+<p>Pin<input id="playerpin" type="text"/></p>
+
+<script language="javascript">
+
+function onPost(){
+	var username = $('#playerName').val().trim();
+	var usernickname = $('#playerNickname').val().trim();
+	var useremail = $('#playerEmail').val().trim();
+	var userpin = $('#playerpin').val().trim();
+	var postdata = createPostData(useremail, username, usernickname, userpin);
+	var posturl = '/admin/createplayer';
+
+	$.post(
+		posturl,
+		postdata,
+		function() {
+			alert('success');
+		 },
+	  	'application/json'
+	);
+}
+
+function createPostData( email, name, nickname, pin){
+	var ret  = "{\"email\":\""  + encodeURIComponent(email) + "\",\"name\":\"" + encodeURIComponent(name) + "\",\"nickname\":\"" + encodeURIComponent(nickname) + "\" ,\"pin\":\"" + encodeURIComponent(pin) + "\"}";
+	console.log (ret);
+	return ret;
+}
+</script>
+</html>

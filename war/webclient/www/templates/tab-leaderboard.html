@@ -1,0 +1,19 @@
+<div class="bar bar-header bar-header bar-assertive">
+  <button class="button button-icon icon ion-ios7-arrow-back" onclick="location.href='#/tab/dash'"></button>
+  <div class="h1 title">{{$rootScope.id}}</div>
+</div>
+<ion-view title="{{$rootScope.playerName}}">
+   <ion-content padding="true">
+   <ion-list> 
+    <ion-item ng-repeat="player in leaderboard.players" type="item-text-wrap" href=""  >
+   	  <div class="row" height="20">
+	  	 <div class="col col-10" align="center">{{player.pos}}</div>
+	  	 <div class="col col-50" align="center">{{player.name}}</div>
+	  	 <div class="col col-10" align="center">{{player.pld}}</div>
+		 <div class="col col-10" align="center">{{player.gd}}</div>
+	  	 <div class="col col-10" align="center">{{player.pts}}</div>
+	  </div>
+    </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

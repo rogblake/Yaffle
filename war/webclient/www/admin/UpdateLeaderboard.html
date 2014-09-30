@@ -1,0 +1,27 @@
+<html>
+<head>
+	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+</head>
+<p>
+Update Leaderboard &nbsp;&nbsp;&nbsp;
+	<input type="button" id="submitData" onclick="onPost()"/>
+</p>
+
+<script language="javascript">
+
+function onPost(){
+	var postdata = "";
+	var posturl = '/leaderboard';
+	
+	$.post(posturl,
+		postdata,
+		function() {
+			alert('success');
+		}
+		  ,'application/json'
+	);
+}
+
+
+</script>
+</html>

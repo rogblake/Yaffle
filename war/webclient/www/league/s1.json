@@ -1,0 +1,186 @@
+{
+    "teams": [
+        {
+            "name": "Liverpool",
+            "gd": 51,
+            "leagueCode": "e1",
+            "urlString": null,
+            "pts": 77,
+            "pld": 34,
+            "pos": 1
+        },
+        {
+            "name": "Chelsea",
+            "gd": 42,
+            "leagueCode": "e1",
+            "urlString": null,
+            "pts": 75,
+            "pld": 34,
+            "pos": 2
+        },
+        {
+            "name": "Manchester City",
+            "gd": 54,
+            "leagueCode": "e1",
+            "urlString": null,
+            "pts": 70,
+            "pld": 32,
+            "pos": 3
+        },
+        {
+            "name": "Everton",
+            "gd": 22,
+            "leagueCode": "e1",
+            "urlString": null,
+            "pts": 66,
+            "pld": 33,
+            "pos": 4
+        },
+        {
+            "name": "Arsenal",
+            "gd": 16,
+            "leagueCode": "e1",
+            "urlString": null,
+            "pts": 64,
+            "pld": 33,
+            "pos": 5
+        },
+        {
+            "name": "Tottenham Hotspur",
+            "gd": 0,
+            "leagueCode": "e1",
+            "urlString": null,
+            "pts": 60,
+            "pld": 34,
+            "pos": 6
+        },
+        {
+            "name": "Manchester United",
+            "gd": 18,
+            "leagueCode": "e1",
+            "urlString": null,
+            "pts": 57,
+            "pld": 33,
+            "pos": 7
+        },
+        {
+            "name": "Southampton",
+            "gd": 5,
+            "leagueCode": "e1",
+            "urlString": null,
+            "pts": 48,
+            "pld": 34,
+            "pos": 8
+        },
+        {
+            "name": "Newcastle United",
+            "gd": -14,
+            "leagueCode": "e1",
+            "urlString": null,
+            "pts": 46,
+            "pld": 34,
+            "pos": 9
+        },
+        {
+            "name": "Stoke City",
+            "gd": -10,
+            "leagueCode": "e1",
+            "urlString": null,
+            "pts": 43,
+            "pld": 34,
+            "pos": 10
+        },
+        {
+            "name": "West Ham United",
+            "gd": -7,
+            "leagueCode": "e1",
+            "urlString": null,
+            "pts": 37,
+            "pld": 33,
+            "pos": 11
+        },
+        {
+            "name": "Crystal Palace",
+            "gd": -15,
+            "leagueCode": "e1",
+            "urlString": null,
+            "pts": 37,
+            "pld": 33,
+            "pos": 12
+        },
+        {
+            "name": "Hull City",
+            "gd": -6,
+            "leagueCode": "e1",
+            "urlString": null,
+            "pts": 36,
+            "pld": 33,
+            "pos": 13
+        },
+        {
+            "name": "Aston Villa",
+            "gd": -14,
+            "leagueCode": "e1",
+            "urlString": null,
+            "pts": 34,
+            "pld": 33,
+            "pos": 14
+        },
+        {
+            "name": "Swansea City",
+            "gd": -5,
+            "leagueCode": "e1",
+            "urlString": null,
+            "pts": 33,
+            "pld": 34,
+            "pos": 15
+        },
+        {
+            "name": "West Bromwich Albion",
+            "gd": -11,
+            "leagueCode": "e1",
+            "urlString": null,
+            "pts": 33,
+            "pld": 33,
+            "pos": 16
+        },
+        {
+            "name": "Norwich City",
+            "gd": -27,
+            "leagueCode": "e1",
+            "urlString": null,
+            "pts": 32,
+            "pld": 34,
+            "pos": 17
+        },
+        {
+            "name": "Fulham",
+            "gd": -40,
+            "leagueCode": "e1",
+            "urlString": null,
+            "pts": 30,
+            "pld": 34,
+            "pos": 18
+        },
+        {
+            "name": "Cardiff City",
+            "gd": -34,
+            "leagueCode": "e1",
+            "urlString": null,
+            "pts": 29,
+            "pld": 34,
+            "pos": 19
+        },
+        {
+            "name": "Sunderland",
+            "gd": -25,
+            "leagueCode": "e1",
+            "urlString": null,
+            "pts": 25,
+            "pld": 32,
+            "pos": 20
+        }
+    ],
+    "name": "English Premiership",
+    "leagueCode": "e1"
+}

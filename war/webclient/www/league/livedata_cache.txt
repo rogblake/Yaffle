@@ -1,0 +1,16 @@
+{
+    "teams": [
+        "{\"name\":\"Peterhead\",\"gd\":37,\"leagueCode\":\"s4\",\"urlString\":null,\"pts\":70,\"pld\":33,\"pos\":1}",
+        "{\"name\":\"Annan Athletic\",\"gd\":19,\"leagueCode\":\"s4\",\"urlString\":null,\"pts\":59,\"pld\":33,\"pos\":2}",
+        "{\"name\":\"Stirling Albion\",\"gd\":3,\"leagueCode\":\"s4\",\"urlString\":null,\"pts\":51,\"pld\":33,\"pos\":3}",
+        "{\"name\":\"Clyde\",\"gd\":-1,\"leagueCode\":\"s4\",\"urlString\":null,\"pts\":51,\"pld\":33,\"pos\":4}",
+        "{\"name\":\"Berwick Rangers\",\"gd\":12,\"leagueCode\":\"s4\",\"urlString\":null,\"pts\":46,\"pld\":33,\"pos\":5}",
+        "{\"name\":\"East Stirlingshire\",\"gd\":-7,\"leagueCode\":\"s4\",\"urlString\":null,\"pts\":44,\"pld\":33,\"pos\":6}",
+        "{\"name\":\"Albion Rovers\",\"gd\":-8,\"leagueCode\":\"s4\",\"urlString\":null,\"pts\":41,\"pld\":33,\"pos\":7}",
+        "{\"name\":\"Montrose\",\"gd\":-12,\"leagueCode\":\"s4\",\"urlString\":null,\"pts\":40,\"pld\":33,\"pos\":8}",
+        "{\"name\":\"Elgin City\",\"gd\":-14,\"leagueCode\":\"s4\",\"urlString\":null,\"pts\":32,\"pld\":33,\"pos\":9}",
+        "{\"name\":\"Queens Park\",\"gd\":-29,\"leagueCode\":\"s4\",\"urlString\":null,\"pts\":23,\"pld\":33,\"pos\":10}"
+    ],
+    "name": "Swedish Allsvenskan",
+    "leagueCode": "s4"
+}

@@ -1,0 +1,544 @@
+<html>
+	<head>
+		<title>Live Score | Football Results | Goal Scorer & Match Statistics</title>
+		<meta content="Football-Data is bringing you the best live score football results service on the Internet, packed with up to the minute live scores from all the major soccer leagues and competitions, league tables, team form comparisons plus historical match statistics for all the teams and goal scorers." name="description"/>
+		<meta content="live score, soccer livescore, football results, soccer results, league tables, goal scorer, first goalscorer, match statistics, recent form, team standings" name="keywords"/>
+		<meta content="1" name="revisit-after"/>
+		<meta content="Joseph Buchdahl" http-equiv="author"/>
+		<meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+		<link href="style.css" rel="stylesheet" />
+		<script type="text/javascript">
+			var VAR_day = "{JS_VAR_day}";
+			var VAR_showLeagues = "{JS_VAR_showLeagues}";
+			var VAR_Country = "{JS_VAR_Country}";
+		</script>
+		<script src="js/msrc.js" language="javascript"></script>
+		<script src="js/menu2.js" language="javascript"></script>
+		<script src="js/results.js" language="javascript"></script>
+		<script src="js/jquery-1.3.2.js" language="javascript"></script>
+	</head>
+	<body {BODY_ONLOAD} marginwidth="0" marginheight="0" link="#6666cc" vlink="#6666cc" text="#000000" bgcolor="#ffffff" alink="#6666cc" leftmargin="0">
+		<div id="dek"></div>
+		<script type="text/javascript" language="JavaScript">
+			Xoffseta=-120;
+			Yoffseta= 20;
+			var olda,skna,iexa=(document.all),yyy=-1000;
+			var nsa4=document.layers
+			var nsa6=document.getElementById&&!document.all
+			var iea4=document.all
+			var iea5=document.all
+			if (nsa4)
+				skna=document.dek
+			else if (nsa6)
+				skna=document.getElementById("dek").style
+			else if (iea4)
+				skna=document.all.dek.style
+			if(nsa4)
+				document.captureEvents(Event.MOUSEMOVE);
+			else {
+				skna.visibility="visible"
+				skna.display="none"
+			}
+			document.onmousemove = HideMenus;
+			
+			function HideMenus(e) {
+				var xa=(nsa4||nsa6)?e.pageX:event.x+document.body.scrollLeft;
+				skna.left=xa+Xoffseta+"px";
+				var ya=(nsa4||nsa6)?e.pageY:event.y+document.body.scrollTop;
+				skna.top=ya+yyy+"px";
+			}
+		</script>
+		<form method="get" action="" name="liveform">
+			<table cellpadding="0" cellspacing="0" width="469" align=center>
+	<tr>
+		<td valign="top">
+			<table width=100% border=0 cellspacing=0 cellpadding=3 style='background:#aaaaaa;color:#ffffff;'>
+				<tr>
+					<td>ENGLAND</td><td align=right id="timeUpdater">&nbsp;</td>
+				</tr>
+			</table>
+			<table width="100%" cellpadding="3" cellspacing="0" border="0" style='background:#f3f3f3;' id="topA">
+				<tr>
+					<td valign="top">
+						<select class='dropdown' onchange="window.location='standings.php?country=2&ttFK=' + this.value;" ><option value='47' >Premier League</option><option selected='selected' value='48'>Championship</option><option value='108' >League 1</option><option value='109' >League 2</option><option value='117' >Blue Square Premier</option><option value='247' >Community Shield</option><option value='132' >FA Cup</option><option value='133' >Carling Cup</option><option value='142' >Johnstones Paint Trophy</option></select>
+						<select class='dropdown' onchange="window.location='standings.php?country=2&ttFK=48&round=' + this.value;" ><option selected='selected' value='1'>Round 1</option><option value='2' style='background: #999999;'>Round 2</option><option value='3' style='background: #999999;'>Round 3</option><option value='4' style='background: #999999;'>Round 4</option><option value='5' style='background: #999999;'>Round 5</option><option value='6' style='background: #999999;'>Round 6</option><option value='7' style='background: #999999;'>Round 7</option><option value='8' style='background: #999999;'>Round 8</option><option value='9' style='background: #999999;'>Round 9</option><option value='10' style='background: #999999;'>Round 10</option><option value='11' style='background: #999999;'>Round 11</option><option value='12' style='background: #999999;'>Round 12</option><option value='13' style='background: #999999;'>Round 13</option><option value='14' style='background: #999999;'>Round 14</option><option value='15' style='background: #999999;'>Round 15</option><option value='16' style='background: #999999;'>Round 16</option><option value='17' style='background: #999999;'>Round 17</option><option value='18' style='background: #999999;'>Round 18</option><option value='19' style='background: #999999;'>Round 19</option><option value='20' style='background: #999999;'>Round 20</option><option value='21' style='background: #999999;'>Round 21</option><option value='22' style='background: #999999;'>Round 22</option><option value='23' style='background: #999999;'>Round 23</option><option value='24' style='background: #999999;'>Round 24</option><option value='25' style='background: #999999;'>Round 25</option><option value='26' style='background: #999999;'>Round 26</option><option value='27' style='background: #999999;'>Round 27</option><option value='28' style='background: #999999;'>Round 28</option><option value='29' style='background: #999999;'>Round 29</option><option value='30' style='background: #999999;'>Round 30</option><option value='31' style='background: #999999;'>Round 31</option><option value='32' style='background: #999999;'>Round 32</option><option value='33' style='background: #999999;'>Round 33</option><option value='34' style='background: #999999;'>Round 34</option><option value='35' style='background: #999999;'>Round 35</option><option value='36' style='background: #999999;'>Round 36</option><option value='37' style='background: #999999;'>Round 37</option><option value='38' style='background: #999999;'>Round 38</option><option value='39' style='background: #999999;'>Round 39</option><option value='40' style='background: #999999;'>Round 40</option><option value='41' style='background: #999999;'>Round 41</option><option value='42' style='background: #999999;'>Round 42</option><option value='43' style='background: #999999;'>Round 43</option><option value='44' style='background: #999999;'>Round 44</option><option value='45' style='background: #999999;'>Round 45</option><option value='46' style='background: #999999;'>Round 46</option></select>
+						<select class='dropdown' onchange="window.location='standings.php?country=2&ttFK=48&oFK=' + this.value;" ><option selected='selected' value='831981'>Season 2013/2014</option><option value='827653' >Season 2012/2013</option><option value='824335' >Season 2011/2012</option><option value='820747' >Season 2010/2011</option><option value='817702' >Season 2009/2010</option><option value='814599' >Season 2008/2009</option><option value='812086' >Season 2007/2008</option><option value='416' >Season 2006/2007</option><option value='415' >Season 2005/2006</option><option value='414' >Season 2004/2005</option><option value='412' >Season 2003/2004</option><option value='413' >Season 2002/2003</option><option value='410' >Season 2001/2002</option><option value='411' >Season 2000/2001</option><option value='409' >Season 1999/2000</option></select>
+					</td>
+				</tr>
+			</table>
+			<BR>
+			<div style="padding-top: 0px; padding-bottom: 10px">
+	<table cellpadding="2" cellspacing="0" style="text-align:center;border-top:solid 1px #aaaaaa;border-left:solid 1px #aaaaaa;">
+		<tr>
+			<td onclick=document.location='standings.php?country=2&ttFK=48' style='background:#aaaaaa;color:#ffffff;cursor:pointer;width:80px;'>Total</td>
+			<td onclick=document.location='standings.php?country=2&ttFK=48&ltfilter=home' style='border-right:solid 1px #aaaaaa;color:#999999;cursor:pointer;width:80px;'>Home</td>
+			<td onclick=document.location='standings.php?country=2&ttFK=48&ltfilter=away' style='border-right:solid 1px #aaaaaa;color:#999999;cursor:pointer;width:80px;'>Away</td>
+			<td onclick=document.location='standings.php?country=2&ttFK=48&ltfilter=L6' style='border-right:solid 1px #aaaaaa;color:#999999;cursor:pointer;width:80px;'>Actual</td>
+			<td onclick=document.location='standings.php?country=2&ttFK=48&ltfilter=ts' style='border-right:solid 1px #aaaaaa;color:#999999;cursor:pointer;width:80px;'>Topscorer</td>
+		</tr>
+	</table>
+	<table class="BackgroundTableHeader" width="100%" cellpadding="3" cellspacing="0" style='font-size: 10px;text-align:center;'>
+		<tr style="font-weight: bold; color: #eeeeee;">
+			<td style="border-bottom: 1px solid #D1D1D1" align="center">Rank</td>
+			<td style="border-bottom: 1px solid #D1D1D1;text-align:left;padding-left: 10px">Team</td>
+			<td style="border-bottom: 1px solid #D1D1D1" align="center">P</td>
+			<td style="border-bottom: 1px solid #D1D1D1" align="center">W</td>
+			<td style="border-bottom: 1px solid #D1D1D1" align="center">D</td>
+			<td style="border-bottom: 1px solid #D1D1D1" align="center">L</td>
+			<td style="border-bottom: 1px solid #D1D1D1" align="center" nowrap>Gf-Ga</td>
+			<td style="border-bottom: 1px solid #D1D1D1" align="center">+/-</td>
+			<td style="border-bottom: 1px solid #D1D1D1" align="center">Point</td>
+		</tr>
+		<TR bgcolor="#C5DB2E">
+	<td class='BorderBottomRightF4'>1</td>
+	<td class=BorderBottomRightF4Team><a class='standingb' href='standings.php?ttFK=48&country=2&oFK=831981'>Wigan</a></td>
+	<td class=BorderBottomRightF4><a class='standing' href='standings.php?ttFK=48&country=2&oFK=831981'>1</a></td>
+	<td class=BorderBottomRightF4><a class='standing' href='standings.php?ttFK=48&country=2&oFK=831981'>1</a></td>
+	<td class=BorderBottomRightF4><a class='standing' href='standings.php?ttFK=48&country=2&oFK=831981'>0</a></td>
+	<td class=BorderBottomRightF4><a class='standing' href='standings.php?ttFK=48&country=2&oFK=831981'>0</a></td>
+	<td class=BorderBottomRightF4>4-0</td>
+	<td class=BorderBottomRightF4>4</td>
+	<td class=BorderBottomF4>3</td>
+</tr><TR bgcolor="#C5DB2E">
+	<td class='BorderBottomRightF4'>2</td>
+	<td class=BorderBottomRightF4Team><a class='standingb' href='standings.php?ttFK=48&country=2&oFK=831981'>Blackpool</a></td>
+	<td class=BorderBottomRightF4><a class='standing' href='standings.php?ttFK=48&country=2&oFK=831981'>1</a></td>
+	<td class=BorderBottomRightF4><a class='standing' href='standings.php?ttFK=48&country=2&oFK=831981'>1</a></td>
+	<td class=BorderBottomRightF4><a class='standing' href='standings.php?ttFK=48&country=2&oFK=831981'>0</a></td>
+	<td class=BorderBottomRightF4><a class='standing' href='standings.php?ttFK=48&country=2&oFK=831981'>0</a></td>
+	<td class=BorderBottomRightF4>3-1</td>
+	<td class=BorderBottomRightF4>2</td>
+	<td class=BorderBottomF4>3</td>
+</tr><TR bgcolor="#FCD500">
+	<td class='BorderBottomRightF4'>3</td>
+	<td class=BorderBottomRightF4Team><a class='standingb' href='standings.php?ttFK=48&country=2&oFK=831981'>Queens Park Rangers</a></td>
+	<td class=BorderBottomRightF4><a class='standing' href='standings.php?ttFK=48&country=2&oFK=831981'>1</a></td>
+	<td class=BorderBottomRightF4><a class='standing' href='standings.php?ttFK=48&country=2&oFK=831981'>1</a></td>
+	<td class=BorderBottomRightF4><a class='standing' href='standings.php?ttFK=48&country=2&oFK=831981'>0</a></td>
+	<td class=BorderBottomRightF4><a class='standing' href='standings.php?ttFK=48&country=2&oFK=831981'>0</a></td>
+	<td class=BorderBottomRightF4>2-1</td>
+	<td class=BorderBottomRightF4>1</td>
+	<td class=BorderBottomF4>3</td>
+</tr><TR bgcolor="#FCD500">
+	<td class='BorderBottomRightF4'>3</td>
+	<td class=BorderBottomRightF4Team><a class='standingb' href='standings.php?ttFK=48&country=2&oFK=831981'>Reading</a></td>
+	<td class=BorderBottomRightF4><a class='standing' href='standings.php?ttFK=48&country=2&oFK=831981'>1</a></td>
+	<td class=BorderBottomRightF4><a class='standing' href='standings.php?ttFK=48&country=2&oFK=831981'>1</a></td>
+	<td class=BorderBottomRightF4><a class='standing' href='standings.php?ttFK=48&country=2&oFK=831981'>0</a></td>
+	<td class=BorderBottomRightF4><a class='standing' href='standings.php?ttFK=48&country=2&oFK=831981'>0</a></td>
+	<td class=BorderBottomRightF4>2-1</td>
+	<td class=BorderBottomRightF4>1</td>
+	<td class=BorderBottomF4>3</td>
+</tr><TR bgcolor="#FCD500">
+	<td class='BorderBottomRightF4'>3</td>
+	<td class=BorderBottomRightF4Team><a class='standingb' href='standings.php?ttFK=48&country=2&oFK=831981'>Bournemouth</a></td>
+	<td class=BorderBottomRightF4><a class='standing' href='standings.php?ttFK=48&country=2&oFK=831981'>1</a></td>
+	<td class=BorderBottomRightF4><a class='standing' href='standings.php?ttFK=48&country=2&oFK=831981'>1</a></td>
+	<td class=BorderBottomRightF4><a class='standing' href='standings.php?ttFK=48&country=2&oFK=831981'>0</a></td>
+	<td class=BorderBottomRightF4><a class='standing' href='standings.php?ttFK=48&country=2&oFK=831981'>0</a></td>
+	<td class=BorderBottomRightF4>2-1</td>
+	<td class=BorderBottomRightF4>1</td>
+	<td class=BorderBottomF4>3</td>
+</tr><TR bgcolor="#FCD500">
+	<td class='BorderBottomRightF4'>3</td>
+	<td class=BorderBottomRightF4Team><a class='standingb' href='standings.php?ttFK=48&country=2&oFK=831981'>Leeds</a></td>
+	<td class=BorderBottomRightF4><a class='standing' href='standings.php?ttFK=48&country=2&oFK=831981'>1</a></td>
+	<td class=BorderBottomRightF4><a class='standing' href='standings.php?ttFK=48&country=2&oFK=831981'>1</a></td>
+	<td class=BorderBottomRightF4><a class='standing' href='standings.php?ttFK=48&country=2&oFK=831981'>0</a></td>
+	<td class=BorderBottomRightF4><a class='standing' href='standings.php?ttFK=48&country=2&oFK=831981'>0</a></td>
+	<td class=BorderBottomRightF4>2-1</td>
+	<td class=BorderBottomRightF4>1</td>
+	<td class=BorderBottomF4>3</td>
+</tr><TR bgcolor="#FCD500">
+	<td class='BorderBottomRightF4'>3</td>
+	<td class=BorderBottomRightF4Team><a class='standingb' href='standings.php?ttFK=48&country=2&oFK=831981'>Leicester</a></td>
+	<td class=BorderBottomRightF4><a class='standing' href='standings.php?ttFK=48&country=2&oFK=831981'>1</a></td>
+	<td class=BorderBottomRightF4><a class='standing' href='standings.php?ttFK=48&country=2&oFK=831981'>1</a></td>
+	<td class=BorderBottomRightF4><a class='standing' href='standings.php?ttFK=48&country=2&oFK=831981'>0</a></td>
+	<td class=BorderBottomRightF4><a class='standing' href='standings.php?ttFK=48&country=2&oFK=831981'>0</a></td>
+	<td class=BorderBottomRightF4>2-1</td>
+	<td class=BorderBottomRightF4>1</td>
+	<td class=BorderBottomF4>3</td>
+</tr><TR bgcolor="#ffffff">
+	<td class='BorderBottomRightF4'>8</td>
+	<td class=BorderBottomRightF4Team><a class='standingb' href='standings.php?ttFK=48&country=2&oFK=831981'>Nottingham Forest</a></td>
+	<td class=BorderBottomRightF4><a class='standing' href='standings.php?ttFK=48&country=2&oFK=831981'>1</a></td>
+	<td class=BorderBottomRightF4><a class='standing' href='standings.php?ttFK=48&country=2&oFK=831981'>1</a></td>
+	<td class=BorderBottomRightF4><a class='standing' href='standings.php?ttFK=48&country=2&oFK=831981'>0</a></td>
+	<td class=BorderBottomRightF4><a class='standing' href='standings.php?ttFK=48&country=2&oFK=831981'>0</a></td>
+	<td class=BorderBottomRightF4>1-0</td>
+	<td class=BorderBottomRightF4>1</td>
+	<td class=BorderBottomF4>3</td>
+</tr><TR bgcolor="#ffffff">
+	<td class='BorderBottomRightF4'>8</td>
+	<td class=BorderBottomRightF4Team><a class='standingb' href='standings.php?ttFK=48&country=2&oFK=831981'>Yeovil</a></td>
+	<td class=BorderBottomRightF4><a class='standing' href='standings.php?ttFK=48&country=2&oFK=831981'>1</a></td>
+	<td class=BorderBottomRightF4><a class='standing' href='standings.php?ttFK=48&country=2&oFK=831981'>1</a></td>
+	<td class=BorderBottomRightF4><a class='standing' href='standings.php?ttFK=48&country=2&oFK=831981'>0</a></td>
+	<td class=BorderBottomRightF4><a class='standing' href='standings.php?ttFK=48&country=2&oFK=831981'>0</a></td>
+	<td class=BorderBottomRightF4>1-0</td>
+	<td class=BorderBottomRightF4>1</td>
+	<td class=BorderBottomF4>3</td>
+</tr><TR bgcolor="#ffffff">
+	<td class='BorderBottomRightF4'>8</td>
+	<td class=BorderBottomRightF4Team><a class='standingb' href='standings.php?ttFK=48&country=2&oFK=831981'>Watford</a></td>
+	<td class=BorderBottomRightF4><a class='standing' href='standings.php?ttFK=48&country=2&oFK=831981'>1</a></td>
+	<td class=BorderBottomRightF4><a class='standing' href='standings.php?ttFK=48&country=2&oFK=831981'>1</a></td>
+	<td class=BorderBottomRightF4><a class='standing' href='standings.php?ttFK=48&country=2&oFK=831981'>0</a></td>
+	<td class=BorderBottomRightF4><a class='standing' href='standings.php?ttFK=48&country=2&oFK=831981'>0</a></td>
+	<td class=BorderBottomRightF4>1-0</td>
+	<td class=BorderBottomRightF4>1</td>
+	<td class=BorderBottomF4>3</td>
+</tr><TR bgcolor="#ffffff">
+	<td class='BorderBottomRightF4'>11</td>
+	<td class=BorderBottomRightF4Team><a class='standingb' href='standings.php?ttFK=48&country=2&oFK=831981'>Bolton</a></td>
+	<td class=BorderBottomRightF4><a class='standing' href='standings.php?ttFK=48&country=2&oFK=831981'>1</a></td>
+	<td class=BorderBottomRightF4><a class='standing' href='standings.php?ttFK=48&country=2&oFK=831981'>0</a></td>
+	<td class=BorderBottomRightF4><a class='standing' href='standings.php?ttFK=48&country=2&oFK=831981'>1</a></td>
+	<td class=BorderBottomRightF4><a class='standing' href='standings.php?ttFK=48&country=2&oFK=831981'>0</a></td>
+	<td class=BorderBottomRightF4>1-1</td>
+	<td class=BorderBottomRightF4>0</td>
+	<td class=BorderBottomF4>1</td>
+</tr><TR bgcolor="#ffffff">
+	<td class='BorderBottomRightF4'>11</td>
+	<td class=BorderBottomRightF4Team><a class='standingb' href='standings.php?ttFK=48&country=2&oFK=831981'>Derby</a></td>
+	<td class=BorderBottomRightF4><a class='standing' href='standings.php?ttFK=48&country=2&oFK=831981'>1</a></td>
+	<td class=BorderBottomRightF4><a class='standing' href='standings.php?ttFK=48&country=2&oFK=831981'>0</a></td>
+	<td class=BorderBottomRightF4><a class='standing' href='standings.php?ttFK=48&country=2&oFK=831981'>1</a></td>
+	<td class=BorderBottomRightF4><a class='standing' href='standings.php?ttFK=48&country=2&oFK=831981'>0</a></td>
+	<td class=BorderBottomRightF4>1-1</td>
+	<td class=BorderBottomRightF4>0</td>
+	<td class=BorderBottomF4>1</td>
+</tr><TR bgcolor="#ffffff">
+	<td class='BorderBottomRightF4'>11</td>
+	<td class=BorderBottomRightF4Team><a class='standingb' href='standings.php?ttFK=48&country=2&oFK=831981'>Burnley</a></td>
+	<td class=BorderBottomRightF4><a class='standing' href='standings.php?ttFK=48&country=2&oFK=831981'>1</a></td>
+	<td class=BorderBottomRightF4><a class='standing' href='standings.php?ttFK=48&country=2&oFK=831981'>0</a></td>
+	<td class=BorderBottomRightF4><a class='standing' href='standings.php?ttFK=48&country=2&oFK=831981'>1</a></td>
+	<td class=BorderBottomRightF4><a class='standing' href='standings.php?ttFK=48&country=2&oFK=831981'>0</a></td>
+	<td class=BorderBottomRightF4>1-1</td>
+	<td class=BorderBottomRightF4>0</td>
+	<td class=BorderBottomF4>1</td>
+</tr><TR bgcolor="#ffffff">
+	<td class='BorderBottomRightF4'>11</td>
+	<td class=BorderBottomRightF4Team><a class='standingb' href='standings.php?ttFK=48&country=2&oFK=831981'>Blackburn</a></td>
+	<td class=BorderBottomRightF4><a class='standing' href='standings.php?ttFK=48&country=2&oFK=831981'>1</a></td>
+	<td class=BorderBottomRightF4><a class='standing' href='standings.php?ttFK=48&country=2&oFK=831981'>0</a></td>
+	<td class=BorderBottomRightF4><a class='standing' href='standings.php?ttFK=48&country=2&oFK=831981'>1</a></td>
+	<td class=BorderBottomRightF4><a class='standing' href='standings.php?ttFK=48&country=2&oFK=831981'>0</a></td>
+	<td class=BorderBottomRightF4>1-1</td>
+	<td class=BorderBottomRightF4>0</td>
+	<td class=BorderBottomF4>1</td>
+</tr><TR bgcolor="#ffffff">
+	<td class='BorderBottomRightF4'>15</td>
+	<td class=BorderBottomRightF4Team><a class='standingb' href='standings.php?ttFK=48&country=2&oFK=831981'>Middlesbrough</a></td>
+	<td class=BorderBottomRightF4><a class='standing' href='standings.php?ttFK=48&country=2&oFK=831981'>1</a></td>
+	<td class=BorderBottomRightF4><a class='standing' href='standings.php?ttFK=48&country=2&oFK=831981'>0</a></td>
+	<td class=BorderBottomRightF4><a class='standing' href='standings.php?ttFK=48&country=2&oFK=831981'>0</a></td>
+	<td class=BorderBottomRightF4><a class='standing' href='standings.php?ttFK=48&country=2&oFK=831981'>1</a></td>
+	<td class=BorderBottomRightF4>1-2</td>
+	<td class=BorderBottomRightF4>-1</td>
+	<td class=BorderBottomF4>0</td>
+</tr><TR bgcolor="#ffffff">
+	<td class='BorderBottomRightF4'>15</td>
+	<td class=BorderBottomRightF4Team><a class='standingb' href='standings.php?ttFK=48&country=2&oFK=831981'>Sheffield Wednesday</a></td>
+	<td class=BorderBottomRightF4><a class='standing' href='standings.php?ttFK=48&country=2&oFK=831981'>1</a></td>
+	<td class=BorderBottomRightF4><a class='standing' href='standings.php?ttFK=48&country=2&oFK=831981'>0</a></td>
+	<td class=BorderBottomRightF4><a class='standing' href='standings.php?ttFK=48&country=2&oFK=831981'>0</a></td>
+	<td class=BorderBottomRightF4><a class='standing' href='standings.php?ttFK=48&country=2&oFK=831981'>1</a></td>
+	<td class=BorderBottomRightF4>1-2</td>
+	<td class=BorderBottomRightF4>-1</td>
+	<td class=BorderBottomF4>0</td>
+</tr><TR bgcolor="#ffffff">
+	<td class='BorderBottomRightF4'>15</td>
+	<td class=BorderBottomRightF4Team><a class='standingb' href='standings.php?ttFK=48&country=2&oFK=831981'>Ipswich</a></td>
+	<td class=BorderBottomRightF4><a class='standing' href='standings.php?ttFK=48&country=2&oFK=831981'>1</a></td>
+	<td class=BorderBottomRightF4><a class='standing' href='standings.php?ttFK=48&country=2&oFK=831981'>0</a></td>
+	<td class=BorderBottomRightF4><a class='standing' href='standings.php?ttFK=48&country=2&oFK=831981'>0</a></td>
+	<td class=BorderBottomRightF4><a class='standing' href='standings.php?ttFK=48&country=2&oFK=831981'>1</a></td>
+	<td class=BorderBottomRightF4>1-2</td>
+	<td class=BorderBottomRightF4>-1</td>
+	<td class=BorderBottomF4>0</td>
+</tr><TR bgcolor="#ffffff">
+	<td class='BorderBottomRightF4'>15</td>
+	<td class=BorderBottomRightF4Team><a class='standingb' href='standings.php?ttFK=48&country=2&oFK=831981'>Brighton</a></td>
+	<td class=BorderBottomRightF4><a class='standing' href='standings.php?ttFK=48&country=2&oFK=831981'>1</a></td>
+	<td class=BorderBottomRightF4><a class='standing' href='standings.php?ttFK=48&country=2&oFK=831981'>0</a></td>
+	<td class=BorderBottomRightF4><a class='standing' href='standings.php?ttFK=48&country=2&oFK=831981'>0</a></td>
+	<td class=BorderBottomRightF4><a class='standing' href='standings.php?ttFK=48&country=2&oFK=831981'>1</a></td>
+	<td class=BorderBottomRightF4>1-2</td>
+	<td class=BorderBottomRightF4>-1</td>
+	<td class=BorderBottomF4>0</td>
+</tr><TR bgcolor="#ffffff">
+	<td class='BorderBottomRightF4'>15</td>
+	<td class=BorderBottomRightF4Team><a class='standingb' href='standings.php?ttFK=48&country=2&oFK=831981'>Charlton</a></td>
+	<td class=BorderBottomRightF4><a class='standing' href='standings.php?ttFK=48&country=2&oFK=831981'>1</a></td>
+	<td class=BorderBottomRightF4><a class='standing' href='standings.php?ttFK=48&country=2&oFK=831981'>0</a></td>
+	<td class=BorderBottomRightF4><a class='standing' href='standings.php?ttFK=48&country=2&oFK=831981'>0</a></td>
+	<td class=BorderBottomRightF4><a class='standing' href='standings.php?ttFK=48&country=2&oFK=831981'>1</a></td>
+	<td class=BorderBottomRightF4>1-2</td>
+	<td class=BorderBottomRightF4>-1</td>
+	<td class=BorderBottomF4>0</td>
+</tr><TR bgcolor="#ffffff">
+	<td class='BorderBottomRightF4'>20</td>
+	<td class=BorderBottomRightF4Team><a class='standingb' href='standings.php?ttFK=48&country=2&oFK=831981'>Huddersfield</a></td>
+	<td class=BorderBottomRightF4><a class='standing' href='standings.php?ttFK=48&country=2&oFK=831981'>1</a></td>
+	<td class=BorderBottomRightF4><a class='standing' href='standings.php?ttFK=48&country=2&oFK=831981'>0</a></td>
+	<td class=BorderBottomRightF4><a class='standing' href='standings.php?ttFK=48&country=2&oFK=831981'>0</a></td>
+	<td class=BorderBottomRightF4><a class='standing' href='standings.php?ttFK=48&country=2&oFK=831981'>1</a></td>
+	<td class=BorderBottomRightF4>0-1</td>
+	<td class=BorderBottomRightF4>-1</td>
+	<td class=BorderBottomF4>0</td>
+</tr><TR bgcolor="#ffffff">
+	<td class='BorderBottomRightF4'>20</td>
+	<td class=BorderBottomRightF4Team><a class='standingb' href='standings.php?ttFK=48&country=2&oFK=831981'>Birmingham</a></td>
+	<td class=BorderBottomRightF4><a class='standing' href='standings.php?ttFK=48&country=2&oFK=831981'>1</a></td>
+	<td class=BorderBottomRightF4><a class='standing' href='standings.php?ttFK=48&country=2&oFK=831981'>0</a></td>
+	<td class=BorderBottomRightF4><a class='standing' href='standings.php?ttFK=48&country=2&oFK=831981'>0</a></td>
+	<td class=BorderBottomRightF4><a class='standing' href='standings.php?ttFK=48&country=2&oFK=831981'>1</a></td>
+	<td class=BorderBottomRightF4>0-1</td>
+	<td class=BorderBottomRightF4>-1</td>
+	<td class=BorderBottomF4>0</td>
+</tr><TR bgcolor="#ffffff">
+	<td class='BorderBottomRightF4'>20</td>
+	<td class=BorderBottomRightF4Team><a class='standingb' href='standings.php?ttFK=48&country=2&oFK=831981'>Millwall</a></td>
+	<td class=BorderBottomRightF4><a class='standing' href='standings.php?ttFK=48&country=2&oFK=831981'>1</a></td>
+	<td class=BorderBottomRightF4><a class='standing' href='standings.php?ttFK=48&country=2&oFK=831981'>0</a></td>
+	<td class=BorderBottomRightF4><a class='standing' href='standings.php?ttFK=48&country=2&oFK=831981'>0</a></td>
+	<td class=BorderBottomRightF4><a class='standing' href='standings.php?ttFK=48&country=2&oFK=831981'>1</a></td>
+	<td class=BorderBottomRightF4>0-1</td>
+	<td class=BorderBottomRightF4>-1</td>
+	<td class=BorderBottomF4>0</td>
+</tr><TR bgcolor="#F2BD79">
+	<td class='BorderBottomRightF4'>23</td>
+	<td class=BorderBottomRightF4Team><a class='standingb' href='standings.php?ttFK=48&country=2&oFK=831981'>Doncaster</a></td>
+	<td class=BorderBottomRightF4><a class='standing' href='standings.php?ttFK=48&country=2&oFK=831981'>1</a></td>
+	<td class=BorderBottomRightF4><a class='standing' href='standings.php?ttFK=48&country=2&oFK=831981'>0</a></td>
+	<td class=BorderBottomRightF4><a class='standing' href='standings.php?ttFK=48&country=2&oFK=831981'>0</a></td>
+	<td class=BorderBottomRightF4><a class='standing' href='standings.php?ttFK=48&country=2&oFK=831981'>1</a></td>
+	<td class=BorderBottomRightF4>1-3</td>
+	<td class=BorderBottomRightF4>-2</td>
+	<td class=BorderBottomF4>0</td>
+</tr><TR bgcolor="#F2BD79">
+	<td class='BorderBottomRightF4'>24</td>
+	<td class=BorderBottomRightF4Team><a class='standingb' href='standings.php?ttFK=48&country=2&oFK=831981'>Barnsley</a></td>
+	<td class=BorderBottomRightF4><a class='standing' href='standings.php?ttFK=48&country=2&oFK=831981'>1</a></td>
+	<td class=BorderBottomRightF4><a class='standing' href='standings.php?ttFK=48&country=2&oFK=831981'>0</a></td>
+	<td class=BorderBottomRightF4><a class='standing' href='standings.php?ttFK=48&country=2&oFK=831981'>0</a></td>
+	<td class=BorderBottomRightF4><a class='standing' href='standings.php?ttFK=48&country=2&oFK=831981'>1</a></td>
+	<td class=BorderBottomRightF4>0-4</td>
+	<td class=BorderBottomRightF4>-4</td>
+	<td class=BorderBottomF4>0</td>
+</tr>
+	</table>
+	<table width=100% border=0 cellspacing=0 cellpadding=0>
+	<tr>
+	<td colspan=2><img src=img/1x1px.gif width=1 height=4></td>
+</tr>
+<tr>
+	<td style='width:30px;height:15px;background:#FCD500'><img src=img/1x1px.gif width=30 height=15></td>
+	<td>&nbsp; = Promotion / Playoff &nbsp;&nbsp;&nbsp;</td>
+</tr><tr>
+	<td colspan=2><img src=img/1x1px.gif width=1 height=4></td>
+</tr>
+<tr>
+	<td style='width:30px;height:15px;background:#F2BD79'><img src=img/1x1px.gif width=30 height=15></td>
+	<td>&nbsp; = Relegation &nbsp;&nbsp;&nbsp;</td>
+</tr><tr>
+	<td colspan=2><img src=img/1x1px.gif width=1 height=4></td>
+</tr>
+<tr>
+	<td style='width:30px;height:15px;background:#C5DB2E'><img src=img/1x1px.gif width=30 height=15></td>
+	<td>&nbsp; = Promotion &nbsp;&nbsp;&nbsp;</td>
+</tr>
+</table>
+</div>
+			<div id="LeagueMatches">
+	<table width="100%" cellspacing="0" cellpadding="0" border="0" class="livetableA">
+		<tr>
+			<td colspan="3" class="Heading"><a href="standings.php?ttFK=48&country=2&oFK=831981&standing=false">Championship</a></td>
+			<td colspan="2" class="Headingr">03, Aug 13</td>
+		</tr>
+		<tr height="18">
+			<td colspan="5" class="Headingr2"><a href="standings.php?ttFK=48&country=2&oFK=831981" title="League Table and Standings">Standings</a></td>
+		</tr>
+		<tr id="{country}" height="18">
+	<td width="50" style="font-size: 10px;"><span id="s_status_250782" style="">FT</span></td>
+	<td width="155" style="font-size: 10px;"><span id="home_info_250782">Barnsley</span></td>
+	<td width="50" style="font-size: 10px;">
+		<span id="s_info_250782">
+			<a onmouseover="javascript:popup('<table width=300 cellspacing=0 cellpadding=2 class=popup_table><tr><td width=140 class=popup_head> Barnsley</td><td width=30 class=popup_head> 0-4 </td><td width=140 class=popup_head>Wigan </td></tr><tr class=popup2><td></td><td><img src=img/goal.gif border=0></td><td>37 Ben Watson</td></tr><tr class=popup2><td></td><td><img src=img/y.gif border=0></td><td>44 James McCarthy</td></tr><tr class=popup2><td></td><td><img src=img/goal.gif border=0></td><td>55 Grant Holt</td></tr><tr class=popup2><td>Dale Jennings 66</td><td><img src=img/r.gif border=0></td><td></td></tr><tr class=popup2><td>Martin Cranie 74</td><td><img src=img/y.gif border=0></td><td></td></tr><tr class=popup2><td></td><td><img src=img/goal.gif border=0></td><td>80 Leon Barnett</td></tr><tr class=popup2><td></td><td><img src=img/goal.gif border=0></td><td>90 Shaun Maloney</td></tr></table>','');" onmouseout="kill()" href="#" class="live_b"><span style="">0</span> - <span style="">4</span></a>
+		</span>
+	</td>
+	<td width="155" style="font-size: 10px;"><span id="away_info_250782">Wigan</span></td>
+	<td width="50" valign="baseline" align="right">
+		<a href="h2h.php?ttFK=48&country=2&oFK=831981&participant1=8283&participant2=8528"><img border="0" title="Head 2 Head and Latest Matches" src="img/h2hw.gif"/></a>
+		<a href="stats.php?ttFK=48&country=2&oFK=831981&participant1=8283&participant2=8528"><img border="0" title="Team and League Stats" src="img/1x2w.gif"/></a>
+	</td>
+</tr><tr id="{country}" height="18">
+	<td width="50" style="font-size: 10px;"><span id="s_status_250782" style="">FT</span></td>
+	<td width="155" style="font-size: 10px;"><span id="home_info_250782">Birmingham</span></td>
+	<td width="50" style="font-size: 10px;">
+		<span id="s_info_250782">
+			<a onmouseover="javascript:popup('<table width=300 cellspacing=0 cellpadding=2 class=popup_table><tr><td width=140 class=popup_head> Birmingham</td><td width=30 class=popup_head> 0-1 </td><td width=140 class=popup_head>Watford </td></tr><tr class=popup2><td></td><td><img src=img/goal.gif border=0></td><td>11 Troy Deeney</td></tr><tr class=popup2><td>Daniel Burn 37</td><td><img src=img/y.gif border=0></td><td></td></tr><tr class=popup2><td>Tom Adeyemi 40</td><td><img src=img/y.gif border=0></td><td></td></tr><tr class=popup2><td>Paul Robinson 45</td><td><img src=img/y.gif border=0></td><td></td></tr><tr class=popup2><td></td><td><img src=img/y.gif border=0></td><td>71 Cristian Battocchio</td></tr><tr class=popup2><td>Lee Novak 86</td><td><img src=img/y.gif border=0></td><td></td></tr><tr class=popup2><td></td><td><img src=img/y.gif border=0></td><td>86 Almen Abdi</td></tr></table>','');" onmouseout="kill()" href="#" class="live_b"><span style="">0</span> - <span style="">1</span></a>
+		</span>
+	</td>
+	<td width="155" style="font-size: 10px;"><span id="away_info_250782">Watford</span></td>
+	<td width="50" valign="baseline" align="right">
+		<a href="h2h.php?ttFK=48&country=2&oFK=831981&participant1=8658&participant2=9817"><img border="0" title="Head 2 Head and Latest Matches" src="img/h2hw.gif"/></a>
+		<a href="stats.php?ttFK=48&country=2&oFK=831981&participant1=8658&participant2=9817"><img border="0" title="Team and League Stats" src="img/1x2w.gif"/></a>
+	</td>
+</tr><tr id="{country}" height="18">
+	<td width="50" style="font-size: 10px;"><span id="s_status_250782" style="">FT</span></td>
+	<td width="155" style="font-size: 10px;"><span id="home_info_250782">Bournemouth</span></td>
+	<td width="50" style="font-size: 10px;">
+		<span id="s_info_250782">
+			<a onmouseover="javascript:popup('<table width=300 cellspacing=0 cellpadding=2 class=popup_table><tr><td width=140 class=popup_head> Bournemouth</td><td width=30 class=popup_head> 2-1 </td><td width=140 class=popup_head>Charlton </td></tr><tr class=popup2><td>Lewis Grabban 26</td><td><img src=img/goal.gif border=0></td><td></td></tr><tr class=popup2><td></td><td><img src=img/goal.gif border=0></td><td>50 Yann Kermorgant</td></tr><tr class=popup2><td>Lewis Grabban 67</td><td><img src=img/goal.gif border=0></td><td></td></tr><tr class=popup2><td></td><td><img src=img/r.gif border=0></td><td>84 Bradley Pritchard</td></tr><tr class=popup2><td>Harry Arter 90</td><td><img src=img/y.gif border=0></td><td></td></tr></table>','');" onmouseout="kill()" href="#" class="live_b"><span style="">2</span> - <span style="">1</span></a>
+		</span>
+	</td>
+	<td width="155" style="font-size: 10px;"><span id="away_info_250782">Charlton</span></td>
+	<td width="50" valign="baseline" align="right">
+		<a href="h2h.php?ttFK=48&country=2&oFK=831981&participant1=8678&participant2=8451"><img border="0" title="Head 2 Head and Latest Matches" src="img/h2hw.gif"/></a>
+		<a href="stats.php?ttFK=48&country=2&oFK=831981&participant1=8678&participant2=8451"><img border="0" title="Team and League Stats" src="img/1x2w.gif"/></a>
+	</td>
+</tr><tr id="{country}" height="18">
+	<td width="50" style="font-size: 10px;"><span id="s_status_250782" style="">FT</span></td>
+	<td width="155" style="font-size: 10px;"><span id="home_info_250782">Burnley</span></td>
+	<td width="50" style="font-size: 10px;">
+		<span id="s_info_250782">
+			<a onmouseover="javascript:popup('<table width=300 cellspacing=0 cellpadding=2 class=popup_table><tr><td width=140 class=popup_head> Burnley</td><td width=30 class=popup_head> 1-1 </td><td width=140 class=popup_head>Bolton </td></tr><tr class=popup2><td>David Wheater 26</td><td><img src=img/o.gif border=0></td><td></td></tr><tr class=popup2><td></td><td><img src=img/goal.gif border=0></td><td>37 Darren Pratley</td></tr><tr class=popup2><td></td><td><img src=img/y.gif border=0></td><td>90 Chung-Yong Lee</td></tr></table>','');" onmouseout="kill()" href="#" class="live_b"><span style="">1</span> - <span style="">1</span></a>
+		</span>
+	</td>
+	<td width="155" style="font-size: 10px;"><span id="away_info_250782">Bolton</span></td>
+	<td width="50" valign="baseline" align="right">
+		<a href="h2h.php?ttFK=48&country=2&oFK=831981&participant1=8191&participant2=8559"><img border="0" title="Head 2 Head and Latest Matches" src="img/h2hw.gif"/></a>
+		<a href="stats.php?ttFK=48&country=2&oFK=831981&participant1=8191&participant2=8559"><img border="0" title="Team and League Stats" src="img/1x2w.gif"/></a>
+	</td>
+</tr><tr id="{country}" height="18">
+	<td width="50" style="font-size: 10px;"><span id="s_status_250782" style="">FT</span></td>
+	<td width="155" style="font-size: 10px;"><span id="home_info_250782">Doncaster</span></td>
+	<td width="50" style="font-size: 10px;">
+		<span id="s_info_250782">
+			<a onmouseover="javascript:popup('<table width=300 cellspacing=0 cellpadding=2 class=popup_table><tr><td width=140 class=popup_head> Doncaster</td><td width=30 class=popup_head> 1-3 </td><td width=140 class=popup_head>Blackpool </td></tr><tr class=popup2><td></td><td><img src=img/goal.gif border=0></td><td>17 Steve Davies</td></tr><tr class=popup2><td></td><td><img src=img/y.gif border=0></td><td>20 Robert Harris</td></tr><tr class=popup2><td>Dean Furman 21</td><td><img src=img/y.gif border=0></td><td></td></tr><tr class=popup2><td></td><td><img src=img/y.gif border=0></td><td>24 Isaiah Osbourne</td></tr><tr class=popup2><td></td><td><img src=img/y.gif border=0></td><td>39 Gary MacKenzie</td></tr><tr class=popup2><td>Robert Jones 60</td><td><img src=img/goal.gif border=0></td><td></td></tr><tr class=popup2><td>Paul Quinn 73</td><td><img src=img/y.gif border=0></td><td></td></tr><tr class=popup2><td></td><td><img src=img/goal.gif border=0></td><td>88 Gary MacKenzie</td></tr><tr class=popup2><td></td><td><img src=img/goal.gif border=0></td><td>90 Thomas Ince</td></tr></table>','');" onmouseout="kill()" href="#" class="live_b"><span style="">1</span> - <span style="">3</span></a>
+		</span>
+	</td>
+	<td width="155" style="font-size: 10px;"><span id="away_info_250782">Blackpool</span></td>
+	<td width="50" valign="baseline" align="right">
+		<a href="h2h.php?ttFK=48&country=2&oFK=831981&participant1=9903&participant2=8483"><img border="0" title="Head 2 Head and Latest Matches" src="img/h2hw.gif"/></a>
+		<a href="stats.php?ttFK=48&country=2&oFK=831981&participant1=9903&participant2=8483"><img border="0" title="Team and League Stats" src="img/1x2w.gif"/></a>
+	</td>
+</tr><tr id="{country}" height="18">
+	<td width="50" style="font-size: 10px;"><span id="s_status_250782" style="">FT</span></td>
+	<td width="155" style="font-size: 10px;"><span id="home_info_250782">Leeds</span></td>
+	<td width="50" style="font-size: 10px;">
+		<span id="s_info_250782">
+			<a onmouseover="javascript:popup('<table width=300 cellspacing=0 cellpadding=2 class=popup_table><tr><td width=140 class=popup_head> Leeds</td><td width=30 class=popup_head> 2-1 </td><td width=140 class=popup_head>Brighton </td></tr><tr class=popup2><td></td><td><img src=img/goal.gif border=0></td><td>13 Jose Leonardo Ulloa</td></tr><tr class=popup2><td>Ross McCormack 19</td><td><img src=img/goal.gif border=0></td><td></td></tr><tr class=popup2><td>Luke Varney 33</td><td><img src=img/y.gif border=0></td><td></td></tr><tr class=popup2><td>Lee Peltier 60</td><td><img src=img/y.gif border=0></td><td></td></tr><tr class=popup2><td></td><td><img src=img/y.gif border=0></td><td>70 Bruno Saltor</td></tr><tr class=popup2><td>Paul Green 75</td><td><img src=img/y.gif border=0></td><td></td></tr><tr class=popup2><td>Luke Murphy 90</td><td><img src=img/goal.gif border=0></td><td></td></tr></table>','');" onmouseout="kill()" href="#" class="live_b"><span style="">2</span> - <span style="">1</span></a>
+		</span>
+	</td>
+	<td width="155" style="font-size: 10px;"><span id="away_info_250782">Brighton</span></td>
+	<td width="50" valign="baseline" align="right">
+		<a href="h2h.php?ttFK=48&country=2&oFK=831981&participant1=8463&participant2=10204"><img border="0" title="Head 2 Head and Latest Matches" src="img/h2hw.gif"/></a>
+		<a href="stats.php?ttFK=48&country=2&oFK=831981&participant1=8463&participant2=10204"><img border="0" title="Team and League Stats" src="img/1x2w.gif"/></a>
+	</td>
+</tr><tr id="{country}" height="18">
+	<td width="50" style="font-size: 10px;"><span id="s_status_250782" style="">FT</span></td>
+	<td width="155" style="font-size: 10px;"><span id="home_info_250782">Middlesbrough</span></td>
+	<td width="50" style="font-size: 10px;">
+		<span id="s_info_250782">
+			<a onmouseover="javascript:popup('<table width=300 cellspacing=0 cellpadding=2 class=popup_table><tr><td width=140 class=popup_head> Middlesbrough</td><td width=30 class=popup_head> 1-2 </td><td width=140 class=popup_head>Leicester </td></tr><tr class=popup2><td>Mustapha Carayol 27</td><td><img src=img/y.gif border=0></td><td></td></tr><tr class=popup2><td>Sean St. Ledger 35</td><td><img src=img/o.gif border=0></td><td></td></tr><tr class=popup2><td></td><td><img src=img/goal.gif border=0></td><td>60 Daniel Drinkwater</td></tr><tr class=popup2><td></td><td><img src=img/goal.gif border=0></td><td>68 Jamie Vardy</td></tr></table>','');" onmouseout="kill()" href="#" class="live_b"><span style="">1</span> - <span style="">2</span></a>
+		</span>
+	</td>
+	<td width="155" style="font-size: 10px;"><span id="away_info_250782">Leicester</span></td>
+	<td width="50" valign="baseline" align="right">
+		<a href="h2h.php?ttFK=48&country=2&oFK=831981&participant1=8549&participant2=8197"><img border="0" title="Head 2 Head and Latest Matches" src="img/h2hw.gif"/></a>
+		<a href="stats.php?ttFK=48&country=2&oFK=831981&participant1=8549&participant2=8197"><img border="0" title="Team and League Stats" src="img/1x2w.gif"/></a>
+	</td>
+</tr><tr id="{country}" height="18">
+	<td width="50" style="font-size: 10px;"><span id="s_status_250782" style="">FT</span></td>
+	<td width="155" style="font-size: 10px;"><span id="home_info_250782">Millwall</span></td>
+	<td width="50" style="font-size: 10px;">
+		<span id="s_info_250782">
+			<a onmouseover="javascript:popup('<table width=300 cellspacing=0 cellpadding=2 class=popup_table><tr><td width=140 class=popup_head> Millwall</td><td width=30 class=popup_head> 0-1 </td><td width=140 class=popup_head>Yeovil </td></tr><tr class=popup2><td></td><td><img src=img/y.gif border=0></td><td>14 Daniel Seaborne</td></tr><tr class=popup2><td>Steve Morison 14</td><td><img src=img/y.gif border=0></td><td></td></tr><tr class=popup2><td></td><td><img src=img/y.gif border=0></td><td>21 Patrick Madden</td></tr><tr class=popup2><td></td><td><img src=img/goal.gif border=0></td><td>88 Ed Upson</td></tr></table>','');" onmouseout="kill()" href="#" class="live_b"><span style="">0</span> - <span style="">1</span></a>
+		</span>
+	</td>
+	<td width="155" style="font-size: 10px;"><span id="away_info_250782">Yeovil</span></td>
+	<td width="50" valign="baseline" align="right">
+		<a href="h2h.php?ttFK=48&country=2&oFK=831981&participant1=10004&participant2=10198"><img border="0" title="Head 2 Head and Latest Matches" src="img/h2hw.gif"/></a>
+		<a href="stats.php?ttFK=48&country=2&oFK=831981&participant1=10004&participant2=10198"><img border="0" title="Team and League Stats" src="img/1x2w.gif"/></a>
+	</td>
+</tr><tr id="{country}" height="18">
+	<td width="50" style="font-size: 10px;"><span id="s_status_250782" style="">FT</span></td>
+	<td width="155" style="font-size: 10px;"><span id="home_info_250782">Nottingham Forest</span></td>
+	<td width="50" style="font-size: 10px;">
+		<span id="s_info_250782">
+			<a onmouseover="javascript:popup('<table width=300 cellspacing=0 cellpadding=2 class=popup_table><tr><td width=140 class=popup_head> Nottingham Forest</td><td width=30 class=popup_head> 1-0 </td><td width=140 class=popup_head>Huddersfield </td></tr><tr class=popup2><td>Henri Lansbury 54</td><td><img src=img/goal.gif border=0></td><td></td></tr><tr class=popup2><td></td><td><img src=img/y.gif border=0></td><td>65 Joel Lynch</td></tr><tr class=popup2><td></td><td><img src=img/y.gif border=0></td><td>90 Adam Hammill</td></tr></table>','');" onmouseout="kill()" href="#" class="live_b"><span style="">1</span> - <span style="">0</span></a>
+		</span>
+	</td>
+	<td width="155" style="font-size: 10px;"><span id="away_info_250782">Huddersfield</span></td>
+	<td width="50" valign="baseline" align="right">
+		<a href="h2h.php?ttFK=48&country=2&oFK=831981&participant1=10203&participant2=9796"><img border="0" title="Head 2 Head and Latest Matches" src="img/h2hw.gif"/></a>
+		<a href="stats.php?ttFK=48&country=2&oFK=831981&participant1=10203&participant2=9796"><img border="0" title="Team and League Stats" src="img/1x2w.gif"/></a>
+	</td>
+</tr><tr id="{country}" height="18">
+	<td width="50" style="font-size: 10px;"><span id="s_status_250782" style="">FT</span></td>
+	<td width="155" style="font-size: 10px;"><span id="home_info_250782">Queens Park Rangers</span></td>
+	<td width="50" style="font-size: 10px;">
+		<span id="s_info_250782">
+			<a onmouseover="javascript:popup('<table width=300 cellspacing=0 cellpadding=2 class=popup_table><tr><td width=140 class=popup_head> Queens Park Rangers</td><td width=30 class=popup_head> 2-1 </td><td width=140 class=popup_head>Sheffield Wednesday </td></tr><tr class=popup2><td></td><td><img src=img/goal.gif border=0></td><td>19 Atdhe Nuhiu</td></tr><tr class=popup2><td></td><td><img src=img/y.gif border=0></td><td>20 Liam Palmer</td></tr><tr class=popup2><td>Nedum Onuoha 40</td><td><img src=img/goal.gif border=0></td><td></td></tr><tr class=popup2><td>Andrew Johnson 43</td><td><img src=img/goal.gif border=0></td><td></td></tr><tr class=popup2><td>Joey Barton 55</td><td><img src=img/y.gif border=0></td><td></td></tr><tr class=popup2><td></td><td><img src=img/y.gif border=0></td><td>57 Jacques Maghoma</td></tr></table>','');" onmouseout="kill()" href="#" class="live_b"><span style="">2</span> - <span style="">1</span></a>
+		</span>
+	</td>
+	<td width="155" style="font-size: 10px;"><span id="away_info_250782">Sheffield Wednesday</span></td>
+	<td width="50" valign="baseline" align="right">
+		<a href="h2h.php?ttFK=48&country=2&oFK=831981&participant1=10172&participant2=10163"><img border="0" title="Head 2 Head and Latest Matches" src="img/h2hw.gif"/></a>
+		<a href="stats.php?ttFK=48&country=2&oFK=831981&participant1=10172&participant2=10163"><img border="0" title="Team and League Stats" src="img/1x2w.gif"/></a>
+	</td>
+</tr><tr id="{country}" height="18">
+	<td width="50" style="font-size: 10px;"><span id="s_status_250782" style="">FT</span></td>
+	<td width="155" style="font-size: 10px;"><span id="home_info_250782">Reading</span></td>
+	<td width="50" style="font-size: 10px;">
+		<span id="s_info_250782">
+			<a onmouseover="javascript:popup('<table width=300 cellspacing=0 cellpadding=2 class=popup_table><tr><td width=140 class=popup_head> Reading</td><td width=30 class=popup_head> 2-1 </td><td width=140 class=popup_head>Ipswich </td></tr><tr class=popup2><td></td><td><img src=img/goal.gif border=0></td><td>15 Jay Tabb</td></tr><tr class=popup2><td>Jem Karacan 31</td><td><img src=img/y.gif border=0></td><td></td></tr><tr class=popup2><td></td><td><img src=img/y.gif border=0></td><td>33 Tyrone Mings</td></tr><tr class=popup2><td>Adam Le Fondre 45</td><td><img src=img/goal.gif border=0></td><td></td></tr><tr class=popup2><td></td><td><img src=img/y.gif border=0></td><td>59 Elliott Hewitt</td></tr><tr class=popup2><td>Danny Guthrie 76</td><td><img src=img/goal.gif border=0></td><td></td></tr></table>','');" onmouseout="kill()" href="#" class="live_b"><span style="">2</span> - <span style="">1</span></a>
+		</span>
+	</td>
+	<td width="155" style="font-size: 10px;"><span id="away_info_250782">Ipswich</span></td>
+	<td width="50" valign="baseline" align="right">
+		<a href="h2h.php?ttFK=48&country=2&oFK=831981&participant1=9798&participant2=9902"><img border="0" title="Head 2 Head and Latest Matches" src="img/h2hw.gif"/></a>
+		<a href="stats.php?ttFK=48&country=2&oFK=831981&participant1=9798&participant2=9902"><img border="0" title="Team and League Stats" src="img/1x2w.gif"/></a>
+	</td>
+</tr><tr>
+	<td colspan="3" class="Heading">&nbsp;</td>
+	<td colspan="2"class="Headingr">04, Aug 13</td>
+</tr><tr id="{country}" height="18">
+	<td width="50" style="font-size: 10px;"><span id="s_status_250782" style="">FT</span></td>
+	<td width="155" style="font-size: 10px;"><span id="home_info_250782">Derby</span></td>
+	<td width="50" style="font-size: 10px;">
+		<span id="s_info_250782">
+			<a onmouseover="javascript:popup('<table width=300 cellspacing=0 cellpadding=2 class=popup_table><tr><td width=140 class=popup_head> Derby</td><td width=30 class=popup_head> 1-1 </td><td width=140 class=popup_head>Blackburn </td></tr><tr class=popup2><td>Johnny Russell (pen.) 43</td><td><img src=img/goal.gif border=0></td><td></td></tr><tr class=popup2><td></td><td><img src=img/y.gif border=0></td><td>45 Leon Best</td></tr><tr class=popup2><td></td><td><img src=img/y.gif border=0></td><td>60 Todd Kane</td></tr><tr class=popup2><td>Paul Coutts 89</td><td><img src=img/y.gif border=0></td><td></td></tr><tr class=popup2><td></td><td><img src=img/goal.gif border=0></td><td>89 Leon Best</td></tr></table>','');" onmouseout="kill()" href="#" class="live_b"><span style="">1</span> - <span style="">1</span></a>
+		</span>
+	</td>
+	<td width="155" style="font-size: 10px;"><span id="away_info_250782">Blackburn</span></td>
+	<td width="50" valign="baseline" align="right">
+		<a href="h2h.php?ttFK=48&country=2&oFK=831981&participant1=10170&participant2=8655"><img border="0" title="Head 2 Head and Latest Matches" src="img/h2hw.gif"/></a>
+		<a href="stats.php?ttFK=48&country=2&oFK=831981&participant1=10170&participant2=8655"><img border="0" title="Team and League Stats" src="img/1x2w.gif"/></a>
+	</td>
+</tr>		
+	</table>
+</div>
+		</td>
+	</tr>
+</table>
+		</form>
+		
+		<script type="text/javascript">
+			var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+			document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+		<script type="text/javascript">
+			try {
+				var pageTracker = _gat._getTracker("UA-6695992-5");
+				pageTracker._trackPageview();
+			}
+			catch(err) {}
+		</script>
+	</body>
+</html>

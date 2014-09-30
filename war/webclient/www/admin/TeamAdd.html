@@ -1,0 +1,69 @@
+<html>
+<head>
+	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+</head>
+<p>
+	<input type="text" id="userID" value="Player ID"/>
+	<input text="Submit" type="button" id="submitData" onclick="onPost()"/>
+	
+</p>
+<p>e1<input id="E1" type="text"/></p>
+<p>e2<input id="E2" type="text"/></p>
+<p>e3<input id="E3" type="text"/></p>
+<p>e4<input id="E4" type="text"/></p>
+<p>s1<input id="S1" type="text"/></p>
+<p>s2<input id="S2" type="text"/></p>
+<p>s3<input id="S3" type="text"/></p>
+<p>s4<input id="S4" type="text"/></p>
+
+<script language="javascript">
+
+var lCodes = new Array("E1", "E2", "E3", "E4", "S1", "S2", "S3", "S4");
+
+function onPost(){
+	
+	//var postdata =  $('#jsondata').val().trim();
+	var postdata = createPostData();
+	var userid = $('#userID').val().trim();
+	var posturl = '/teams/' + userid;
+	alert(posturl + " : " + postdata);
+	$.post(posturl,
+		postdata,
+		function() {
+			alert('success');
+		},
+		  
+		'application/json'
+	);
+}
+
+function onUpdate(){
+	var postdata = ""
+	$.post("leaderboard"),
+	function(){
+		alert("Successful Update"),
+		'application/json'
+	}
+}
+
+function createPostData(){
+
+	var lc;
+	var teamEntry;
+	var ret =  "{\"teams\":[" ;
+	 for (var i=0; i<lCodes.length; i++){
+	 	lc = lCodes[i];
+	 	lcID = '#'+ lc
+	 	teamEntry  = "{\"teamName\":\""  + encodeURIComponent($(lcID).val().trim()) + "\",\"leaguecode\":\"" + lc + "\"}";
+	 	if (i != lCodes.length-1){
+	 		teamEntry += ",";
+	 	}
+	 	ret += teamEntry;
+	 }
+	  ret += "]}";
+	  console.log (ret);
+
+	return ret;
+}
+</script>
+</html>

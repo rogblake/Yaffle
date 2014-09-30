@@ -1,0 +1,36 @@
+{
+    "leagues": [
+        {
+            "id": "e1",
+            "name": "English Premiereship"
+        },
+        {
+            "id": "e2",
+            "name": "Belgian Jupiler League"
+        },
+        {
+            "id": "e3",
+            "name": "Dutch Erevisie"
+        },
+        {
+            "id": "e4",
+            "name": "France Ligue 1"
+        },
+        {
+            "id": "s1",
+            "name": "German Bundesliga"
+        },
+        {
+            "id": "s2",
+            "name": "Scottish Championship"
+        },
+        {
+            "id": "s3",
+            "name": "Portuguese Liga Sagres"
+        },
+        {
+            "id": "s4",
+            "name": "Spanish Liga BBVA"
+        }
+    ]
+}

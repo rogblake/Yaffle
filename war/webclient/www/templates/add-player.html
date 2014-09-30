@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  </head>
+  <body>
+  	<ion-view title="Add Teams">
+  		<ion-content>
+		    <div ng-repeat="cargoItem in cargo.CargoItems">
+		        <spanE1 {{cargoItem.LoadPoint.Text}}</span> 
+		        <select ng-model="cargoItem.LoadPoint" ng-options="loadPoint.Text for loadPoint in LoadPoints"></select>
+		        <pre>cargoItem: {{cargoItem | json}}</pre>
+			<div>
+		</ion-content>
+		</ion-view>
+  </body>
+
+ </html>

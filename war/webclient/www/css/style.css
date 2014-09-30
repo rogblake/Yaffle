@@ -1,0 +1,56 @@
+/* Empty. Add your own CSS if you like */
+
+.scroll-content {
+  background: url(/webclient/www/img/green_woodpecker_full_55pc.png);
+  background-size:100% 100%;
+}
+.scroll-content#signin-screen {
+  background: url(/webclient/www/img/green_woodpecker_full_85pc.png);
+  background-size:100% 100%;
+}
+
+.scroll-content{
+  background-color:#c5c8a8;
+}
+
+
+.item {
+	opacity:0.8;
+}
+
+div#login-footer{
+	font-size:12px;
+	max-height:40px;
+	height:30px;
+	opacity:0.6;
+}
+
+div#login-form-inputs{
+	
+	margin-left:auto;
+	margin-right:auto;
+	padding-top:200px;
+	width:70%;
+}
+
+div#login-button-div{
+	margin-left:auto;
+	margin-right:auto;
+		width:40%;
+	opacity:0.65;
+}
+
+div#forgot-button-bar{
+	opacity:0.65;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+
+
+#leagues-list{
+	margin-left:auto;
+	margin-right:auto;
+	padding-top:40px;
+	width:70%;
+}

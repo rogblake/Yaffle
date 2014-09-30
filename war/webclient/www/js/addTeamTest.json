@@ -1,0 +1,12 @@
+http://localhost:8888/teams/4714705859903488
+// Arsenal, Charleton Athletic, Prt Vale, Portsmouth, Aberdeen,  Dumbarton, 
+{"teamIds":
+   [{"teamId":"agx5YWZmbGVzZXJ2ZXJyEQsSBFRlYW0iB0Fyc2VuYWwM","leaguecode":"e1"},
+    {"teamId":"agx5YWZmbGVzZXJ2ZXJyGwsSBFRlYW0iEUNoYXJsdG9uIEF0aGxldGljDA","leaguecode":"e2"},
+    {"teamId":"agx5YWZmbGVzZXJ2ZXJyEwsSBFRlYW0iCVBvcnQgVmFsZQw","leaguecode":"e3"},
+    {"teamId":"agx5YWZmbGVzZXJ2ZXJyFAsSBFRlYW0iClBvcnRzbW91dGgM","leaguecode":"e4"},
+    {"teamId":"agx5YWZmbGVzZXJ2ZXJyFQsSBFRlYW0iC0V4ZXRlciBDaXR5DA","leaguecode":"s1"},
+    {"teamId":"agx5YWZmbGVzZXJ2ZXJyEwsSBFRlYW0iCUR1bWJhcnRvbgw","leaguecode":"s2"},
+    {"teamId":"12345432","leaguecode":"s3"},
+    {"teamId":"12345432","leaguecode":"s4"}]
+}

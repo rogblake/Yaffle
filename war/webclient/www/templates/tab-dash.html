@@ -1,0 +1,17 @@
+<div class="bar bar-header bar-assertive">
+  <div class="h1 title">My Yaffle</div>
+</div>
+<ion-view title="Yaffle Football">
+    <ion-content padding="true">
+      <img src="/webclient/www/img/YaffleHeading768x260.png" width="100%">
+      <div id="main" visible="false">
+      <p>Welcome back {{playerName}}</p><br/>
+      <h4>Your Teams</h4>
+      <ion-item ng-repeat="team in league.teams" type="item-text-wrap">
+      </ion-item>
+      </div>
+      <p>
+        Return to <a href="/webclient/www/index.html#/login">Sign-In</a>.
+      </p>
+    </ion-content>
+</ion-view>
