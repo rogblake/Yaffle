@@ -71,7 +71,7 @@ angular.module('org.oatesonline.yaffle.services', ['ngResource'])
     var yaffle_server_url="/";
     var leaderboard_path = "leaderboard/";
     var  leaderboard_url= yaffle_server_url + leaderboard_path;
-    var leaderboard_resource = $resource(leaderboard_url, null,{method: 'get', isArray:true});
+    var leaderboard_resource = $resource(leaderboard_url, null,{method: 'get', isArray:false});
      var getLeaderboard = function(){ 
   //    leaderboard_resource.get();
       var deferred = $q.defer();
@@ -91,6 +91,12 @@ angular.module('org.oatesonline.yaffle.services', ['ngResource'])
      }
 })
 
+.factory('Player', function ($q, $resource, $cookie){
+    var yaffle_server_url="/";
+    var player_path="player";
+    var player_url = yaffle_server_url + player_path;
+    var player_resource = (player_url);
+})
 .factory('Login', function ($log, $resource, $q){
   var yaffle_server_url="/";
   var login_path = "login";

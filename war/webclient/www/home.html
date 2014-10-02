@@ -1,0 +1,52 @@
+<html>
+    <head>
+        <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    </head>
+    <body>
+        <table id="lbtable" style="width:100%">
+            <tr><th>Pos</th><th>Nickname</th><th>pld</th><th>gd</th><th>pts</th></tr>
+        </table>
+        <p><input type="button" id="submitData" onclick="getLeaderboard()"/>Submit</p>
+        <script type="application/javascript" >
+        //     document.onload = getLeaderboard();
+       
+        function getLeaderboard(){
+            alert("Handler Fired");
+            var geturl = '/leaderboard';
+            var jqxhr = $.get(
+		        geturl,
+                "",
+                function(){
+                    //no-op
+                    },
+                    'json'
+                ).done(function(data) {
+                    var ret = "";
+                    if (data != null){
+                        var players =data.players;
+                        if (players != null){
+                            for(var i=0; i<players.length; i++){
+                                ret += createTR(players[i]);
+                            }
+                        }
+                    }
+                    $("#lbtable").append(ret);
+                }).fail( function(){
+                 
+                }).always( function(){
+                    
+                });
+        }
+        function createTR(tableData){
+            var ret = "";
+            ret += "<tr style='align:center'>";
+            if (tableData !=null){
+                ret += "<td>" + tableData.pos +"<td>" + tableData.nickname + "</td><td>" + tableData.pld;
+                ret += "</td><td>" + tableData.gd + "</td><td>" + tableData.pts  + "</td>";
+            }
+            ret += "</tr>";
+            return ret;
+        }
+        </script>
+    </body>
+</html>

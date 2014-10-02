@@ -1,7 +1,10 @@
 angular.module('org.oatesonline.yaffle.controllers', [])
 
-.controller('DashCtrl', function($scope, $log) {
+.controller('DashCtrl', function($scope, $log, $rootScope) {
 $log.log("Dashboard controller Fired");
+    $scope.myself = $rootScope.loggedInPlayer;
+    $scope.myName = $rootScope.playerName;
+    $scope.myTeams =$rootScope.teams;
 
 })
 
@@ -31,6 +34,8 @@ $log.log("Dashboard controller Fired");
     var loggedInPlayer = Login.login(user).then(function(myPlayer){
       $log.log("Player found: " + myPlayer.name);
       user.name=myPlayer.name;
+      $rootScope.loggedInPlayer = myPlayer;
+      $rootScope.teams =    myPlayer.teams; 
       $rootScope.id=myPlayer.id;
       $rootScope.playerName = myPlayer.name;
       document.location.href = '/webclient/www/index.html#/tab/dash';
@@ -69,20 +74,19 @@ $log.log("Dashboard controller Fired");
    
 })
 
+.controller('PlayerCtrl', function($scope, $log) {
+  $log.log("Player Detail controller Fired");
+   
+})
+
 .controller('LeaderboardCtrl', function( $scope, Leaderboard, $log) {
   if ($scope.leaderboard == null){
-    var lbData =  Leaderboard.getLeaderboard();
-    $scope.leaderboard  = lbData;
+      var lbData =  Leaderboard.getLeaderboard();
+      lbData.then(function(lb){
+           $scope.leaderboard  = lb;
+           $scope.players = lb.players;
+      }, function (errorData){
+          alert("Error");
+      })
   }
-//  $log.log("Leaderboard controller Fired");
-  var lb=lbData.players;
-  alert ("Leaderboard Is array:" + lb.isArray() );
-  // alert ("Players Is array:" + lb.isArray() );
-  // var plyrs = "s"
-  // if ((lb != null) && ()){
-  //   // for (var i= 0 ; i < lb.length; i++){  
-  //   //     plyrs += lb[i].nickname;
-  //   //     plyrs += '\n';
-  //   } 
-  // }
 });

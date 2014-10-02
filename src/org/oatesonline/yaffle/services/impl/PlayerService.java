@@ -23,19 +23,21 @@ import com.googlecode.objectify.Key;
 public class PlayerService extends YaffleService implements IPlayerService {
 
 	Logger log = Logger.getLogger(PlayerService.class.getName());
+	
+	/**
+	 * 
+	 * @return A JSON String representation of the logged in player, along with all his/her teams.
+	 * @throws ResourceException
+	 */
 	/* (non-Javadoc)
 	 * @see org.restlet.resource.ServerResource#get()
 	 */
 	@Get
-	public String getPlayer() throws ResourceException {
-		
-//		initializePlayers();
-		
+	public String getPlayer() throws ResourceException {	
 		String plyrStr = null;
 		Player player = validateUser();
 		if (null != player){
 //			plyrStr = player.toXMLString();
-			
 			plyrStr = player.toJSONString();
 		}
 		return plyrStr;

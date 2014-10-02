@@ -71,11 +71,7 @@ public class YaffleService extends ServerResource {
 		String pID;
 		Cookie yuid = getRequest().getCookies().getFirst(serviceProps.getString("COOKIE_YAFFLE_UID"));
 		if (null != yuid){
-			if (IS_DEBUG){
-				pID="4714705859903488"; // Fred Flintstone
-			} else {				
-				pID = yuid.getValue();
-			}
+			pID = yuid.getValue();
 			Player player = Utils.retrievePlayer(pID);
 			if (player == null){
 				getResponse().setStatus(Status.CLIENT_ERROR_UNAUTHORIZED);
