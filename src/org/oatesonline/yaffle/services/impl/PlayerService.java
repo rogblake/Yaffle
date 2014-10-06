@@ -33,7 +33,11 @@ public class PlayerService extends YaffleService implements IPlayerService {
 	 * @see org.restlet.resource.ServerResource#get()
 	 */
 	@Get
-	public String getPlayer() throws ResourceException {	
+	public String getPlayer() throws ResourceException {
+		//This is incorrect behaviour.
+		// The method should determine if {playerid} is present in the URL
+		// If so it should retreive that player, 
+		// If not it should default to the coookie
 		String plyrStr = null;
 		Player player = validateUser();
 		if (null != player){

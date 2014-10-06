@@ -29,10 +29,10 @@ function onPost(){
 	alert(posturl + " : " + postdata);
 	$.post(posturl,
 		postdata,
-		function() {
-			alert('success');
+		function(data) {
+			alert(data);
+            console.log (data);
 		},
-		  
 		'application/json'
 	);
 }

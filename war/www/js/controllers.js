@@ -38,9 +38,11 @@ $log.log("Dashboard controller Fired");
       $rootScope.teams =    myPlayer.teams; 
       $rootScope.id=myPlayer.id;
       $rootScope.playerName = myPlayer.name;
-      document.location.href = '/webclient/www/index.html#/tab/dash';
+      document.location.href = '/www/index.html#/tab/dash';
     }, function(myPlayer){
       $log.log("Login Failure: " + myPlayer);
+        alert("Login Failed.  Please ensure you have the correct email address and Pin. Contact the administrator to get your correct details.");
+        document.location.href = '/www/index.html#/login';
     });
 
     $scope.openHelp = function () {

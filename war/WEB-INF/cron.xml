@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cronentries> 
+  <cron>
+    <url>/admin/update/S1</url>
+    <description>updates the SPL tables once per day at 7.45pm GMT.</description>
+    <schedule>every day 19:47</schedule>
+  </cron>
+  <cron>
+    <url>/admin/update/S2</url>
+    <description>updates the SFL 1 tables  once per day at 7.45pm GMT</description>
+    <schedule>every day 19:46</schedule>
+  </cron>
+  <cron>
+    <url>/admin/update/S3</url>
+    <description>updates the SFL Div 2 tables  once per day at 7.45pm GMT</description>
+    <schedule>every day 19:45</schedule>
+  </cron>
+  <cron>
+    <url>/admin/update/S4</url>
+    <description>updates the SFL Div 3 tables once per day at 7.45pm GMT</description>
+    <schedule>every day 19:44</schedule>
+  </cron>
+   <cron>
+    <url>/admin/update/E1</url>
+    <description>updates the EPL tables  once per day at 7.45pm GMT</description>
+    <schedule>every day 19:40</schedule>
+  </cron>
+  <cron>
+    <url>/admin/update/E2</url>
+    <description>updates the Championship tables  once per day at 7.45pm GMT.</description>
+    <schedule>every day 19:41</schedule>
+  </cron>
+  <cron>
+    <url>/admin/update/E3</url>
+    <description>updates the League 1 tables  once per day at 7.45pm GMT</description>
+    <schedule>every day 19:42</schedule>
+  </cron>
+  <cron>
+    <url>/admin/update/E4</url>
+    <description>updates the League 2 tables once per day at 7.45pm GMT</description>
+    <schedule>every day 19:43</schedule>
+  </cron>
+   <cron>
+    <url>/admin/update/leaderboard</url>
+    <description>Updates the leaderboard twice per day at 8am and 8pm.</description>
+    <schedule>every day 07:49</schedule>
+  </cron>
+<!--     <cron>
+    <url>/admin/updateresults</url>
+    <description>updates all leagues 3.45am GMT</description>
+    <schedule>every day 03:42</schedule>
+  </cron> 
+ -->
+ 
+<!--  <cron> 
+    <url>/yaffle2010/createsubstitutewindows</url>
+    <description>Creates a new set of active substitutions for the current window on the first day of each month.</description>
+    <schedule>first day of october, november,december,january,february,march 03:00</schedule>
+  </cron>
+   <cron>
+    <url>/yaffle2010/updateallwindowsubstitutions</url>
+    <description>Updates all substitutions- active and inactive, on the last day of the month.</description>
+    <schedule>31 of march 23:00</schedule>
+  </cron>   -->
+</cronentries>

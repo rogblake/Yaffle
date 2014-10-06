@@ -69,10 +69,16 @@ public class LoginService extends YaffleService {
 								return "Login Failed";
 							}	
 						 }
+					 } else {
+						getResponse().setStatus(Status.CLIENT_ERROR_UNAUTHORIZED);
+						return "Login Failed";						 
 					 }
 				 }
 			} catch(ParseException pEx){
-					 log.log(Level.SEVERE, pEx.getMessage());
+					log.log(Level.SEVERE, pEx.getMessage());
+					getResponse().setStatus(Status.CLIENT_ERROR_UNAUTHORIZED);
+					return "Login Failed";						 
+
 			}
 		} else {			
 			getResponse().setStatus(Status.CLIENT_ERROR_UNPROCESSABLE_ENTITY);

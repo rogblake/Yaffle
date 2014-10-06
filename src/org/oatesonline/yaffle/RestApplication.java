@@ -1,6 +1,7 @@
 package org.oatesonline.yaffle;
 
 import org.oatesonline.yaffle.services.impl.LeaderboardService;
+import org.oatesonline.yaffle.services.impl.LeaderboardUpdateService;
 import org.oatesonline.yaffle.services.impl.LeagueService;
 import org.oatesonline.yaffle.services.impl.LeagueUpdateService;
 import org.oatesonline.yaffle.services.impl.LoginService;
@@ -27,6 +28,7 @@ public class RestApplication extends Application {
 //        router.attachDefault(HelloWorld.class);
         router.attach("/league/{leaguecode}", LeagueService.class);
         router.attach("/leaderboard", LeaderboardService.class);
+        router.attach("/admin/update/leaderboard", LeaderboardUpdateService.class);
         router.attach("/admin/update/{leaguecode}", LeagueUpdateService.class);
         router.attach("/admin/createplayer", PlayerService.class);
         router.attach("/player/{playerid}", PlayerService.class);

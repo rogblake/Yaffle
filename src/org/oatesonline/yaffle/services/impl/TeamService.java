@@ -61,7 +61,7 @@ public class TeamService extends YaffleService {
 	}
 	
 	/**
-	 * Adds a team to the players list of teams. If the player already has a team in the list, it is repolaced
+	 * Adds a team to the players list of teams. If the player already has a team in the list, it is replaced
 	 * Or, a fault is returned if not permitted. 
 	 * @return 200 if successful
 	 * @return 403 if not permitted to add to this particular player's list of teams 
@@ -81,19 +81,13 @@ public class TeamService extends YaffleService {
 	 */
 	@Post("application/json")
 	public String addTeamsToPlayer(Representation rep){
-		String lstr = "58406057667461125840605766746112";
 		String ret = "";
 // 		Player p = validateUser();
 		DAOPlayer daoP = DAOFactory.getDAOPlayerInstance();
 		String pIdStr = getRESTParamFromURL("playerid");
-		
-//		try {
-//			pID = Long.parseLong(pIdStr.trim());
-//		} catch (NumberFormatException nfEx){
-//			log.log(Level.SEVERE, "Cannot convert <" +pIdStr + "> to string");
-//		}
 		Player p = null;	
 		p = Utils.retrievePlayer(pIdStr);
+		boolean updateFailed = false;
 		if (null != p){
 			if (null != pIdStr){
 				Long pId = 0L;
@@ -122,6 +116,10 @@ public class TeamService extends YaffleService {
 						t = teamIds.get(lc);
 						if (null != t){							
 							p.addTeam(lc, t);
+							ret += "Added to\t"+ lc +"\t:" + t.getName();
+						} else {
+							ret += "FAILED to add team for\t"+ lc +"\t:";
+							updateFailed = true;
 						}
 					}
 					ret = "Player Team Selection Updated";
@@ -131,6 +129,12 @@ public class TeamService extends YaffleService {
 					ret = "You are not allowed to update another player's profile";
 					getResponse().setStatus(Status.CLIENT_ERROR_UNAUTHORIZED);
 				}
+			} else {
+				ret = "No Player data was recieved";
+				getResponse().setStatus(Status.CLIENT_ERROR_BAD_REQUEST);
+			}
+			if (updateFailed){
+				getResponse().setStatus(Status.CLIENT_ERROR_UNPROCESSABLE_ENTITY);
 			}
 		}	
 		return ret;
