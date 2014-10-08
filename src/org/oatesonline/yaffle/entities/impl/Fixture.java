@@ -9,9 +9,11 @@ import javax.persistence.Id;
 import org.oatesonline.yaffle.entities.IFixture;
 import org.oatesonline.yaffle.entities.ITeam;
 
+import com.googlecode.objectify.annotation.Cached;
 import com.googlecode.objectify.annotation.Entity;
 
 @Entity
+@Cached
 public class Fixture extends DTOEntity implements IFixture {
 
 	/**

@@ -23,11 +23,13 @@ import org.simpleframework.xml.Serializer;
 import org.simpleframework.xml.core.Persister;
 
 import com.googlecode.objectify.Key;
+import com.googlecode.objectify.annotation.Cached;
 import com.googlecode.objectify.annotation.Entity;
 import com.googlecode.objectify.annotation.Indexed;
 
 @Entity
 @XmlRootElement
+@Cached
 public class League implements ILeague, IDataObject {
 
 	/**

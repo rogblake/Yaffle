@@ -23,12 +23,14 @@ import org.simpleframework.xml.Serializer;
 import org.simpleframework.xml.core.Persister;
 
 import com.googlecode.objectify.Key;
+import com.googlecode.objectify.annotation.Cached;
 import com.googlecode.objectify.annotation.Entity;
 import com.googlecode.objectify.annotation.Indexed;
 import com.googlecode.objectify.annotation.Serialized;
 
 @Entity
 @XmlRootElement
+@Cached
 public class Player  extends DTOEntity implements IPlayer , Comparable{
 
 //	Logger log = Logger.getLogger(Player.class.getName());

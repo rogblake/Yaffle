@@ -8,9 +8,11 @@ import org.oatesonline.yaffle.entities.IResult;
 import org.oatesonline.yaffle.entities.ITeam;
 
 import com.googlecode.objectify.Key;
+import com.googlecode.objectify.annotation.Cached;
 import com.googlecode.objectify.annotation.Entity;
 
 @Entity
+@Cached
 public class Result extends DTOEntity implements IResult {
 	
 	@Id 

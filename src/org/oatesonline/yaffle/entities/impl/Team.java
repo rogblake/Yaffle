@@ -15,11 +15,13 @@ import org.simpleframework.xml.Element;
 import org.simpleframework.xml.Serializer;
 import org.simpleframework.xml.core.Persister;
 
+import com.googlecode.objectify.annotation.Cached;
 import com.googlecode.objectify.annotation.Indexed;
 
 
 @Entity
 @XmlRootElement
+@Cached
 public class Team extends DTOEntity implements ITeam,  Comparable<Team> {
 	@Transient
 	Logger log = Logger.getLogger("Team");
