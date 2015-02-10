@@ -1,16 +1,54 @@
+<!DOCTYPE html>
 <html>
     <head>
-        <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    	    <meta charset="utf-8">
+    		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    		<meta name="viewport" content="width=device-width, initial-scale=1">
+    		<meta name="description" content="Yaffle Football">
+    		<meta name="author" content="Des Oates">
+    <link rel="icon" href="../favicon.png">
+    	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+  		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+  		<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+        
+        
     </head>
     <body>
-        <table id="lbtable" style="width:100%">
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Yaffle 2015</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="www/index.html#/login">Login</a></li>
+          </ul>
+	        <div class="icon-bar" align="right">
+	        <img alt="Yaffle 2015" src="/www/img/Yaffle15_Logo_80x80.png" height="40" width="40" />
+	        </div>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+    <br/><br/><br/>
+    <h2>Current Leaderboard</h2>
+    
+        <table id="lbtable" class="table" width="60%" align="center">
             <tr><th>Pos</th><th>Nickname</th><th>pld</th><th>gd</th><th>pts</th></tr>
         </table>
-<!--        <p><input type="button" id="submitData" onclick="getLeaderboard()"/>Submit</p>-->
         <script type="application/javascript" >
         document.onload = getLeaderboard();
        
         function getLeaderboard(){
+   //         var geturl = 'http://yaffle-stg.appspot.com/leaderboard';
             var geturl = '/leaderboard';
             var jqxhr = $.get(
 		        geturl,

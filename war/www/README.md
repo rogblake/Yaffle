@@ -1,32 +1,14 @@
-This is an addon starter template for the [Ionic Framework](http://ionicframework.com/).
 
-## How to use this template
 
-*This template does not work on its own*. It is missing the Ionic library, and AngularJS.
+## Yaffle Football Mobile Client 
 
-To use this, either create a new ionic project using the ionic node.js utility, or copy and paste this into an existing Cordova project and download a release of Ionic separately.
+This is the base code for the Yaffle Mobile Client. It is used with Phonegap Build to create the Yaffle Mobile App, which is available on several mobile platforms. 
 
-### With the Ionic tool:
 
-Take the name after `ionic-starter-`, and that is the name of the template to be used when using the `ionic start` command below:
+### Ionic
+This project was initially built using Ionic components. It still uses the Ionicframework for its UI, but defers to phonegap build for managing the Phonegap/Cordova dependencies. 
 
-```bash
-$ sudo npm install -g ionic cordova
-$ ionic start myApp tabs
-```
+## Building The App
+pull this code from here, zip up the www folder and send it to Phonegap Build. (http://build.phonegap.com) To use Phonegap you will proably need an Adobe ID but it is a free signup.  From there you 
+This code will work as a standard website 
 
-Then, to run it, cd into `myApp` and run:
-
-```bash
-$ ionic platform add ios
-$ ionic build ios
-$ ionic emulate ios
-```
-
-Substitute ios for android if not on a Mac, but if you can, the ios development toolchain is a lot easier to work with until you need to do anything custom to Android.
-
-## Demo
-http://plnkr.co/edit/qYMCrt?p=preview
-
-## Issues
-Issues have been disabled on this repo, if you do find an issue or have a question consider posting it on the [Ionic Forum](http://forum.ionicframework.com/).  Or else if there is truly an error, follow our guidelines for [submitting an issue](http://ionicframework.com/contribute/#issues) to the main Ionic repository. On the other hand, pull requests are welcome here!

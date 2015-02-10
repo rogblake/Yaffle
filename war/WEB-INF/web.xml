@@ -28,6 +28,7 @@
 	 </servlet-mapping>
 	 
 	<welcome-file-list>
+	  <welcome-file>www/home.html</welcome-file>
 	  <welcome-file>www/index.html#/login</welcome-file>
 	</welcome-file-list>
 </web-app>
