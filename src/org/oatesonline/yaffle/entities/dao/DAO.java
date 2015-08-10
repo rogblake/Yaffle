@@ -8,6 +8,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.List;
 
+import org.oatesonline.yaffle.entities.impl.DTOEntity;
 import org.oatesonline.yaffle.entities.impl.Fixture;
 import org.oatesonline.yaffle.entities.impl.League;
 import org.oatesonline.yaffle.entities.impl.Player;
@@ -65,9 +66,11 @@ public class DAO<T> extends DAOBase {
     	ofy().delete(entityKey);
     }
 
-    public T get(Long id) throws EntityNotFoundException
+    public T get(Long id, Class clazz) throws EntityNotFoundException
     {
-    	T obj = ofy().get(this.clazz, id);
+    	
+//    	T obj = ofy().get(this.clazz, id);
+    	T obj = (T) ofy().get(clazz, id);
     	return obj;
     }
 

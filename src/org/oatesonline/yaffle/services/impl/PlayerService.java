@@ -34,6 +34,7 @@ public class PlayerService extends YaffleService implements IPlayerService {
 	 */
 	@Get
 	public String getPlayer() throws ResourceException {
+		initializePlayers();
 		//This is incorrect behaviour.
 		// The method should determine if {playerid} is present in the URL
 		// If so it should retreive that player, 

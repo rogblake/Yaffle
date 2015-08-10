@@ -2,6 +2,8 @@ package org.oatesonline.yaffle.data;
 
 import java.util.ResourceBundle;
 
+import org.oatesonline.yaffle.entities.impl.Team;
+
 public class Utils {
 	
 	/**
@@ -28,6 +30,44 @@ public class Utils {
 		return rawLeagueData;
 		
 	}
+	/**
+	 *  Input here looks something like this class='BorderBottomRightF4'>2
+	 *  
+	 * @param teamValue
+	 * @return
+	 */
+	static String stripTD(String teamValue){
+		String ret = null;
+		if (null != teamValue){
+			ret = teamValue.substring(teamValue.indexOf('>')+1).trim();
+		}
+		return ret;
+	}
 	
+	static boolean isEmpty(String teamData){
+		teamData = teamData.trim();
+		if (null != teamData) return false;
+		if (teamData.equals("")) return false;
+		return true;
+	}
+	
+	/**
+	 * Removes html Anchor markup 
+	 * @param teamValue a piece of markup containing some html a tags
+	 * @return the plaintext string representation of the value
+	 */
+	static String stripAnchor(String teamValue){
+		String ret = null;
+		if (null != teamValue){
+			Team t = new Team();
+			String[] temps = teamValue.split("\\'>");
+			if (temps.length >=2 ){
+				ret = temps[1].replaceFirst("<\\/a>", "");
+			}
+		}
+		return ret;
+	}
+
+
 	
 }

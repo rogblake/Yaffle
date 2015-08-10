@@ -6,7 +6,8 @@ import java.util.logging.Logger;
 import org.oatesonline.yaffle.data.DataServiceCorruptionException;
 import org.oatesonline.yaffle.data.ILeagueDataProvider;
 import org.oatesonline.yaffle.data.LeagueURLNotFoundException;
-import org.oatesonline.yaffle.data.LiveScoreDataProvider;
+import org.oatesonline.yaffle.data.FootballDataProvider;
+import org.oatesonline.yaffle.data.XScoresDataProvider;
 import org.oatesonline.yaffle.entities.ILeague;
 import org.oatesonline.yaffle.entities.dao.DAOFactory;
 import org.oatesonline.yaffle.entities.dao.DAOLeague;
@@ -37,7 +38,12 @@ public class LeagueUpdateService extends ServerResource implements ILeagueServic
 		if (null != lc){			
 			this.leagueCode = lc.toUpperCase();
 		}
-		ILeagueDataProvider ildp =  new LiveScoreDataProvider();
+/*
+ * Convert this to DI with spring or similar
+ */
+//		ILeagueDataProvider ildp =  new LiveScoreDataProvider();
+//		ILeagueDataProvider ildp =  new XScoresDataProvider();
+		ILeagueDataProvider ildp =  new FootballDataProvider();
 		League league = null;
 		try {
 			 league = ildp.getLeague(this.leagueCode);

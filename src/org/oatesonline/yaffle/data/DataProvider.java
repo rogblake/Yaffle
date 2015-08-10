@@ -1,5 +1,7 @@
 package org.oatesonline.yaffle.data;
 
+
+
 import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.net.URL;
@@ -14,6 +16,7 @@ import java.util.logging.Logger;
 import org.restlet.Client;
 import org.restlet.Context;
 import org.restlet.data.Protocol;
+import org.restlet.representation.Representation;
 import org.restlet.resource.ClientResource;
 import org.restlet.resource.ResourceException;
 
@@ -27,10 +30,12 @@ public abstract class DataProvider {
 	private static final String THIS_PACKAGE = "org.oatesonline.yaffle.data";
 	private static final long serialVersionUID = 1767482222580589902L;
 	private static final String TARGET_URL="TARGET_URL";
+	private static final String SERVICE_ACCESS_PROPS="ServiceAccess";
 	
 	protected static ResourceBundle PROPS = java.util.ResourceBundle.getBundle(THIS_PACKAGE + ".DataProviders");
 	protected Vector<String> leagueCodes ;
-	protected static String provider_key = ""; // Add default Data Provider here.
+	protected static String provider_key = "FOOTBALL_DATA"; // Add default Data Provider here.
+//	protected static String provider_key = "XSCORES_MOBILE"; // Add default Data Provider here.
 
 	
 	private String targetURL;
@@ -64,7 +69,7 @@ public abstract class DataProvider {
 	
 	protected DataProvider (){
 		//set default Service Provider
-		dataProvider = providerKeys.get(0);
+		dataProvider = providerKeys.get(3);
 		setProviderBundle(dataProvider);
 		log.log(Level.CONFIG, "Data Provider defaulting to " + dataProvider);
 		init();
@@ -88,6 +93,30 @@ public abstract class DataProvider {
 		//else we are stuck with the defaults
 	}
 	
+	/**
+	 * Use this in <code>ILeagueDataProvider</code> instances when acquiring raw data.
+	 * @param leagueCode
+	 * @return a string of unprocessed, raw data to be processed by the calling ILeagueDataProvder
+	 * @throws LeagueURLNotFoundException 
+	 */
+	protected String  getRawLeagueTableData (String leagueCode) throws LeagueURLNotFoundException{
+		
+		String rawLeagueData = null;
+		String path = getLeagueURL (leagueCode);
+			if (null != path){
+				
+				rawLeagueData = storeFile (getCharData(path));
+			}
+		
+		return rawLeagueData;
+		
+	}
+	
+	protected String getLeagueURL (String leagueCode){
+		String ret = dataProviderBundle.getString(leagueCode.toUpperCase()+ "_URL");
+		return ret;
+	}
+
 	private void init(){
 		targetURL = dataProviderBundle.getString(TARGET_URL);
 		//initialize the league codes  vector
@@ -189,7 +218,10 @@ public abstract class DataProvider {
 			clientResource.setNext(client);
 			
 			try {
-				ret = clientResource.get().getText();
+				Representation r = clientResource.get();
+				String charset = r.getCharacterSet().getName();
+				log.log(Level.INFO, "CHARSET FOR INCOMING Request= " + charset);
+				ret = r.getText();
 			} catch (ResourceException e) {
 				log.log(Level.SEVERE, "Exception encountered retrieving " + key + " from " + "  " + dataProvider + " on the following URL\n " + urlString);
 				e.printStackTrace();

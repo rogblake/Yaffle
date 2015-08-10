@@ -59,7 +59,7 @@ public final class LiveScoreDataProvider extends DataProvider implements ILeague
 		Set<Team>  teams = new TreeSet<Team>();
 		if ((null != teamData) && (teamData.length >2)){
 			for (int i=2; i< teamData.length; i++){
-				if (!isEmpty(teamData[i])){
+				if (!Utils.isEmpty(teamData[i])){
 					Team t = createTeam(teamData[i], leagueCode);
 					if (null != t){
 						teams.add(t);
@@ -101,7 +101,7 @@ public final class LiveScoreDataProvider extends DataProvider implements ILeague
 		int pld = extractInt(teamData[5]);
 		int gd = extractInt(teamData[15]);
 		int pts = extractInt(teamData[17]);
-		String tName = stripTD(stripAnchor(teamData[3]));
+		String tName = Utils.stripTD(Utils.stripAnchor(teamData[3]));
 		t.setPos((short) pos);
 		t.setGD(gd);
 		t.setPld((short)pld);
@@ -110,22 +110,6 @@ public final class LiveScoreDataProvider extends DataProvider implements ILeague
 		return t;
 	}
 	
-	/**
-	 * Removes html Anchor markup 
-	 * @param teamValue a piece of markup containing some html a tags
-	 * @return the plaintext string representation of the value
-	 */
-	private String stripAnchor(String teamValue){
-		String ret = null;
-		if (null != teamValue){
-			Team t = new Team();
-			String[] temps = teamValue.split("\\'>");
-			if (temps.length >=2 ){
-				ret = temps[1].replaceFirst("<\\/a>", "");
-			}
-		}
-		return ret;
-	}
 	
 	
 	int extractInt(String teamValue){
@@ -146,25 +130,5 @@ public final class LiveScoreDataProvider extends DataProvider implements ILeague
 			log.log(Level.FINER, "Could not extract integer from <" + teamValue + "> in " + provider_key);
 		}
 		return ret;
-	}
-	/**
-	 *  Input here looks something like this class='BorderBottomRightF4'>2
-	 *  
-	 * @param teamValue
-	 * @return
-	 */
-	private String stripTD(String teamValue){
-		String ret = null;
-		if (null != teamValue){
-			ret = teamValue.substring(teamValue.indexOf('>')+1).trim();
-		}
-		return ret;
-	}
-	
-	private boolean isEmpty(String teamData){
-		teamData = teamData.trim();
-		if (null != teamData) return false;
-		if (teamData.equals("")) return false;
-		return true;
 	}
 }

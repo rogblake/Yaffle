@@ -66,8 +66,7 @@ public class YaffleService extends ServerResource {
 	    	responseHeaders.add(headerKey, getResponseHeaderValueFor(headerKey)); 
 	    } 
 	}
-	protected Player validateUser(){
-		
+	protected Player validateUser(){	
 		String pID;
 		Cookie yuid = getRequest().getCookies().getFirst(serviceProps.getString("COOKIE_YAFFLE_UID"));
 		if (null != yuid){

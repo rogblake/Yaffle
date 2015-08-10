@@ -7,11 +7,15 @@ import java.util.logging.Logger;
 import org.oatesonline.yaffle.entities.IPlayer;
 import org.oatesonline.yaffle.entities.dao.DAOFactory;
 import org.oatesonline.yaffle.entities.dao.DAOPlayer;
+import org.oatesonline.yaffle.entities.dao.DAOTeam;
 import org.oatesonline.yaffle.entities.impl.Player;
+import org.oatesonline.yaffle.entities.impl.Team;
 import org.restlet.data.Status;
 import org.restlet.representation.Representation;
 import org.restlet.resource.Get;
 import org.restlet.resource.Post;
+
+import com.google.appengine.api.datastore.EntityNotFoundException;
 
 public class PlayerUpdateService extends YaffleService {
 	
@@ -23,30 +27,34 @@ public class PlayerUpdateService extends YaffleService {
 	@Get
 	public String addTeam(){
 		String ret = "";
-		Player p = validateUser();
 		DAOPlayer daoP = DAOFactory.getDAOPlayerInstance();
-		if (null != p){
-			String pIdStr = getRESTParamFromURL("playerid");
-			if (null != pIdStr){
-				Long pId = 0L;
-				try {
-					pId = Long.parseLong(pIdStr);
-				} catch (NumberFormatException nfEx){
-					ret = "<" + pIdStr + "> is not a valid numeric identifier";
-					log.log(Level.WARNING, ret);
-					getResponse().setStatus(Status.CLIENT_ERROR_EXPECTATION_FAILED);
-				}
-				if (pId.equals( p.getId())){
-					ret = "You are not allowed to update another player's profile";
-					getResponse().setStatus(Status.CLIENT_ERROR_UNAUTHORIZED);
-				}
-				
+		DAOTeam daoT = DAOFactory.getDAOTeamInstance();
+		String pIdStr = getRESTParamFromURL("playerId");
+		String teamStr = getRESTParamFromURL("teamId");
+		String leagueCode = getRESTParamFromURL("leagueCode");
+		if (null != pIdStr){
+			Player p = null;
+			Long pId = 0L;
+			try {
+				pId = Long.parseLong(pIdStr);
+				p = daoP.get(pId, Player.class);	
+			} catch (NumberFormatException nfEx){
+				ret = "<" + pIdStr + "> is not a valid numeric identifier";
+				log.log(Level.WARNING, ret);
+				getResponse().setStatus(Status.CLIENT_ERROR_EXPECTATION_FAILED);
+			}catch (EntityNotFoundException e) {
+				e.printStackTrace();
+				log.log(Level.SEVERE, "Cannot find Player with ID " + pIdStr);
 			}
-			//ensure that the logged in player is making the call by comparing the 
-			//player ID from the URL to p.getId()
-			//if so
-				//get the league code 
-				// add the league code/team id to the player's collection of team ids
+			if (null != p){
+				Team t = daoT.getTeam(teamStr);
+				if (null != t){					
+					p.addTeam(leagueCode.toLowerCase(), t);
+					ret = "<" + t.getName() + "> successfully added to league <" + leagueCode + "> for <" + pIdStr + "> ";
+				} else {
+					log.log(Level.SEVERE, "Cannot find Team called " + teamStr  + " for Player with ID:"+ pIdStr);
+				}
+			}
 		}
 		return ret;
 	}
