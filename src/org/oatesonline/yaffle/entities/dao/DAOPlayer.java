@@ -2,6 +2,7 @@ package org.oatesonline.yaffle.entities.dao;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -239,6 +240,8 @@ public class DAOPlayer extends DAO<Player> {
 	     * that players teams.<br/> 
 	     * It does not update the Teams' positions in their respective leagues. That task is done externally 
 	     * to this task..<br/> 
+	     * For 2016  Teams with  'E' league Codes get added to players score.
+	     * Teams with 'S' League Codes get subtracted from the Player's score
 	     * 
 	     * @param p the target player whos running totals are to be updated
 	     * @param teamMap a map of the players teams, keyed by league code
@@ -247,21 +250,29 @@ public class DAOPlayer extends DAO<Player> {
 	    public boolean updatePlayerTotals(Player p, Map<String, Team> teamMap){
 	    	if ((null != p ) && (null != teamMap)){	    		
 	    		Iterator<String> itLC = teamMap.keySet().iterator();
-	    		
+	    		Set<String> teamKeys = teamMap.keySet();
 	    		//From scratch, recalculate the players subtotals for GoalDifference, Points and GamesPlayed
 	    		int pGD = 0;
 	    		int pPts = 0;
 	    		short pPld = 0;
 	    		Team t = null;
-	    		//Iterate through the players teams
-	    		while (itLC.hasNext()){
-	    			t = teamMap.get(itLC.next());
-	    			pGD += t.getGD();
-	    			pPts += t.getPts();
+	    		Map<String, Team> addTeams = new HashMap<String, Team>(4);
+	    		Map<String, Team> subtractTeams = new HashMap<String, Team>(4);
+	    		String[] teamKeyStr = teamKeys.toArray(new String[teamMap.size()]);
+	    		for (int i=0; i < teamKeyStr.length ; i++){
+	    			if  (teamKeyStr[i].toLowerCase().contains("e")){
+		    			pGD += t.getGD();
+		    			pPts += t.getPts();	    				
+	    			} else { //it starts with 'S' so we subtract
+		    			pGD -= t.getGD();
+		    			pPts -= t.getPts();	    				
+	    			}
+	    			//Games played gets added by default regardless if we are adding or subtracting points
 	    			pPld += t.getPld();
 	    		}
 	    		p.setGd(pGD);
 	    		p.setPts(pPts);
+	    		p.
 	    		p.setPld(pPld);
 	    		//Persist the updated player
 	    		ofy.put(p);

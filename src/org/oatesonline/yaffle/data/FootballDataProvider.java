@@ -125,8 +125,9 @@ public class FootballDataProvider extends DataProvider implements
 			Map jsonMap = (Map)parser.parse(leagueStr, containerFactory);
 			Team t = null;
 			if (jsonMap != null){
-				Map links = (Map)jsonMap.get("_links");
-				ret.setName((String)jsonMap.get("leagueCaption"));
+				Map links = (Map) jsonMap.get("_links");
+				ret.setName((String) jsonMap.get("leagueCaption"));
+				ret.setJSONData( links.toString());
 				List teamData =  (List) jsonMap.get("standing");
 				if (null != teamData){
 					Iterator it = teamData.iterator();

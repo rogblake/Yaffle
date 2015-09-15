@@ -9,7 +9,7 @@ import org.json.simple.JSONObject;
 import org.oatesonline.yaffle.entities.impl.Player;
 import org.restlet.data.Cookie;
 import org.restlet.data.Status;
-import org.restlet.engine.header.Header;
+import org.restlet.data.Header;
 import org.restlet.engine.header.HeaderUtils;
 import org.restlet.representation.Representation;
 import org.restlet.resource.Options;

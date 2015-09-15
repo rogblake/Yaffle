@@ -1,5 +1,6 @@
 package org.oatesonline.yaffle.entities;
 
+import java.util.Calendar;
 import java.util.Set;
 
 import org.oatesonline.yaffle.entities.impl.Team;
@@ -20,5 +21,13 @@ public interface ILeague {
 	
 	public void addTeam(Team team);
 	
+	public String getJSONData();
+	
+	public void setJSONData(String jsonString);
+	
 	public Set<Team> getTeamObjs();
+	
+	public Calendar getLastUpdated();
+	
+	public void setLastUpdated(Calendar lastUpdate);
 }

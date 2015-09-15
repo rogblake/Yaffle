@@ -1,6 +1,7 @@
 package org.oatesonline.yaffle.entities.impl;
 
 import java.io.StringWriter;
+import java.util.Calendar;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -30,11 +31,8 @@ import com.googlecode.objectify.annotation.Indexed;
 @Entity
 @XmlRootElement
 @Cached
-public class League implements ILeague, IDataObject {
+public class League extends DTOEntity implements ILeague, IDataObject {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -4530243745840519840L;
 	@Transient
 	Logger log = Logger.getLogger(League.class.getName());
@@ -47,9 +45,15 @@ public class League implements ILeague, IDataObject {
 	@Attribute(name="name", required=true)
 	private String name;
 	
+	@Attribute(name="lastUpdated", required=true)
+	private Calendar lastUpdated;
 	@Transient
 	private Set<Key<Team>> teams;
 	
+	/**
+	 * used internally to store optional data
+	 */
+	private String jsonData;
 	
 	/**
 	 * We don't store Team Objects in the DB but they are useful to have, particularly when Serializing the leagueteamObjs
@@ -61,6 +65,8 @@ public class League implements ILeague, IDataObject {
 	private League(){
 		teams = new TreeSet<Key<Team>>();
 		teamObjs = new TreeSet<Team>();
+		jsonData = "";
+		lastUpdated = Calendar.getInstance();
 	}
 	
 	public League(String lc){
@@ -168,5 +174,30 @@ public class League implements ILeague, IDataObject {
 		return this.teamObjs;
 	}
 
+	@Override
+	public String getJSONData() {
+		// TODO Auto-generated method stub
+		return this.jsonData;
+	}
+
+	@Override
+	public void setJSONData(String jsonString) {
+		this.jsonData=jsonString;
+		
+	}
+
+	@Override
+	public Calendar getLastUpdated() {
+		// TODO Auto-generated method stub
+		return this.lastUpdated;
+	}
+
+	@Override
+	public void setLastUpdated(Calendar lastUpdate) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	
 
 }

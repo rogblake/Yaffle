@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.Enumeration;
+import java.util.Map;
 import java.util.PropertyResourceBundle;
 import java.util.ResourceBundle;
 import java.util.Vector;
@@ -16,9 +17,11 @@ import java.util.logging.Logger;
 import org.restlet.Client;
 import org.restlet.Context;
 import org.restlet.data.Protocol;
+import org.restlet.data.Header;
 import org.restlet.representation.Representation;
 import org.restlet.resource.ClientResource;
 import org.restlet.resource.ResourceException;
+import org.restlet.util.Series;
 
 public abstract class DataProvider {
 	
@@ -31,6 +34,8 @@ public abstract class DataProvider {
 	private static final long serialVersionUID = 1767482222580589902L;
 	private static final String TARGET_URL="TARGET_URL";
 	private static final String SERVICE_ACCESS_PROPS="ServiceAccess";
+	private static final String AUTH_HEADER="X-Auth-Token";
+	
 	
 	protected static ResourceBundle PROPS = java.util.ResourceBundle.getBundle(THIS_PACKAGE + ".DataProviders");
 	protected Vector<String> leagueCodes ;
@@ -210,13 +215,18 @@ public abstract class DataProvider {
 	protected String getResource(String key) {
 		String urlString = dataProviderBundle.getString(key);
 		String dp = dataProviderBundle.getString("PROVIDER_NAME");
+		final String AUTH_KEY=dataProviderBundle.getString("API_KEY");
 		String ret = null;
 		if (null != urlString){	
 
 			Client client = new Client(new Context(), Protocol.HTTP);
-			ClientResource clientResource = new ClientResource(urlString);
-			clientResource.setNext(client);
 			
+			ClientResource clientResource = new ClientResource(urlString);
+			Map<String, Object> headers = clientResource.getRequestAttributes();
+			if (null != AUTH_KEY){				
+				headers.put(AUTH_HEADER, AUTH_KEY);
+			}
+			clientResource.setNext(client);
 			try {
 				Representation r = clientResource.get();
 				String charset = r.getCharacterSet().getName();
@@ -229,15 +239,7 @@ public abstract class DataProvider {
 				log.log(Level.SEVERE, "IO Exception encountered retrieving " + key + " from " + dataProviderBundle.getString("PROVIDER_NAME") + " on the following URL\n " + urlString);
 				e.printStackTrace();
 			}
-//			BufferedInputStream bis = getCharData (urlString);
-//			if (null != bis){
-//				return storeFile (bis);
-//			}
 		}
 		return ret;
 	}
-	
-	
-	////ABove is old Code ///////////////
-	
 }

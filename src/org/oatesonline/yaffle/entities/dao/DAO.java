@@ -41,7 +41,7 @@ public class DAO<T> extends DAOBase {
     
     private Class<T> clazz;
     /**
-     * We�ve got to get the associated domain class somehow
+     * We've got to get the associated domain class somehow
      *
      * @param clazz
      */
