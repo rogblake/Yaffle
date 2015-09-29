@@ -1,4 +1,4 @@
-angular.module('org.oatesonline.yaffle.services', ['ngResource'])
+angular.module('org.oatesonline.yaffle.services', ['ngResource', 'ngCookies'])
 
 /**
  * A simple example service that returns some data.
@@ -105,21 +105,43 @@ angular.module('org.oatesonline.yaffle.services', ['ngResource'])
      }
 })
 
-.factory('Player', function ($q, $resource, $cookie){
+.factory('Player', function ($q, $resource, $cookies, $log){
     var yaffle_server_url="/";
     var player_path="player";
-    var player_url = yaffle_server_url + player_path;
-    var player_resource = (player_url);
-})
+    var player_id =  $cookies["org.oatesonline.yaffle.yuid"];
+    $log.log("player ID : " +  player_id);
+    if (player_id != ""){
+      var player_url = yaffle_server_url + player_path + "/" + player_id;
+      var player_resource = $resource(player_url, null, {method:"GET"});
+      var getPlayer = function(){
+        var deferred = $q.defer();
+        player_resource.get(
+          function successResult(data){
+            $log.log("Player : <" + player_id + "> found: " + data.name);
+            deferred.resolve(data);
+        }, function failureResult(data){
+            $log.log("Failed to retrieve player:" + data.toString());
+            deferred.reject(data);
+        });
+        return deferred.promise;
+      }
+      return {
+        loadPlayer: function(){
+          return getPlayer();
+        }
+      }
+    } 
+  })
+
 .factory('Login', function ($log, $resource, $q){
   var yaffle_server_url="/";
   var login_path = "login";
   var login_url = yaffle_server_url + login_path;
 
-  var loginResource = $resource(login_url, null, {method:"POST"});
+  var login_resource = $resource(login_url, null, {method:"POST"});
   var getPlayer = function(user){
       var deferred = $q.defer();
-      loginResource.save(user,
+      login_resource.save(user,
           function(successResult){ //success
           //  $rootScope.player = successResult;        
             $log.log("Login Successful: " + successResult.name);

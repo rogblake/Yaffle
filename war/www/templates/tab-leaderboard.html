@@ -1,12 +1,11 @@
-
-<ion-view title="Leaderboard">
+<ion-view title="Leaderboard" class='has-header has-subheader'>
  
      <div class="bar bar-header bar-assertive">
- <button class="button button-icon icon ion-ios7-arrow-back" onclick="location.href='#/tab/dash'"></button>
+        <button class="button button-icon icon ion-ios7-arrow-back" onclick="location.href='#/tab/dash'"></button>
     </div>
 </div>
-    <ion-view title="Leaderboard" id="leaderboard-view">
-    <div class="bar bar-subheader bar-energized" height="15">
+    <ion-view title="Leaderboard" class='has-header has-subheader'>
+    <div class="bar bar-subheader bar-energized" >
         <div class="row bar-subheader" id="row-header">
             <div class="col col-10" align="center">#</div>
             <div class="col col-50" align="center">Player</div>
@@ -15,13 +14,13 @@
             <div class="col col-10" align="center">Pts</div>
         </div>
     </div>
-    <br><p>&nbsp;</p></br>
-    <ion-content padding="true">
-      <ion-list>
+    <br><p><div class="table-spacer"></div></p></br>
+    <ion-content class='has-subheader' >
+      <ion-list class="has-header">
         <ion-item ng-repeat="player in players" type="item-text-wrap" href="">
           <div class="row" height="10">
              <div class="col col-10" align="center">{{player.pos}}</div>
-             <div class="col col-50" align="center">{{player.nickname}}</div>
+             <div class="col col-55" align="center">{{player.nickname}}</div>
              <div class="col col-10" align="center">{{player.pld}}</div>
              <div class="col col-10" align="center">{{player.gd}}</div>
              <div class="col col-10" align="center">{{player.pts}}</div>

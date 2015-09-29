@@ -2,9 +2,9 @@
   <div class="h2 title">Leagues</div>
 </div>
 <ion-view title="Leagues">
-  <ion-content >
+  <ion-content class="has-header">
   <br/>
-    <ion-list id="leagues-list">
+    <ion-list id="leagues-list" >
     <h2>{{leagues.name}}</h3>
       <ion-item ng-repeat="league in leagues.leagues" type="item-text-wrap" href="#/league/{{league.id}}" >
         {{league.name}}

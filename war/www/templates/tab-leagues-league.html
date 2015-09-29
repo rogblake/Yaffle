@@ -13,17 +13,17 @@
 	  </div>
    </div> 
  <ion-view>  
-   <ion-content padding="true">
-   <ion-list> 
-    <ion-item ng-repeat="team in league.teams" type="item-text-wrap" href="#/tab/league/{team.leagueCode}/{team.pos}"  >
-   	  <div class="row" height="20">
-	  	 <div class="col col-10" align="center">{{team.pos}}</div>
-	  	 <div class="col col-50" align="center">{{team.name}}</div>
-	  	 <div class="col col-10" align="center">{{team.pld}}</div>
-		 <div class="col col-10" align="center">{{team.gd}}</div>
-	  	 <div class="col col-10"  font-weight="bold" align="center">{{team.pts}}</div>
-	  </div>
-    </ion-item>
-    </ion-list>
+   <ion-content class='has-header has-subheader'>
+   	  <ion-list> 
+    	 <ion-item ng-repeat="team in league.teams" type="item-text-wrap" href="#/tab/league/{team.leagueCode}/{team.pos}">
+   	  		<div class="row" height="20">
+	  	 		<div class="col col-10" align="center"><a href='{{team.url}}'>{{team.pos}}</a></div>
+	  	 		<div class="col col-50" align="center">{{team.name}}</div>
+	  	 		<div class="col col-10" align="center">{{team.pld}}</div>
+		 		<div class="col col-10" align="center">{{team.gd}}</div>
+	  	 		<div class="col col-10"  font-weight="bold" align="center">{{team.pts}}</div>
+	  		</div>
+    	 </ion-item>
+  	  </ion-list>
   </ion-content>
 </ion-view>

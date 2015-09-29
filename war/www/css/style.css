@@ -89,6 +89,12 @@ div#login-button-div{
 		width:40%;
 	opacity:0.65;
 }
+#table-header{
+	margin-top: 0px;
+	max-height: 35px;
+	
+	font-size: 14px;
+}
 
 div#forgot-button-bar{
 	opacity:0.65;
@@ -106,4 +112,8 @@ div#forgot-button-bar{
 	margin-top: auto;
 	padding-top:200px;
 	width:70%;
+}
+
+.table-spacer {
+	max-height: 12;
 }

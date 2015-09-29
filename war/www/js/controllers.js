@@ -1,12 +1,39 @@
 angular.module('org.oatesonline.yaffle.controllers', [])
 
-.controller('DashCtrl', function($scope, $log, $rootScope) {
-$log.log("Dashboard controller Fired");
-    $scope.myself = $rootScope.loggedInPlayer;
-    $scope.myName = $rootScope.playerName;
-    $scope.myTeams =$rootScope.teams;
-    $scope.myRTeams = $rootScope.rTeams;
-    $scope.myPTeams = $rootScope.pTeams;
+.controller('DashCtrl', function($scope, $log, Player) {
+  $log.log("Dashboard controller Fired");
+  $scope.onload = function(){
+    {
+      $log.log("Loading Player via Cookie")
+      $scope.loggedInPlayer = Player.loadPlayer().then(function(myPlayer){
+        $log.log("Player found from Cookie: " + myPlayer.name);    
+        $scope.loggedInPlayer = myPlayer;
+        $scope.initializePlayer(myPlayer);
+      });
+    }  
+  },
+
+  $scope.initializePlayer = function(myPlayer){
+    $scope.loggedInPlayer = myPlayer;
+    $scope.teams =    myPlayer.teams;
+    $scope.myNickname = myPlayer.nickname;
+    $scope.rTeams = []
+    $scope.pTeams = []
+    for (var i=0; i<myPlayer.teams.length; i++){
+      $log.log("In Loop with " + myPlayer.teams[i].leagueCode.charAt(0).toLowerCase());
+      if (myPlayer.teams[i].leagueCode.charAt(0).toLowerCase() == 's'){
+        $scope.pTeams.push(myPlayer.teams[i]);
+      } else {
+        $scope.rTeams.push(myPlayer.teams[i]);
+      }
+    }
+    $log.log("Length of rTeams: " +  $scope.pTeams.length)
+    $log.log("Length of pTeams: " +  $scope.pTeams.length)
+
+    $scope.id=myPlayer.id;
+    $scope.playerName = myPlayer.name;
+    document.location.href = '/www/index.html#/tab/dash';
+  }
 })
 
 .controller('LeaguesCtrl', function($scope, Leagues, $log) {
@@ -29,52 +56,71 @@ $log.log("Dashboard controller Fired");
   }
 })
 
-.controller('SignInCtrl', function($scope, Login, $log, $state, $rootScope) {
-  $scope.signIn = function(user) {
+.controller('SignInCtrl', function($scope, Login, $log, $state, Player) {
 
-    var loggedInPlayer = Login.login(user).then(function(myPlayer){
-      $log.log("Player found: " + myPlayer.name);
-      user.name=myPlayer.name;
-      $rootScope.loggedInPlayer = myPlayer;
-      $rootScope.teams =    myPlayer.teams;
-      $rootScope.myNickname = myPlayer.nickname;
-      $rootScope.rTeams = []
-      $rootScope.pTeams = []
-      for (var i=0; i<myPlayer.teams.length; i++){
-        $log.log("In Loop with " + myPlayer.teams[i].leagueCode.charAt(0).toLowerCase());
-        if (myPlayer.teams[i].leagueCode.charAt(0).toLowerCase() == 's'){
-          $rootScope.pTeams.push(myPlayer.teams[i]);
-        } else {
-          $rootScope.rTeams.push(myPlayer.teams[i]);
-        }
-
+  //TODO Refactor out to a service. This is a duplicate function of one found in DashCntrl
+  $scope.initializePlayer = function(myPlayer){
+    $scope.loggedInPlayer = myPlayer;
+    $scope.teams =    myPlayer.teams;
+    $scope.myNickname = myPlayer.nickname;
+    $scope.rTeams = []
+    $scope.pTeams = []
+    for (var i=0; i<myPlayer.teams.length; i++){
+      $log.log("In Loop with " + myPlayer.teams[i].leagueCode.charAt(0).toLowerCase());
+      if (myPlayer.teams[i].leagueCode.charAt(0).toLowerCase() == 's'){
+        $scope.pTeams.push(myPlayer.teams[i]);
+      } else {
+        $scope.rTeams.push(myPlayer.teams[i]);
       }
+    }
+    $log.log("Length of rTeams: " +  $scope.pTeams.length)
+    $log.log("Length of pTeams: " +  $scope.pTeams.length)
 
-      $log.log("Length of rTeams: " +  $rootScope.pTeams.length)
-      $log.log("Length of pTeams: " +  $rootScope.pTeams.length)
+    $scope.id=myPlayer.id;
+    $scope.playerName = myPlayer.name;
+    document.location.href = '/www/index.html#/tab/dash';
+  }, 
 
-      $rootScope.id=myPlayer.id;
-      $rootScope.playerName = myPlayer.name;
-      document.location.href = '/www/index.html#/tab/dash';
-    }, function(myPlayer){
-      $log.log("Login Failure: " + myPlayer);
-        alert("Login Failed.  Please ensure you have the correct email address and Pin. Contact the administrator to get your correct details.");
-        document.location.href = '/www/index.html#/login';
-    });
+  $scope.onload = function(){
+    {
+      $log.log("Loading Player via Cookie")
+      $scope.loggedInPlayer = Player.loadPlayer().then(function(myPlayer){
+        $log.log("Player found from Cookie: " + myPlayer.name);    
+        $scope.loggedInPlayer = myPlayer;
+        $scope.initializePlayer(myPlayer);
+      });
+    }  
+  },
 
-    $scope.openHelp = function () {
-      $modal.open({
-          templateUrl: '/templates/help.html',
-          windowClass: 'modal',
-          controller: function ($scope, $modalInstance, $log) {
-              $scope.cancel = function () {
-                  $modalInstance.dismiss('cancel');
-              };
+  $scope.signIn = function(user) {
+    if ($rootScope.loggedInPlayer == null){
+      var loggedInPlayer = Login.login(user).then(function(myPlayer){
+        $log.log("Player found from Login: " + myPlayer.name);    
+        $rootScope.loggedInPlayer = myPlayer;
+        $scope.initializePlayer(myPlayer);
+      });
+    }
+  },
+
+
+  function(myPlayer){
+    $log.log("Login Failure: " + myPlayer);
+      alert("Login Failed.  Please ensure you have the correct email address and Pin. Contact the administrator to get your correct details.");
+      document.location.href = '/www/index.html#/login';
+  },
+
+  $scope.openHelp = function () {
+    $modal.open({
+        templateUrl: '/templates/help.html',
+        windowClass: 'modal',
+        controller: function ($scope, $modalInstance, $log) {
+            $scope.cancel = function () {
+                $modalInstance.dismiss('cancel');
+            };
           },
       });
-    };
-  };
-})
+    }
+  })
 // .controller('TeamCtrl', function($scope, $rootScope, Leagues, $log,) {{
 //     if ($rootScope.leagues == null){
 //       $rootScope.leagues = Leagues.all();
@@ -95,6 +141,9 @@ $log.log("Dashboard controller Fired");
 
 .controller('PlayerCtrl', function($scope, $log) {
   $log.log("Player Detail controller Fired");
+   
+}).controller('MoreCtrl', function($scope, $log) {
+  $log.log("More button controller Fired");
    
 })
 

@@ -1,26 +1,28 @@
-// Ionic Starter App
+angular.module('org.oatesonline.yaffle', ['ionic', 'org.oatesonline.yaffle.controllers', 'org.oatesonline.yaffle.services' ,'ngCookies'])
 
-// angular.module is a global place for creating, registering and retrieving Angular modules
-// 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
-// the 2nd parameter is an array of 'requires'
-// 'starter.services' is found in services.js
-// 'starter.controllers' is found in controllers.js
-angular.module('org.oatesonline.yaffle', ['ionic', 'org.oatesonline.yaffle.controllers', 'org.oatesonline.yaffle.services'])
+.run(function($ionicPlatform, $log) {
 
-.run(function($ionicPlatform) {
-  $ionicPlatform.ready(function() {
+//http://stackoverflow.com/questions/15358029/why-am-i-unable-to-inject-angular-cookies
+// $cookies does not get loaded  on startup as only providers and constants can be injected into 
+// config blocks.  $cookies is a service. Therefore we inject it manually here.
+  // var $cookies;
+  //   angular.injector(['ngCookies']).invoke(function(_$cookies_) {
+  //     $cookies = _$cookies_;
+  //   });
+
+
     if(window.StatusBar) {
-      // org.apache.cordova.statusbar required
-  //    StatusBar.styleDefault();
       StatusBar.hide();
     }
-  });
+  // });
 })
+
 
 .config(function($stateProvider, $urlRouterProvider) {
 
+
+
   // Ionic uses AngularUI Router which uses the concept of states
-  // Learn more here: https://github.com/angular-ui/ui-router
   // Set up the various states which the app can be in.
   // Each state's controller can be found in controllers.js
   $stateProvider

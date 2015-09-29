@@ -2,11 +2,11 @@
   <div class="h1 title">My Yaffle</div>
 </div>
 <ion-view title="Yaffle Football">
-    <ion-content padding="true">
+    <ion-content padding="true" ng-init="onload()">
       <img src="/www/img/YaffleHeading768x260.png" width="80%" align="center" >
       <div id="main" visible="false">
         <div class="card" id="headline-data">
-          <h2>{{myNickname}}</h2>
+          <h2>{{loggedInPlayer.nickname}}</h2>
           <div class="row" height="30" width="100%">
             <div class="col col-20" align="center"><h4>Pos</h4></div>
             <div class="col col-20" align="center"><h4>Played</h4></div>
@@ -15,17 +15,17 @@
           </div>
           <div class="item item-text-wrap">
             <div class="row" height="40" width="100%">
-              <div class="col col-20" align="center"><h3>{{myself.pos}}</h3></div>
-              <div class="col col-20" align="center"><h3>{{myself.pld}}</h3></div>
-              <div class="col col-20" align="center"><h3>{{myself.gd}}</h3></div>
-              <div class="col col-20" align="center"><h3>{{myself.pts}}</h3></div>
+              <div class="col col-20" align="center"><h2>{{loggedInPlayer.pos}}</h3></div>
+              <div class="col col-20" align="center"><h3>{{loggedInPlayer.pld}}</h3></div>
+              <div class="col col-20" align="center"><h3>{{loggedInPlayer.gd}}</h3></div>
+              <div class="col col-20" align="center"><h3>{{loggedInPlayer.pts}}</h3></div>
             </div>
           </div>
         </div>
       </div>
      <br/>
 
-      <h4>Your Promotion Teams</h4>
+      <h4>Current Standings - Promotion Teams</h4>
         <div class="row" height="15" width="80%">
           <div class="col col-10" align="center">Pos</div>
           <div class="col col-50" align="center">Team</div>
@@ -43,7 +43,7 @@
         </div>
       </ion-item>  
 
-      <h4>Your Relegation Teams</h4>
+      <h4>Current Standings - Relegation Teams</h4>
         <ion-item ng-repeat="team in rTeams" type="item-text-wrap">
           <div class="row" height="15">
             <div class="col col-10" align="center">{{team.pos}}</div>
