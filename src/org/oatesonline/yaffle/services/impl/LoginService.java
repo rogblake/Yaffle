@@ -89,7 +89,7 @@ public class LoginService extends YaffleService {
 	
 	@Get
 	public void logout(){
-		Player p= validateUser();
+		Player p= validateUser(null);
 		if (p != null){
 			Series<CookieSetting> cs = getResponse().getCookieSettings();
 			cs.removeFirst(YAFFLE_UID);

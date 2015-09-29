@@ -1,48 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="con" path="com.google.appengine.eclipse.core.GAE_CONTAINER"/>
+	<classpathentry kind="src" path="tests"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="lib" path="war/WEB-INF/lib/aopalliance.jar"/>
-	<classpathentry kind="lib" path="war/WEB-INF/lib/appengine-api-labs-1.9.6.jar"/>
-	<classpathentry kind="lib" path="war/WEB-INF/lib/com.sun.jaxb.jar"/>
-	<classpathentry kind="lib" path="war/WEB-INF/lib/datanucleus-enhancer-3.1.1.jar"/>
-	<classpathentry kind="lib" path="war/WEB-INF/lib/javax.activation.jar"/>
-	<classpathentry kind="lib" path="war/WEB-INF/lib/javax.mail.jar"/>
-	<classpathentry kind="lib" path="war/WEB-INF/lib/javax.servlet.jar"/>
-	<classpathentry kind="lib" path="war/WEB-INF/lib/javax.ws.rs.jar"/>
-	<classpathentry kind="lib" path="war/WEB-INF/lib/javax.xml.stream.jar"/>
-	<classpathentry kind="lib" path="war/WEB-INF/lib/json-simple-1.1.1.jar"/>
-	<classpathentry kind="lib" path="war/WEB-INF/lib/jsslutils_1.0.5.jar"/>
-	<classpathentry kind="lib" path="war/WEB-INF/lib/objectify-3.1.jar"/>
-	<classpathentry kind="lib" path="war/WEB-INF/lib/org.apache.commons.fileupload_1.2.2.jar"/>
-	<classpathentry kind="lib" path="war/WEB-INF/lib/org.apache.commons.fileupload.jar"/>
-	<classpathentry kind="lib" path="war/WEB-INF/lib/org.apache.httpcomponents.httpcore_4.0.0.v200905121600.jar"/>
-	<classpathentry kind="lib" path="war/WEB-INF/lib/org.json.jar"/>
-	<classpathentry kind="lib" path="war/WEB-INF/lib/org.restlet_2.1.1.v20130116-1036.jar"/>
-	<classpathentry kind="lib" path="war/WEB-INF/lib/org.restlet.ext.html_2.1.1.v20130116-1036.jar"/>
-	<classpathentry kind="lib" path="war/WEB-INF/lib/org.restlet.ext.httpclient_2.1.1.v20130116-1036.jar"/>
-	<classpathentry kind="lib" path="war/WEB-INF/lib/org.restlet.ext.jaxrs_2.1.1.v20130116-1036.jar"/>
+	<classpathentry exported="true" kind="lib" path="war/WEB-INF/lib/aopalliance.jar"/>
+	<classpathentry exported="true" kind="lib" path="war/WEB-INF/lib/com.sun.jaxb.jar"/>
+	<classpathentry exported="true" kind="lib" path="war/WEB-INF/lib/datanucleus-enhancer-3.1.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="war/WEB-INF/lib/javax.activation.jar"/>
+	<classpathentry exported="true" kind="lib" path="war/WEB-INF/lib/javax.mail.jar"/>
+	<classpathentry exported="true" kind="lib" path="war/WEB-INF/lib/javax.servlet.jar"/>
+	<classpathentry exported="true" kind="lib" path="war/WEB-INF/lib/javax.ws.rs.jar"/>
+	<classpathentry exported="true" kind="lib" path="war/WEB-INF/lib/javax.xml.stream.jar"/>
+	<classpathentry exported="true" kind="lib" path="war/WEB-INF/lib/json-simple-1.1.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="war/WEB-INF/lib/jsslutils_1.0.5.jar"/>
+	<classpathentry exported="true" kind="lib" path="war/WEB-INF/lib/objectify-3.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="war/WEB-INF/lib/org.apache.commons.fileupload_1.2.2.jar"/>
+	<classpathentry exported="true" kind="lib" path="war/WEB-INF/lib/org.apache.commons.fileupload.jar"/>
+	<classpathentry exported="true" kind="lib" path="war/WEB-INF/lib/org.apache.httpcomponents.httpcore_4.0.0.v200905121600.jar"/>
+	<classpathentry exported="true" kind="lib" path="war/WEB-INF/lib/org.json.jar"/>
+	<classpathentry exported="true" kind="lib" path="war/WEB-INF/lib/org.restlet.jar"/>
+	<classpathentry exported="true" kind="lib" path="war/WEB-INF/lib/simple-xml-2.7.jar"/>
+	<classpathentry exported="true" kind="lib" path="war/WEB-INF/lib/jsr107cache-1.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="war/WEB-INF/lib/appengine-api-labs.jar"/>
+	<classpathentry exported="true" kind="lib" path="war/WEB-INF/lib/appengine-endpoints-deps.jar"/>
+	<classpathentry exported="true" kind="lib" path="war/WEB-INF/lib/appengine-endpoints.jar"/>
+	<classpathentry exported="true" kind="lib" path="war/WEB-INF/lib/asm-4.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="junit-4.10.jar"/>
+	<classpathentry kind="con" path="com.google.appengine.eclipse.core.GAE_CONTAINER"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/appengine-jsr107cache-1.9.22.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/org.restlet.ext.crypto.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/org.restlet.ext.gae.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/org.restlet.ext.gson.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/org.restlet.ext.html.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/org.restlet.ext.jaas.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/org.restlet.ext.jackson.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/org.restlet.ext.jaxb.jar"/>
 	<classpathentry kind="lib" path="war/WEB-INF/lib/org.restlet.ext.jaxrs.jar"/>
-	<classpathentry kind="lib" path="war/WEB-INF/lib/org.restlet.ext.net_2.1.1.v20130116-1036.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/org.restlet.ext.json.jar"/>
 	<classpathentry kind="lib" path="war/WEB-INF/lib/org.restlet.ext.servlet.jar"/>
-	<classpathentry kind="lib" path="war/WEB-INF/lib/org.restlet.ext.simple_2.1.1.v20130116-1036.jar"/>
-	<classpathentry kind="lib" path="war/WEB-INF/lib/org.restlet.ext.ssl_2.1.1.v20130116-1036.jar"/>
-	<classpathentry kind="lib" path="war/WEB-INF/lib/org.restlet.jar"/>
-	<classpathentry kind="lib" path="war/WEB-INF/lib/simple-xml-2.7.jar"/>
-	<classpathentry kind="lib" path="war/WEB-INF/lib/appengine-api-1.0-sdk-1.9.6.jar"/>
-	<classpathentry kind="lib" path="war/WEB-INF/lib/appengine-api-labs.jar"/>
-	<classpathentry kind="lib" path="war/WEB-INF/lib/appengine-endpoints-deps.jar"/>
-	<classpathentry kind="lib" path="war/WEB-INF/lib/appengine-endpoints.jar"/>
-	<classpathentry kind="lib" path="war/WEB-INF/lib/appengine-jsr107cache-1.9.6.jar"/>
-	<classpathentry kind="lib" path="war/WEB-INF/lib/asm-4.0.jar"/>
-	<classpathentry kind="lib" path="war/WEB-INF/lib/datanucleus-api-jdo-3.1.3.jar"/>
-	<classpathentry kind="lib" path="war/WEB-INF/lib/datanucleus-api-jpa-3.1.3.jar"/>
-	<classpathentry kind="lib" path="war/WEB-INF/lib/datanucleus-appengine-2.1.2.jar"/>
-	<classpathentry kind="lib" path="war/WEB-INF/lib/datanucleus-core-3.1.3.jar"/>
-	<classpathentry kind="lib" path="war/WEB-INF/lib/geronimo-jpa_2.0_spec-1.0.jar"/>
-	<classpathentry kind="lib" path="war/WEB-INF/lib/jdo-api-3.0.1.jar"/>
-	<classpathentry kind="lib" path="war/WEB-INF/lib/jta-1.1.jar"/>
-	<classpathentry kind="lib" path="war/WEB-INF/lib/jsr107cache-1.1.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/org.restlet.ext.spring.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/org.restlet.ext.swagger.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/org.restlet.ext.xml.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/appengine-api-1.0-sdk-1.9.22.jar"/>
 	<classpathentry kind="output" path="war/WEB-INF/classes"/>
 </classpath>

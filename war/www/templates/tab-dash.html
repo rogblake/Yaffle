@@ -3,35 +3,57 @@
 </div>
 <ion-view title="Yaffle Football">
     <ion-content padding="true">
-      <img src="/www/img/YaffleHeading768x260.png" width="100%">
+      <img src="/www/img/YaffleHeading768x260.png" width="80%" align="center" >
       <div id="main" visible="false">
-      <h3>{{myName}}</h3><br/>
-
-        <div class="row" height="40" width="100%">
-	  	 <div class="col col-20" align="center"><h4>Pos</h4></div>
-	  	 <div class="col col-20" align="center"><h4>Played</h4></div>
-		 <div class="col col-20" align="center"><h4>Goal Diff</h4></div>
-	  	 <div class="col col-20" align="center"><h4>Points</h4></div>
+        <div class="card" id="headline-data">
+          <h2>{{myNickname}}</h2>
+          <div class="row" height="30" width="100%">
+            <div class="col col-20" align="center"><h4>Pos</h4></div>
+            <div class="col col-20" align="center"><h4>Played</h4></div>
+            <div class="col col-20" align="center"><h4>Goal Diff</h4></div>
+            <div class="col col-20" align="center"><h4>Points</h4></div>
+          </div>
+          <div class="item item-text-wrap">
+            <div class="row" height="40" width="100%">
+              <div class="col col-20" align="center"><h3>{{myself.pos}}</h3></div>
+              <div class="col col-20" align="center"><h3>{{myself.pld}}</h3></div>
+              <div class="col col-20" align="center"><h3>{{myself.gd}}</h3></div>
+              <div class="col col-20" align="center"><h3>{{myself.pts}}</h3></div>
+            </div>
+          </div>
         </div>
-          
-       <div class="row" height="40" width="100%">
-           <div class="col col-20" align="center"><h3>{{myself.pos}}</h3></div>
-             <div class="col col-20" align="center"><h3>{{myself.pld}}</h3></div>
-             <div class="col col-20" align="center"><h3>{{myself.gd}}</h3></div>
-             <div class="col col-20" align="center"><h3>{{myself.pts}}</h3></div>
-	   </div>
-    </table>
-        <h4>Your Teams</h4>
-        <ion-item ng-repeat="team in myself.teams" type="item-text-wrap">
-        <div class="row" height="15">
-	  	 <div class="col col-10" align="center">{{team.pos}}</div>
-	  	 <div class="col col-50" align="center">{{team.name}}</div>
-	  	 <div class="col col-10" align="center">{{team.pld}}</div>
-		 <div class="col col-10" align="center">{{team.gd}}</div>
-	  	 <div class="col col-10" align="center">{{team.pts}}</div>
-	   </div>
-      </ion-item>
       </div>
+     <br/>
+
+      <h4>Your Promotion Teams</h4>
+        <div class="row" height="15" width="80%">
+          <div class="col col-10" align="center">Pos</div>
+          <div class="col col-50" align="center">Team</div>
+          <div class="col col-10" align="center">Pls</div>
+          <div class="col col-10" align="center">Gd</div>
+          <div class="col col-10" align="center">Pts</div>
+        </div>
+      <ion-item ng-repeat="team in pTeams" type="item-text-wrap">
+        <div class="row" height="15" width="80%">
+          <div class="col col-10" align="center">{{team.pos}}</div>
+          <div class="col col-50" align="center">{{team.name}}</div>
+          <div class="col col-10" align="center">{{team.pld}}</div>
+          <div class="col col-10" align="center">{{team.gd}}</div>
+          <div class="col col-10" align="center">{{team.pts}}</div>
+        </div>
+      </ion-item>  
+
+      <h4>Your Relegation Teams</h4>
+        <ion-item ng-repeat="team in rTeams" type="item-text-wrap">
+          <div class="row" height="15">
+            <div class="col col-10" align="center">{{team.pos}}</div>
+            <div class="col col-50" align="center">{{team.name}}</div>
+            <div class="col col-10" align="center">{{team.pld}}</div>
+            <div class="col col-10" align="center">{{team.gd}}</div>
+            <div class="col col-10" align="center">{{team.pts}}</div>
+        </div>
+      </ion-item>
+
       <p>
         Return to <a href="/www/index.html#/login">Sign-In</a>.
       </p>

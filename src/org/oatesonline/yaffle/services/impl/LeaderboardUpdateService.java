@@ -8,6 +8,7 @@ import org.oatesonline.yaffle.entities.dao.DAOPlayer;
 import org.oatesonline.yaffle.entities.impl.Player;
 import org.oatesonline.yaffle.services.ILeaderboardService;
 import org.restlet.resource.Get;
+import org.restlet.resource.Post;
 
 public class LeaderboardUpdateService extends YaffleService implements
 		ILeaderboardService {

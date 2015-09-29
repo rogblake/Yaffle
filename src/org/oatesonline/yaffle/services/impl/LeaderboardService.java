@@ -45,46 +45,10 @@ public class LeaderboardService extends ServerResource implements ILeaderboardSe
 		StringBuffer ret = new StringBuffer ("");
 		DAOPlayer daoP = DAOFactory.getDAOPlayerInstance();
 		Set<Player> plyrs = daoP.updateLeaderboard();
-//		List<Player> plyrs = daoP.getAllPlayers();
-//		Iterator<Player> ip = plyrs.iterator();
-//		Player p = null;
-//		Map<String, Team> teamMap  = null;
-//		//Iterate through all players updating their aggregate totals for the leaderboard.
-//		while (ip.hasNext()){
-//			p = ip.next();
-//			teamMap = daoP.getPlayersTeams(p);
-//			boolean updateSuccess = daoP.updatePlayerTotals(p,  teamMap);
-//			ret.append(p.getNickname());
-//			if (updateSuccess){
-//				ret.append( " entry updated successfully.\n");
-//			} else {
-//				ret.append(" entry updated failed.\n");
-//			}
-//		}
-//		return ret.toString();
-		
 		Iterator<Player> itp = plyrs.iterator();
 		while (itp.hasNext()){
 			ret.append(itp.next().toJSONString());
 		}
 		return ret.toString();
 	}
-
-	//don't need any of this. See DAOPlayer
-//	private String updatePlayerStandings(List<Player> players){
-//		TreeSet<Player> plyrs = new TreeSet<Player>(players);
-//		Iterator<Player> itp = plyrs.iterator();
-//		Player p ;
-//		short i = 1;
-//		StringBuffer ret = new StringBuffer("");
-//		while (itp.hasNext()){
-//			p = itp.next();
-//    		//set the player's previous position to their current position since this is about to be udated
-//    		p.setPrev(p.getPos());
-//    		p.setPos(i);
-//    		i++;
-//    	
-//		}
-//		return ret.toString();
-//	}
 }

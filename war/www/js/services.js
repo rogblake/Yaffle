@@ -20,16 +20,30 @@ angular.module('org.oatesonline.yaffle.services', ['ngResource'])
  
   return {
     all: function() {
-//        var leagues = [];
-//        var leagueCodes = ["e1","e2","e3","e4","s1","s2","s3","s4"];
-//         for (var i = 0; i< leagueCodes.length; i++){
-//           $log.log("retrieving league data for  : " + leagueCodes[i]);
-// //           leagues[i] = get(leagueCode[i]);
-//        }
-//       return leagues;
+
        var leagues = allLeagueData.get();
       return leagues;
 
+    },
+    promotionTeams: function(){
+       var allLeagues = allLeagueData.get();
+       var pLeagues = []
+       var leagueCodes = ["e1","e2","e3","e4"];
+        for (var i = 0; i< leagueCodes.length; i++){
+          $log.log("retrieving league data for  : " + leagueCodes[i]);
+           pLeagues[i] = get(leagueCode[i]);
+        }
+      return pLeagues;
+    },    
+    relegationTeams: function(){
+       var allLeagues = allLeagueData.get();
+       var rLeagues = []
+       var leagueCodes = ["s1","s2","s3","s4"];
+        for (var i = 0; i< leagueCodes.length; i++){
+          $log.log("retrieving league data for  : " + leagueCodes[i]);
+           pLeagues[i] = get(leagueCode[i]);
+        }
+      return rLeagues;
     },
     get: function(leagueId) {
       leagueData = $resource(yaffle_server_url + "/league/" + leagueId);

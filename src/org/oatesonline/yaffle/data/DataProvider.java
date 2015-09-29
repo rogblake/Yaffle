@@ -37,12 +37,12 @@ public abstract class DataProvider {
 	private static final String AUTH_HEADER="X-Auth-Token";
 	
 	
+	public String PROVIDER_KEY = "FOOTBALL_DATA";
+	
 	protected static ResourceBundle PROPS = java.util.ResourceBundle.getBundle(THIS_PACKAGE + ".DataProviders");
 	protected Vector<String> leagueCodes ;
 	protected static String provider_key = "FOOTBALL_DATA"; // Add default Data Provider here.
-//	protected static String provider_key = "XSCORES_MOBILE"; // Add default Data Provider here.
 
-	
 	private String targetURL;
 
 	protected Logger log = Logger.getLogger(DataProvider.class.getName());
@@ -74,21 +74,21 @@ public abstract class DataProvider {
 	
 	protected DataProvider (){
 		//set default Service Provider
-		dataProvider = providerKeys.get(3);
-		setProviderBundle(dataProvider);
-		log.log(Level.CONFIG, "Data Provider defaulting to " + dataProvider);
-		init();
+//		dataProvider = providerKeys.get(3);
+//		setProviderBundle(dataProvider);
+//		log.log(Level.CONFIG, "Data Provider defaulting to " + dataProvider);
+//		init();
 	}
 	
 	protected DataProvider (String providerKey){
 		this();
 		if (providerKeys.contains(providerKey)){
 			String dpStr = PROPS.getString(providerKey);
-			dataProviderBundle = PropertyResourceBundle.getBundle(THIS_PACKAGE + "." + dpStr);
-			
+			dataProvider = dpStr;
+			dataProviderBundle = PropertyResourceBundle.getBundle(THIS_PACKAGE + "." + dataProvider);
 			if (null != dataProviderBundle){
 				this.targetURL = dataProviderBundle.getString(TARGET_URL);
-				log.log(Level.CONFIG, "Data Provider not set." );
+				log.log(Level.CONFIG, "Data Provider found." );
 			} else {
 				log.log(Level.SEVERE, "Desired Data Provider not found. Setting to default - " + dataProvider);
 			}
@@ -214,17 +214,14 @@ public abstract class DataProvider {
 	 */
 	protected String getResource(String key) {
 		String urlString = dataProviderBundle.getString(key);
-		String dp = dataProviderBundle.getString("PROVIDER_NAME");
 		final String AUTH_KEY=dataProviderBundle.getString("API_KEY");
 		String ret = null;
 		if (null != urlString){	
-
 			Client client = new Client(new Context(), Protocol.HTTP);
-			
 			ClientResource clientResource = new ClientResource(urlString);
-			Map<String, Object> headers = clientResource.getRequestAttributes();
+			Series<Header> headers = clientResource.getRequest().getHeaders();
 			if (null != AUTH_KEY){				
-				headers.put(AUTH_HEADER, AUTH_KEY);
+				headers.add(AUTH_HEADER, AUTH_KEY);
 			}
 			clientResource.setNext(client);
 			try {

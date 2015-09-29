@@ -9,6 +9,8 @@ import java.util.Map;
 import java.util.TreeMap;
 import java.util.TreeSet;
 
+import javax.jdo.annotations.PersistenceCapable;
+import javax.jdo.annotations.Persistent;
 import javax.persistence.Id;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -31,6 +33,7 @@ import com.googlecode.objectify.annotation.Serialized;
 @Entity
 @XmlRootElement
 @Cached
+@PersistenceCapable
 public class Player  extends DTOEntity implements IPlayer , Comparable{
 
 //	Logger log = Logger.getLogger(Player.class.getName());
@@ -67,6 +70,22 @@ public class Player  extends DTOEntity implements IPlayer , Comparable{
 	//Previous position
 	private short prev;
 	
+	
+	@Element
+	private int gd;
+	
+	@Element
+	private int pts;
+	
+	
+	@Persistent
+	private java.util.List<Key<Team>> teamKeys; 
+
+
+// Used for Yaffle 2015
+//	@Serialized
+//	private java.util.Map<String, Key<Team>> teamKeys;
+
 	/**
 	 * @return the prev
 	 */
@@ -80,18 +99,6 @@ public class Player  extends DTOEntity implements IPlayer , Comparable{
 		this.prev = prev;
 	}
 
-	@Element
-	private int gd;
-	
-	@Element
-	private int pts;
-	
-	
-//	@ElementList
-//	private java.util.List<Key<Team>> teamKeys; 
-
-	@Serialized
-	private java.util.Map<String, Key<Team>> teamKeys;
 	
 	/**
 	 * @return the pld
@@ -152,7 +159,7 @@ public class Player  extends DTOEntity implements IPlayer , Comparable{
 		this.pld=0;
 		this.pts=0;
 		this.pos=0;
-		teamKeys = new TreeMap<String, Key<Team>>();
+		teamKeys = new LinkedList<Key<Team>>();
 		
 	}
 	
@@ -198,15 +205,15 @@ public class Player  extends DTOEntity implements IPlayer , Comparable{
 		jObj.put("pos", this.pos);
 		jObj.put("gd", this.gd);
 		jObj.put("pts", this.pts);
-		List<Team> teams = new LinkedList<Team>();
-		Iterator<String> itLeague = teamKeys.keySet().iterator();
+		List<JSONObject> teams = new LinkedList<JSONObject>();
+		Iterator<Key<Team>> itLeague = teamKeys.iterator();
 		Team t  = null;
 		Key<Team> kTeam = null;
 		while (itLeague.hasNext()){
-			kTeam = teamKeys.get(itLeague.next());
+			kTeam = itLeague.next();
 			t  = daoT.getTeam(kTeam);
 			if (null != t){
-				teams.add(t);
+				teams.add(t.toJSONObject());
 			}
 		}
 		jObj.put("teams", teams);
@@ -215,13 +222,11 @@ public class Player  extends DTOEntity implements IPlayer , Comparable{
 
 	@Override
 	public String getName() {
-		
 		return this.name;
 	}
 
 	@Override
 	public String getEmail() {
-
 		return this.email;
 	}
 
@@ -232,7 +237,7 @@ public class Player  extends DTOEntity implements IPlayer , Comparable{
 	}
 
 	@Override
-	public Map<String,Key<Team>> getTeamKeys() {
+	public  List<Key<Team>> getTeamKeys() {
 		return teamKeys;
 	}
 
@@ -262,7 +267,7 @@ public class Player  extends DTOEntity implements IPlayer , Comparable{
 		if (team != null){
 			Key<Team> kTeam = new Key<Team>(Team.class, team.getName());
 			//TODO test leagueCode is valid. Throw exception otherwise.
-			this.teamKeys.put(leagueCode, kTeam);
+			this.teamKeys.add(kTeam);
 		}
 	}
 	@Override

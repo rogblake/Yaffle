@@ -6,7 +6,7 @@ COMMA = " , "
 
 host_env="127.0.0.1"
 host_env_port="8888"
-player_spreadsheet_path="./YafflePlayers1415.csv"
+player_spreadsheet_path="./YafflePlayers1516.csv"
 
 all_players = None
 conn = None
@@ -21,11 +21,12 @@ def initialize():
 	readPlayerData (player_spreadsheet_path)
 
 def readPlayerData(playersFile):
-	with open (playersFile, 'rb') as csvfile:
+	with open (playersFile, 'rU') as csvfile:
 		playerreader = csv.reader(csvfile)
 		plr = None
 		rowCount = 0
 		for row in playerreader:
+			print row
 			if (rowCount != 0) and (rowCount < 17):
 				plr = createPlayerProfile (row)
 				global all_players
@@ -35,6 +36,11 @@ def readPlayerData(playersFile):
 
 
 def createPlayerProfile (row):
+	i=0
+	for r in row:
+		print "row: " + str(i) + ": " + r
+		i=i+1
+		
 	player = Player()
 	if (len(row) > 12) and (row[0] != ''):
 		player.name= row[1]
@@ -50,25 +56,39 @@ def createPlayerProfile (row):
 		player.S2=row[11]
 		player.S3=row[12]
 		player.S4=row[13]
+	else:
+		print "Error! csv data is corrupt"
+		print "Length = " +  str(len(row)) + " Row zero = " + row[0] + "."
+		
 	return player
 
-def updatePlayerTeams(player):
+def updatePlayerTeams(player,id):
+	print "===============Updating newly created players with team data"
 	leagues = ['E1','E2','E3','E4','S1','S2','S3','S4']
 	if None != player:
 		for lc in leagues:
-			player.updateTeam(lc)
+			player.updateTeam(lc,id)
+	else:
+		"Error: Player does not exist"
 		
 
 def createPlayers():
 	for p in all_players:
-		createPlayer(p)
-		updatePlayerTeams(p)
+		id = createPlayer(p)
+		
+		print "Player Created with ID of " + id
+		print "____Updating....________________"
+		#updatePlayerTeams(p,id)
 
 def createPlayer(player):
 	targetUrl="/playerupdate/create"
 	conn.request("POST", targetUrl, player.toJSON())
-	responseStr = conn.getresponse();
-	print responseStr
+	response = conn.getresponse()
+	conn.close()
+	ret = response.read()
+	print "response from createPlayer = " + ret
+	print "response status = " , response.status, " " , response.reason	
+	return ret
 
 class Player:
 	name = ""
@@ -103,15 +123,17 @@ class Player:
 		self.S3=""
 		self.S4=""
 
-	def updateTeam(self, lc):
+	def updateTeam(self, lc, id):
 		 targetTeam = getattr(self,lc) 
 		 targetTeam = urllib.quote(targetTeam)
-		 targetUrl =  "/admin/update/" + self.id + "/" + lc + "/" + targetTeam
+		 targetUrl =  "/admin/update/" + str(id) + "/" + lc + "/" + targetTeam
 		 print self.nickname  + ' : ' + targetUrl
-		 print self.toJSON()
-		 conn.request('GET', targetUrl)
-		# resp = conn.getresponse()
-
+		 conn.request('PUT',targetUrl)
+		 resp = conn.getresponse()
+		 print str(resp.msg)
+		 conn.close()
+		
+		
 	def toJSON(self):
 		ret ="{"
 		ret += self.__addJSON__("id", 1)
@@ -122,7 +144,7 @@ class Player:
 		ret +=COMMA
 		ret += self.__addJSON__("name")
 		ret +=COMMA
-		ret += self.__addJSON__("pin")
+		ret += self.__addJSON__("pin")	
 		ret +=COMMA
 		ret += self.__addJSON__("pld",1)
 		ret +=COMMA
@@ -156,9 +178,9 @@ class Player:
 		ret = ""
 		propValue = getattr(self, propName)
 		if no_quotes==1:
-			ret = DBL_QUOTE + propName + DBL_QUOTE + ":" + propValue
+			ret = DBL_QUOTE + propName + DBL_QUOTE + ":" + str(propValue)
 		else:	
-			ret = DBL_QUOTE + propName + DBL_QUOTE + ":" + DBL_QUOTE + propValue + DBL_QUOTE 
+			ret = DBL_QUOTE + str(propName) + DBL_QUOTE + ":" + DBL_QUOTE + str(propValue) + DBL_QUOTE 
 		return ret
 
 initialize()

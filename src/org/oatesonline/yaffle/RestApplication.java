@@ -33,8 +33,8 @@ public class RestApplication extends Application {
         router.attach("/admin/update/{leaguecode}", LeagueUpdateService.class);
         router.attach("/admin/createplayer", PlayerService.class);
         router.attach("/admin/update/{playerId}/{leagueCode}/{teamId}", PlayerUpdateService.class);
-       router.attach("/player/{playerid}", PlayerService.class);
-         router.attach("/playerupdate/create", PlayerUpdateService.class);
+        router.attach("/player/{playerId}", PlayerService.class);
+        router.attach("/playerupdate/create", PlayerUpdateService.class);
         router.attach("/teams/{playerid}", TeamService.class);
         router.attach("/login", LoginService.class);
         return router;

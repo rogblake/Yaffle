@@ -2,35 +2,35 @@
     "leagues": [
         {
             "id": "e1",
-            "name": "English Premiereship"
+            "name": "French Ligue 1"
         },
         {
             "id": "e2",
-            "name": "Belgian Jupiler League"
+            "name": "La Liga Primera"
         },
         {
             "id": "e3",
-            "name": "Dutch Erevisie"
+            "name": "Bundesliga Lge 1"
         },
         {
             "id": "e4",
-            "name": "France Ligue 1"
+            "name": "Serie A"
         },
         {
             "id": "s1",
-            "name": "German Bundesliga"
+            "name": "French Ligue 2"
         },
         {
             "id": "s2",
-            "name": "Scottish Championship"
+            "name": "La Liga Segunda"
         },
         {
             "id": "s3",
-            "name": "Portuguese Liga Sagres"
+            "name": "Bundesliga Lge 2"
         },
         {
             "id": "s4",
-            "name": "Spanish Liga BBVA"
+            "name": "3. Bundesliga 2015/16"
         }
     ]
 }

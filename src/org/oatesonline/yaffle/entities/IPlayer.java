@@ -14,7 +14,7 @@ public interface IPlayer {
 	
 	public String getNickname();
 	
-	public java.util.Map<String, Key<Team>> getTeamKeys();
+	public java.util.List<Key<Team>> getTeamKeys();
 	
 	
 	public void setEmail(String email);

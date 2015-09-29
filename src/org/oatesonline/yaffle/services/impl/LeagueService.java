@@ -29,7 +29,7 @@ public class LeagueService extends YaffleService implements ILeagueService {
 	@Get
 	@Override
 	public String getLeague(){
-		Player p = validateUser();
+		//Player p = validateUser(null);
 	    this.leagueCode = getRESTParamFromURL("leaguecode").toUpperCase();  
 	   
 	    setResponseHeaderValueFor("Access-Control-Allow-Origin"); // dodgy. Not for Production Code

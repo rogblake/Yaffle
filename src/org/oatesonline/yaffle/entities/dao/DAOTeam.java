@@ -47,6 +47,12 @@ public class DAOTeam extends DAO<Team> {
 		return t;
 	}
 	
+	public Team getTeamByUrl (String url){
+		Team t = ofy.query(Team.class).filter("urlStr" , url).get();
+
+		return t;
+	}
+	
 	public Team getTeam(String name, String leagueCode){
 		return getTeam(name);
 	}
@@ -104,5 +110,4 @@ public class DAOTeam extends DAO<Team> {
 		}
 		return ret;
 	}
-
 }

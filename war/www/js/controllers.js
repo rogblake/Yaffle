@@ -5,7 +5,8 @@ $log.log("Dashboard controller Fired");
     $scope.myself = $rootScope.loggedInPlayer;
     $scope.myName = $rootScope.playerName;
     $scope.myTeams =$rootScope.teams;
-
+    $scope.myRTeams = $rootScope.rTeams;
+    $scope.myPTeams = $rootScope.pTeams;
 })
 
 .controller('LeaguesCtrl', function($scope, Leagues, $log) {
@@ -35,7 +36,23 @@ $log.log("Dashboard controller Fired");
       $log.log("Player found: " + myPlayer.name);
       user.name=myPlayer.name;
       $rootScope.loggedInPlayer = myPlayer;
-      $rootScope.teams =    myPlayer.teams; 
+      $rootScope.teams =    myPlayer.teams;
+      $rootScope.myNickname = myPlayer.nickname;
+      $rootScope.rTeams = []
+      $rootScope.pTeams = []
+      for (var i=0; i<myPlayer.teams.length; i++){
+        $log.log("In Loop with " + myPlayer.teams[i].leagueCode.charAt(0).toLowerCase());
+        if (myPlayer.teams[i].leagueCode.charAt(0).toLowerCase() == 's'){
+          $rootScope.pTeams.push(myPlayer.teams[i]);
+        } else {
+          $rootScope.rTeams.push(myPlayer.teams[i]);
+        }
+
+      }
+
+      $log.log("Length of rTeams: " +  $rootScope.pTeams.length)
+      $log.log("Length of pTeams: " +  $rootScope.pTeams.length)
+
       $rootScope.id=myPlayer.id;
       $rootScope.playerName = myPlayer.name;
       document.location.href = '/www/index.html#/tab/dash';

@@ -12,8 +12,8 @@ import org.oatesonline.yaffle.entities.impl.Player;
 import org.oatesonline.yaffle.entities.impl.Team;
 import org.restlet.data.Status;
 import org.restlet.representation.Representation;
-import org.restlet.resource.Get;
 import org.restlet.resource.Post;
+import org.restlet.resource.Put;
 
 import com.google.appengine.api.datastore.EntityNotFoundException;
 
@@ -24,7 +24,7 @@ public class PlayerUpdateService extends YaffleService {
 	 * Updates a player by adding the team give by {teamId} into the players list of Teams or replacing the existing
 	 * team for the same leagues
 	 */
-	@Get
+	@Put
 	public String addTeam(){
 		String ret = "";
 		DAOPlayer daoP = DAOFactory.getDAOPlayerInstance();
@@ -47,7 +47,8 @@ public class PlayerUpdateService extends YaffleService {
 				log.log(Level.SEVERE, "Cannot find Player with ID " + pIdStr);
 			}
 			if (null != p){
-				Team t = daoT.getTeam(teamStr);
+				String teamURL = createTeamURL(teamStr);
+				Team t = daoT.getTeam(teamURL);
 				if (null != t){					
 					p.addTeam(leagueCode.toLowerCase(), t);
 					ret = "<" + t.getName() + "> successfully added to league <" + leagueCode + "> for <" + pIdStr + "> ";
@@ -61,7 +62,7 @@ public class PlayerUpdateService extends YaffleService {
 	/**
 	 * 
 	 */
-	@Post("application/json")
+	@Post("application/text")
 	public String addPlayer(Representation rep){
 		String ret = null;
 		DAOPlayer daoP = DAOFactory.getDAOPlayerInstance();
@@ -76,21 +77,15 @@ public class PlayerUpdateService extends YaffleService {
 			daoP.add(p);
 			getResponse().setStatus(Status.SUCCESS_CREATED);
 			getResponse().getCookieSettings().set(YAFFLE_UID, p.getId().toString());
-			//read the player back from the db (with it's generated ID)
 			IPlayer pl = daoP.findPlayer(p.getEmail());
-			//return the complete player back to the user
-			if (null != pl){					
-				ret =  ((Player) pl).toJSONString();
-			} else {
-				ret = ((Player) p).toJSONString();
-			}
+			ret= ((Player) p).getId().toString();
 		} else {	
 			getResponse().setStatus(Status.CLIENT_ERROR_EXPECTATION_FAILED);
 			ret = "Your player data could not be added due to an error.Please check the information and try again";
 		}	 
+
 		return ret;
 	}
-	
 	
 	/**
 	 * 
@@ -99,4 +94,15 @@ public class PlayerUpdateService extends YaffleService {
 	private boolean callIsAllowed(){
 		return false;
 	}
+	
+	/**
+	 * This method is coupled directly to Football-Data as a Data Provider
+	 * 
+	 * @param TeamID  the team ID per the data provided by api.football-data.org
+	 * @return An URI of a resource providing data about the select team
+	 */
+	private String createTeamURL(String TeamID){
+		return "http://api.football-data.org/alpha/teams/" + TeamID;
+	}
+	
 }

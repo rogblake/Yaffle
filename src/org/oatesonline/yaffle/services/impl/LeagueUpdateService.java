@@ -41,8 +41,6 @@ public class LeagueUpdateService extends ServerResource implements ILeagueServic
 /*
  * Convert this to DI with spring or similar
  */
-//		ILeagueDataProvider ildp =  new LiveScoreDataProvider();
-//		ILeagueDataProvider ildp =  new XScoresDataProvider();
 		ILeagueDataProvider ildp =  new FootballDataProvider();
 		League league = null;
 		try {
@@ -69,7 +67,7 @@ public class LeagueUpdateService extends ServerResource implements ILeagueServic
 	@Post
 	@Override
 	public ILeague updateLeague() {
-	    this.leagueCode = (String) getRequestAttributes().get("leaguecode");  
+	    this.leagueCode = (String) getRequestAttributes().get("leaguecode");
 		System.out.println("We have received the league code <" + leagueCode + ">");
 		return null;
 	}

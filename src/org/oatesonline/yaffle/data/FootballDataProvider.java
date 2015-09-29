@@ -22,6 +22,9 @@ import com.google.appengine.api.log.LogService.LogLevel;
 
 public class FootballDataProvider extends DataProvider implements
 		ILeagueDataProvider {
+	
+	
+	public static final String PROVIDER_KEY = "FOOTBALL_DATA";
 
 	@Override
 	public League getLeague(String leagueCode)
@@ -29,11 +32,10 @@ public class FootballDataProvider extends DataProvider implements
 		League ret = null;
 		String key = leagueCode+ "_URL";
 		String leagueStr = getResource(key);
-		leagueStr.trim();
 		if (null != leagueStr){
+			leagueStr.trim();
 			ret = createLeague(leagueStr, leagueCode);
 		}
-		
 		return ret;
 	}
 	
@@ -41,6 +43,7 @@ public class FootballDataProvider extends DataProvider implements
 	private ContainerFactory containerFactory;
 	
 	public FootballDataProvider(){
+		super(PROVIDER_KEY);
 		parser = new JSONParser();
 		containerFactory = new ContainerFactory(){
 		    public List creatArrayContainer() {
@@ -54,8 +57,6 @@ public class FootballDataProvider extends DataProvider implements
 		  };
 
 	}
-
-	
 
 	
 	/**

@@ -45,7 +45,8 @@ public class Team extends DTOEntity implements ITeam,  Comparable<Team> {
 	@Element
 	private short pld;
 	
-	@Attribute(name="webpage", required=false)
+	@Indexed
+	@Attribute(name="team-url", required=false)
 	private String urlStr;
 	
 	@javax.persistence.Id

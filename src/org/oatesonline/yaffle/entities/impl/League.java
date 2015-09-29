@@ -2,6 +2,7 @@ package org.oatesonline.yaffle.entities.impl;
 
 import java.io.StringWriter;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -33,6 +34,7 @@ import com.googlecode.objectify.annotation.Indexed;
 @Cached
 public class League extends DTOEntity implements ILeague, IDataObject {
 
+	
 	private static final long serialVersionUID = -4530243745840519840L;
 	@Transient
 	Logger log = Logger.getLogger(League.class.getName());
@@ -46,7 +48,8 @@ public class League extends DTOEntity implements ILeague, IDataObject {
 	private String name;
 	
 	@Attribute(name="lastUpdated", required=true)
-	private Calendar lastUpdated;
+	private Date lastUpdated;
+	
 	@Transient
 	private Set<Key<Team>> teams;
 	
@@ -66,7 +69,7 @@ public class League extends DTOEntity implements ILeague, IDataObject {
 		teams = new TreeSet<Key<Team>>();
 		teamObjs = new TreeSet<Team>();
 		jsonData = "";
-		lastUpdated = Calendar.getInstance();
+		lastUpdated = new Date();
 	}
 	
 	public League(String lc){
@@ -187,15 +190,14 @@ public class League extends DTOEntity implements ILeague, IDataObject {
 	}
 
 	@Override
-	public Calendar getLastUpdated() {
+	public Date getLastUpdated() {
 		// TODO Auto-generated method stub
 		return this.lastUpdated;
 	}
 
 	@Override
-	public void setLastUpdated(Calendar lastUpdate) {
-		// TODO Auto-generated method stub
-		
+	public void setLastUpdated(Date lastUpdate) {
+		this.lastUpdated = lastUpdate;
 	}
 	
 	

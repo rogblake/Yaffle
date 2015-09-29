@@ -2,11 +2,22 @@
 
 .scroll-content {
   background: url(/www/img/green_woodpecker_full_55pc.png);
-  background-size:100% 100%;
+  margin-left:auto;
+margin-right:auto;
+  max-width: 800px;
+  background-repeat: no-repeat;
+  background-position: center top;
 }
+
 .scroll-content#signin-screen {
   background: url(/www/img/green_woodpecker_full_85pc.png);
-  background-size:100% 100%;
+  max-width: 800px;
+  margin-left:auto;
+  margin-right:auto;
+  vertical-align: middle;
+  background-repeat: no-repeat;
+  background-position: center top;
+  
 }
 
 .scroll-content{
@@ -22,14 +33,23 @@
     vertical-align: middle;
 }
 
+h2{
+	text-align: center;
+	font-family: verdana, georgia, arial;
+	font-weight: bold;
+	font-size: 16px;
+}
 h3{
     text-align: center;
-    font-family: "andale mono", arial;
+    font-family: verdana, arial;
+    font-size: 13px;
 }
 h4{
     text-align: center;
-    font-family: "arial black", arial;
+    font-family: verdana, arial;
     color: "#334455";
+    font-size: 12px;
+    font-weight: bold;
 }
 div#login-footer{
 	font-size:12px;
@@ -38,12 +58,29 @@ div#login-footer{
 	opacity:0.6;
 }
 
+div#headline-data{
+	font-size:12px;
+	max-height:160px;
+	height:140px;
+	background-color:#c5c8a8;
+	opacity:0.6;
+}
+
+#leaderboard-view{
+	margin-top: 80px;
+	padding-top: 80px;
+}
+
+#row-header{
+	max-height: 15px;
+}
 div#login-form-inputs{
 	
 	margin-left:auto;
 	margin-right:auto;
+	max-width:760px;
 	padding-top:200px;
-	width:70%;
+	width:75%;
 }
 
 div#login-button-div{
@@ -59,11 +96,14 @@ div#forgot-button-bar{
 	margin-right:auto;
 }
 
-
+#leaderboard-view{
+	margin-top: 0px;
+}
 
 #leagues-list{
 	margin-left:auto;
 	margin-right:auto;
+	margin-top: auto;
 	padding-top:200px;
 	width:70%;
 }

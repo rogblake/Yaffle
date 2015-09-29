@@ -98,9 +98,9 @@ public class DAOPlayer extends DAO<Player> {
 	    
 	    private Team getTeam(Player player, String leagueCode){
 	    	if ((null != player) & (null != leagueCode)){
-	    		Map<String, Key<Team>> tks = player.getTeamKeys();
+	    		List<Key<Team>> tks = player.getTeamKeys();
 	    		if( tks != null){
-	    			Iterator<Key<Team>> itk  = tks.values().iterator();
+	    			Iterator<Key<Team>> itk  = tks.iterator();
 	    			Team t = null;
 	    			while (itk.hasNext()){
 	    				t = ofy().get(itk.next());
@@ -119,11 +119,22 @@ public class DAOPlayer extends DAO<Player> {
 	    	if (null != player){
 	    		Team t = getTeam(player, leagueCode);
 	    		if (null != t){
-	    			Key<Team> kt = player.getTeamKeys().remove(leagueCode);
-	    			boolean success = (kt != null);
+	    			List<Key<Team>> tks = player.getTeamKeys();
+	    			Iterator<Key<Team>> itks = tks.iterator();
+	    			Team myTeam = null;
+	    			DAOTeam daoT = DAOFactory.getDAOTeamInstance();
+	    			Key<Team> kt = null;
+	    			while (itks.hasNext()){
+	    				kt = itks.next();
+	    				myTeam = daoT.getTeam(kt);
+	    				if (null != myTeam){
+	    					if (myTeam.getLeagueCode().equalsIgnoreCase(leagueCode)){	    						
+	    						boolean success = player.getTeamKeys().remove(kt);	    					}
+	    				}
+	    			}
 	    		}
-    			player.getTeamKeys().put(leagueCode, new Key<Team>(Team.class, team.getName()));
-    			log.log(Level.FINE, team.getName() + " added to " + player.getName() + " teams in leage " + leagueCode +".");
+    			player.getTeamKeys().add( new Key<Team>(Team.class, team.getName()));
+    			log.log(Level.FINE, team.getName() + " added to " + player.getName() + " teams in league " + leagueCode +".");
     			ofy().put(player);
 	    	}
 	    }
@@ -145,6 +156,8 @@ public class DAOPlayer extends DAO<Player> {
 	    	while (ip.hasNext()){
 	    		updateScores(ip.next());
 	    	}
+	    	//The return from getAllPlayers() is not guaranteed to be sorted, so we have to 
+	    	//create a sorted leaderboard using a sorted collection (treeset)
 	    	Set<Player> playerSet = new TreeSet<Player>();
 	    	playerSet.addAll(players);
 	    	//Add in the latest position
@@ -152,7 +165,7 @@ public class DAOPlayer extends DAO<Player> {
 	    	Iterator<Player> ips = playerSet.iterator();
 	    	short i = 1;
 	    	while(ips.hasNext()){
-	    	
+	    
 	    		p = ips.next();
 	    		p.setPrev(p.getPos());
 	    		p.setPos(i);
@@ -165,7 +178,7 @@ public class DAOPlayer extends DAO<Player> {
 	    private void updateScores(Player p){
 	    	if (null != p){
 	    		resetTotals(p);
-	    		Collection<Key<Team>> teamKeys = p.getTeamKeys().values();
+	    		Collection<Key<Team>> teamKeys = p.getTeamKeys();
 	    		Iterator<Key<Team>> itk = teamKeys.iterator();
 	    		Team t = null;
 	    		int gd = 0;
@@ -173,8 +186,13 @@ public class DAOPlayer extends DAO<Player> {
 	    		int pld = 0;
 	    		while (itk.hasNext()){
 	    			t = ofy().get(itk.next());
-	    			gd = gd + t.getGD();
-	    			pts =pts+ t.getPts();
+	    			if (t.getLeagueCode().toLowerCase().startsWith("e")){
+		    			gd = gd - t.getGD();
+		    			pts = pts - t.getPts();	    				
+	    			} else {	    				
+	    				gd = gd + t.getGD();
+	    				pts = pts+ t.getPts();
+	    			}
 	    			pld = pld + t.getPld();	
 	    		}
 	    		p.setPld((short)pld);
@@ -193,6 +211,7 @@ public class DAOPlayer extends DAO<Player> {
 	     * {"id":233,"teams":[],"nickname":"Yabadabadoo!","email":"fred@bedrock.com","name":"Fred Flintstone","gd":0,"pts":0,"pos":0,"pld":0}
 	     */
 	    public Player fromJSON(String jsonPlayer){
+	    	String[] lcodes = {"E1","E2","E3","E4","S1","S2","S3","S4"};
 	    	Player ret = null;
 			JSONParser parser=new JSONParser();
 			Object obj = null;
@@ -205,28 +224,59 @@ public class DAOPlayer extends DAO<Player> {
 			} finally {
 				if (null != obj){					
 					pData = (Map) obj;
-					ret = new Player((String) pData.get("name"), (String) pData.get("email"), (String)pData.get("nickname"));
+					String teamID = null;
+					String teamURL = null;
+					Team t = null;
+					DAOTeam daoT = DAOFactory.getDAOTeamInstance();
+					ret = new Player((String) pData.get("name"), (String) pData.get("email"), (String)pData.get("pin"));
+					
+					for (String lcode : lcodes){
+						teamID = (String) pData.get(lcode);
+						teamURL = createTeamURL(teamID);
+						t = daoT.getTeamByUrl(teamURL);
+						if (null != t){
+							try {
+								addTeamToPlayer(t, lcode, ret);
+							} catch (DTOPreexistingEntityException e) {
+								log.log(Level.SEVERE, "Team resource : <" + teamURL + "> already added. ");
+								e.printStackTrace();
+							}
+						}
+					}
 					Long lPld = (Long) pData.get("pld");
 					short sPld = (short) lPld.longValue();
+					if (null!= ret){
+						ret.setNickname((String) pData.get("nickname"));
+					}
 					ret.setPld(sPld);
 					ret.setGd((int) ((Long) pData.get("pos")).longValue());
-					ret.setPts((int) ((Long) pData.get("pts")).longValue());
+					ret.setPts((int) ((Long) pData.get("pts")).longValue());	
+					
 				}
 			}
 			return ret;
 	    }
 	    
+		/**
+		 * This method is coupled directly to Football-Data as a Data Provider
+		 * 
+		 * @param TeamID  the team ID per the data provided by api.football-data.org
+		 * @return An URI of a resource providing data about the select team
+		 */
+		private String createTeamURL(String TeamID){
+			return "http://api.football-data.org/alpha/teams/" + TeamID;
+		}
+		
 	    public Map<String, Team> getPlayersTeams(Player p){
 	    	Map<String, Team> ret = new TreeMap<String, Team>();
-	    	Map<String, Key<Team>> kTeamMap = p.getTeamKeys();
+	    	List<Key<Team>> teamKeys = p.getTeamKeys();
 	    	DAOTeam daoT = DAOFactory.getDAOTeamInstance();
-			Iterator<String> itLeague = kTeamMap.keySet().iterator();
+			Iterator<Key<Team>> itLeague = teamKeys.iterator();
 			Team t  = null;
 			Key<Team> kTeam = null;
 			String lc = "";
 			while (itLeague.hasNext()){
-				lc =itLeague.next();
-				kTeam = kTeamMap.get(lc);
+				lc =daoT.getTeam(itLeague.next()).getLeagueCode();
 				t  = daoT.getTeam(kTeam);
 				if (null != t){
 					ret.put(lc, t);
@@ -240,8 +290,10 @@ public class DAOPlayer extends DAO<Player> {
 	     * that players teams.<br/> 
 	     * It does not update the Teams' positions in their respective leagues. That task is done externally 
 	     * to this task..<br/> 
-	     * For 2016  Teams with  'E' league Codes get added to players score.
-	     * Teams with 'S' League Codes get subtracted from the Player's score
+	     * For 2016  Teams with  'S' league Codes get added to players score.
+	     * Teams with 'E' League Codes get subtracted from the Player's score
+	     * 
+	     * <B>This is not used</B>
 	     * 
 	     * @param p the target player whos running totals are to be updated
 	     * @param teamMap a map of the players teams, keyed by league code
@@ -263,7 +315,7 @@ public class DAOPlayer extends DAO<Player> {
 	    			if  (teamKeyStr[i].toLowerCase().contains("e")){
 		    			pGD += t.getGD();
 		    			pPts += t.getPts();	    				
-	    			} else { //it starts with 'S' so we subtract
+	    			} else { //it starts with 'E' so we subtract
 		    			pGD -= t.getGD();
 		    			pPts -= t.getPts();	    				
 	    			}
@@ -272,7 +324,6 @@ public class DAOPlayer extends DAO<Player> {
 	    		}
 	    		p.setGd(pGD);
 	    		p.setPts(pPts);
-	    		p.
 	    		p.setPld(pPld);
 	    		//Persist the updated player
 	    		ofy.put(p);

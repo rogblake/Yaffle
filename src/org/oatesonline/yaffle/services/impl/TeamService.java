@@ -40,9 +40,9 @@ public class TeamService extends YaffleService {
 	public String getPlayersTeams(){
 		StringBuffer ret = new StringBuffer();
 		ret.append('{');
-		Player player = validateUser();
+		Player player = validateUser(null);
 		if (null != player){
-			Collection<Key<Team>> kTeams = player.getTeamKeys().values();
+			Collection<Key<Team>> kTeams = player.getTeamKeys();
 			Key<Team> kTeam;
 			DAOTeam daoT = DAOFactory.getDAOTeamInstance();
 			for (Iterator<Key<Team>> iterator = kTeams.iterator(); iterator.hasNext();) {

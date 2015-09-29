@@ -26,7 +26,7 @@ public class YaffleService extends ServerResource {
 	private static final String RESTLET_HEADERS= "org.restlet.http.headers";
 	private static final String DEBUG = serviceProps.getString("IS_DEBUG");
 
-	public static boolean IS_DEBUG = false;
+	public static boolean IS_DEBUG = true;
 
 	{
 		if ("true".equals(DEBUG.toLowerCase())){
@@ -66,8 +66,14 @@ public class YaffleService extends ServerResource {
 	    	responseHeaders.add(headerKey, getResponseHeaderValueFor(headerKey)); 
 	    } 
 	}
-	protected Player validateUser(){	
+	protected Player validateUser(String playerID){	
 		String pID;
+		if (IS_DEBUG && (playerID != null)){
+			Player player = Utils.retrievePlayer(playerID);
+			if (null!= player){
+				return player;
+			}
+		}
 		Cookie yuid = getRequest().getCookies().getFirst(serviceProps.getString("COOKIE_YAFFLE_UID"));
 		if (null != yuid){
 			pID = yuid.getValue();

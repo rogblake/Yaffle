@@ -34,13 +34,14 @@ public class PlayerService extends YaffleService implements IPlayerService {
 	 */
 	@Get
 	public String getPlayer() throws ResourceException {
-		initializePlayers();
+		//initializePlayers();
 		//This is incorrect behaviour.
 		// The method should determine if {playerid} is present in the URL
 		// If so it should retreive that player, 
 		// If not it should default to the coookie
+		String playerID = getRESTParamFromURL("playerId");
 		String plyrStr = null;
-		Player player = validateUser();
+		Player player = validateUser(playerID);
 		if (null != player){
 //			plyrStr = player.toXMLString();
 			plyrStr = player.toJSONString();

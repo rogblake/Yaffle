@@ -1,0 +1,25 @@
+{
+	"teams":[
+	  		  {
+	  			"teamName":"Arsenal",
+	  			"leaguecode":"E1"
+	  		  },
+	  		  
+	  		  {
+	  			"teamName":"ADO Den Haag",
+	  			"leaguecode":"E3"
+	  		  },
+	  		  {
+	  			"teamName":"AS Saint-Étienne",
+	  			"leaguecode":"E4"
+	  		  },
+	  		  {
+	  			"teamName":" FC Köln",
+	  			"leaguecode":"S1"
+	  		  },
+	  		  {
+	  			"teamName":"Atlético Madrid",
+	  			"leaguecode":"S4"
+	  		  }  
+	  		]
+}

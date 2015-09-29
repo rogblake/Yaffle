@@ -38,7 +38,7 @@ public class DAOLeague extends DAO<League> implements MessageBodyReader<League> 
 			ofy.put(l);
 			add(l);
 			if (l.getName() != null){
-				log.log(Level.FINE, "League  <"+ " XXX " + "> has been successfully saved to the data store.");			
+				log.log(Level.FINE, "League  <"+ l.getName() + "> has been successfully saved to the data store.");			
 				ret = true && updateLeagueTeams(l);
 			}		
 			Set<Team> teams = l.getTeamObjs();
