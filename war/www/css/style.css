@@ -33,6 +33,15 @@ margin-right:auto;
     vertical-align: middle;
 }
 
+
+body{ 
+	background-image: url("img/green_woodpecker_full_37pc.png"); 
+	background-repeat:no-repeat; 
+	background-size:100%;
+}
+	
+  
+
 h2{
 	text-align: center;
 	font-family: verdana, georgia, arial;

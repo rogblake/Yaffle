@@ -1,0 +1,141 @@
+<!doctype html>
+<html>
+<head>
+    	    <meta charset="UTF-8">
+    		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    		<meta name="viewport" content="width=device-width, initial-scale=1">
+    		<meta name="description" content="Yaffle Football">
+    		<meta name="author" content="Des Oates">
+    	<link rel="icon" href="../favicon.png">
+    	<link rel="stylesheet" type="text/css" href="css/style.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" >
+  		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css" >
+  		<style type="text/css">
+
+a:link {
+	text-decoration: none;
+}
+a:visited {
+	text-decoration: none;
+	color: #881314;
+}
+a:hover {
+	text-decoration: underline;
+}
+a:active {
+	text-decoration: none;
+}
+p{
+	margin-left:25px;
+	margin-right:25px;
+}
+        </style>
+  		<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+
+
+<title>Yaffle 2016</title>
+</head>
+
+<body>
+<div class="container"></div>     
+<nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Yaffle 2016</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li ><a href="/">Home</a></li>
+            <li class="active"><a href="#">About</a></li>
+            <li><a href="index.html#/login">Login</a></li>
+          </ul>
+	        <div class="icon-bar" align="right">
+	        <img alt="Yaffle 2015" src="/www/img/Yaffle15_Logo_80x80.png" height="40" width="40" />
+	        </div>
+        </div><!--/.nav-collapse -->
+      </div>
+</nav>
+	<h1>About Yaffle</h1>
+    <table width="80%" border="1" cellspacing="1" cellpadding="1">
+    <strong><em> <br>
+&nbsp; Yaffle is back for season 2015/2016 -  its 11th Year this year, and once again there have been a few changes around here, both in the look of the site and the format of the game. <br>
+    </em></strong><br>
+    <h2>What's Changed</h2>
+  <p>There are few changes this year. On the technical side, we have a more stable (and legitimate) data provided. For the first time we are using <a href="http://api.football-data.org/index">Football-Data.Org</a>: A provider of data APIs that serve current European football league and results data.  We owe a huge debt of gratitude to them for allowing us access to their fine service.  What this <i>should</i> mean to the players this year is that the site will be more likely to remain stable, and functioning.</p>
+  &nbsp;<br>
+  <br>
+<h3>New Game</h3>
+<p>This year we are keeping to the familiar European theme from last year, but we are bringing back a few old friends :<h5>Relegation Teams!</h5></p>
+<p>There are 4 <strong><em>Relegation</em></strong> Leagues and 4 <em><strong>Promotion</strong></em> Leagues. You must select one team from each league. The leagues are....</p>
+<table id="yaffle-leagues" class="list-group" width="65%" align="center">
+  <tbody>
+  <tr><th scope="col" ></th>
+      <th scope="col" width="50%">Relegation Leagues</th>
+      <th scope="col" width="50%">Promotion Leagues</th>
+      
+       </tr>
+    <tr><td width="25%"></td>
+      <td scope="col" width="25%">French Ligue 1 </td>
+      <td scope="col" width="25%">French Ligue 2 </td>
+      <td width="25%">&nbsp;</td>
+    </tr>
+    <tr>
+    <td width="25%">&nbsp;</td>
+      <td width="25%">La Liga Primera </td>
+      <td width="25%">La Liga Segunda </td>
+      <td width="25%">&nbsp;</td>
+    </tr>
+    <tr>
+    <td width="25%">&nbsp;</td>
+      <td>Bundesliga Lge 1 </td>
+      <td>Bundesliga Lge 2 </td>
+      <td width="25%">&nbsp;</td>
+    </tr>
+    <tr>
+    <td width="25%">&nbsp;</td>
+      <td>Serie A </td>
+      <td>Bundesliga Lge 3 </td>
+      <td width="25%">&nbsp;</td>
+    </tr>
+  </tbody>
+</table>
+<h3>The Rules of the Game</h3>
+<p>
+You select a team from each league. From the Relegation leagues, select the team from each league you expect to finish last in the league. As you can see these are from the top leagues in continental Europe.
+</p>
+<p>From the Promotion Leagues, you should select a team that you expect to win that league. These are from the most part from corresponding second tier leagues of the promotion leagues</p>
+<p>Your Yaffle running total is the total points for your <i>Promotion</i> team <b>minus</b> the total points for your relegation teams. </p>
+<p>So you want your promotion teams to score as many points as possible, and your relegation teams to score as few points as possible</p>
+<h4>For Example</h4>
+<p>Consider this Yaffle Player.</p>
+<p align="center">&nbsp;<img style="align-content:center" src="img/PlayerTeams.png" width="500" height="450" alt=""/></p>
+<p>His Promotion Teams points are currently on <b>13, 10, 20 and 20</b> respectively</p>
+<p>His Relegation Teams points are currently on <b>2, 4, 6 and 2</b> respectively</p><br/>
+<p>His Yaffle score is his cumualative promotion team points, <i>after</i> his cumulative relegation teams points have been subtracted. 
+<p>In this case, (13 +10+ 20+20) = <b>63</b> minus (2+4+6+2) =<b>14</b>.  His current Yaffle score is 63-14=<b>49</b>, as shown below:
+<p align="center">&nbsp;<img src="img/playerSummary.png" width="560" height="147" alt=""/></p>
+<br/><p>Goal Difference is calculated in the same way, although games played are not.</p>
+<p>The object of the game is to accrue the most points over the course of the season as normal.</p>
+<h3>How to play</h3>
+<p>Simply send in your 8 teams from the leagues above. You can view all the leagues <a href="www/index.html#/tab/leagues">here</a> Send these in by  <a href="mailto:desoates@gmail.com">email</a> <b>before  Saturday 17th October </b> to get onto the leaderboard</p>
+<h3>Fees (or not)</h3>
+<p>Given we are so late in the season to start this year, there will be no entry fees collected this year. It is free to enter. However the winners and losers will still be awarded the Yaffle Trophies at the end of the season as normal.  Hopefully Substitutions will be allowed later in the year, which means there will be 4 trophies up for grabs at the end of the season</p><br/>
+
+<table class="list-group" width="65%" align="center"><tbody>
+<tr> <td>Yaffle Champion for outright winner </td></tr>
+<tr> <td>The Roy Race Commemorative Plaque for Best Manager</td></tr>
+<tr><td> The Mike Basset Award for Worst Manager</td></tr>
+<<tr><td> The Diano Ross Wooden Spoon for last place</td></tr>
+</tbody>
+</table>
+
+<h3>So what's keeping you. Get yout teams in now!!!</h3>
+</body>
+</html>
