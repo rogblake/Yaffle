@@ -1,6 +1,7 @@
 <div class="bar bar-header bar-header bar-assertive">
   <button class="button button-icon icon ion-ios7-arrow-back" onclick="location.href='#/tab/leagues'"></button>
-  <div class="h1 title">{{league.name}}</div>
+ 
+  <div class="h1 title">{{league.name}} : Matchday {{league.matchday}}</div>
 </div>
 
     <div class="bar bar-subheader">
@@ -25,5 +26,10 @@
 	  		</div>
     	 </ion-item>
   	  </ion-list>
+  	  <ion-footer-bar align-title="left" class="bar-subfooter">
+		  <div>
+		    <i>Last Updated: </i> {{league.lastUpdated}}
+		  </div>
+	</ion-footer-bar>
   </ion-content>
 </ion-view>

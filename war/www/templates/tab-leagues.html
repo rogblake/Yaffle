@@ -1,13 +1,19 @@
 <div class="bar bar-header bar-assertive">
   <div class="h2 title">Leagues</div>
 </div>
-<ion-view title="Leagues">
+<ion-view title="Leagues" M>
   <ion-content class="has-header">
   <br/>
+    <ion-item class="button button-assertive">
+    <div>
+     Wooden Spoon Leagues (<i class="icon ion-spoon"></i> )are <B>Relegation</B> Leagues. Those marked with a trophy (<i class="icon ion-trophy"></i>) are <B>Promotion</B> leagues
+    </div>
+  </ion-item>
     <ion-list id="leagues-list" >
-    <h2>{{leagues.name}}</h3>
-      <ion-item ng-repeat="league in leagues.leagues" type="item-text-wrap" href="#/league/{{league.id}}" >
-        {{league.name}}
+    
+      <ion-item ng-repeat="league in leagues.leagues" type="item-text-wrap" href="#/league/{{league.id}}">
+        <button class="button button-small icon {{league.icon}}" height="30" width="30"></button>
+        <img src="{{league.flag_url}}" height="30" width="30" /> &nbsp; {{league.name}}  &nbsp; 
       </ion-item>
     </ion-list>
   </ion-content>

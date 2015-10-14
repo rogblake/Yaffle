@@ -126,7 +126,10 @@ public class FootballDataProvider extends DataProvider implements
 			Map jsonMap = (Map)parser.parse(leagueStr, containerFactory);
 			Team t = null;
 			if (jsonMap != null){
+				Long l = (Long) jsonMap.get("matchday");
+				int matchday = l.intValue();
 				Map links = (Map) jsonMap.get("_links");
+				ret.setMatchDay(matchday);
 				ret.setName((String) jsonMap.get("leagueCaption"));
 				ret.setJSONData( links.toString());
 				List teamData =  (List) jsonMap.get("standing");

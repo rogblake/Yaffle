@@ -20,36 +20,45 @@ angular.module('org.oatesonline.yaffle.services', ['ngResource', 'ngCookies'])
  
   return {
     all: function() {
-
-       var leagues = allLeagueData.get();
-      return leagues;
-
+      return allLeagueData.get();
+      var deferred = $q.defer();
+      var league = allLeagueData.get(null, function(successResult){
+          $log.log("Leagues Retrieval Success");
+          deferred.resolve(successResult);
+          return successResult;
+        }, function(failureResult){
+          $log.log("Leagues Retrieval Failure");
+          deferred.reject(failureResult);
+          return failureResult;
+        });
     },
     promotionTeams: function(){
-       var allLeagues = allLeagueData.get();
-       var pLeagues = []
-       var leagueCodes = ["e1","e2","e3","e4"];
-        for (var i = 0; i< leagueCodes.length; i++){
-          $log.log("retrieving league data for  : " + leagueCodes[i]);
-           pLeagues[i] = get(leagueCode[i]);
-        }
+       var allLeagues = this.all();
+       var pLeagues = [];
+       var pCodes = ["E1","E2","E3","E4"];
+       for (var i = 0; i < pCodes.length; i++){
+          $log.log("retrieving league data for  : " + allLeagues[pCodes[i]]);
+          pLeagues.push(allLeagues[pCodes[i]]);
+       }
       return pLeagues;
     },    
     relegationTeams: function(){
-       var allLeagues = allLeagueData.get();
-       var rLeagues = []
-       var leagueCodes = ["s1","s2","s3","s4"];
-        for (var i = 0; i< leagueCodes.length; i++){
-          $log.log("retrieving league data for  : " + leagueCodes[i]);
-           pLeagues[i] = get(leagueCode[i]);
+       var allLeagues = this.all();
+       var rLeagues = [];
+       var rCodes = ["S1","S2","S3","S4"];
+       for (var i = 0; i < rCodes.length; i++){
+          $log.log("retrieving league data for  : " + allLeagues[rCodes[i]]);
+          rLeagues.push(allLeagues[rCodes[i]]);
         }
-      return rLeagues;
+       return rLeagues;
     },
     get: function(leagueId) {
       leagueData = $resource(yaffle_server_url + "/league/" + leagueId);
       $log.log("League Code :" + leagueId + " has been selected.");
       //var league = leagueData.get(leagueId);
       var league = leagueData.get();
+      var deferred = $q.defer();
+      deferred.resolve(league);
       return league;  
     },
     findById: function(leagueId) {
@@ -105,35 +114,54 @@ angular.module('org.oatesonline.yaffle.services', ['ngResource', 'ngCookies'])
      }
 })
 
-.factory('Player', function ($q, $resource, $cookies, $log){
+.factory('Player', function ($q, $resource, $cookies, $log, $rootScope){
     var yaffle_server_url="/";
     var player_path="player";
     var player_id =  $cookies["org.oatesonline.yaffle.yuid"];
+    var player = null;
+
     $log.log("player ID : " +  player_id);
-    if (player_id != ""){
+//    if ((player_id != "") && (player_id != undefined)){
       var player_url = yaffle_server_url + player_path + "/" + player_id;
       var player_resource = $resource(player_url, null, {method:"GET"});
-      var getPlayer = function(){
-        var deferred = $q.defer();
-        player_resource.get(
-          function successResult(data){
-            $log.log("Player : <" + player_id + "> found: " + data.name);
-            deferred.resolve(data);
-        }, function failureResult(data){
-            $log.log("Failed to retrieve player:" + data.toString());
-            deferred.reject(data);
-        });
-        return deferred.promise;
-      }
-      return {
-        loadPlayer: function(){
-          return getPlayer();
+
+  var getPlayer = function(){
+      var deferred = $q.defer();
+      player_resource.get(
+          function(successResult){ //success
+            $rootScope.player = successResult;        
+            $log.log("Player Successful: " + successResult.name);
+            deferred.resolve(successResult);
+            return successResult;
+          }, function (failureResult){
+            $log.log("Player Failed: Response:" + failureResult.toString());
+            deferred.reject(failureResult);
+          });
+      return deferred.promise;
+    }
+
+    return {
+      loadPlayer: function(){
+        var p = getPlayer();
+        player = p;
+        return p;
+      },
+      get: function(){
+        if (player != null){
+          return player;
         }
+        return getPlayer();
+      },
+      getPlayerIdFromCookie: function(){
+        if ((player_id != null) && (String(player_id).length > 1 )){
+          $log.log("Cookie Found  for player: " + player_id);
+          return player_id;
+        } else return null;
       }
-    } 
+    }
   })
 
-.factory('Login', function ($log, $resource, $q){
+.factory('Login', function ($log, $resource, $q, $rootScope){
   var yaffle_server_url="/";
   var login_path = "login";
   var login_url = yaffle_server_url + login_path;
@@ -143,7 +171,7 @@ angular.module('org.oatesonline.yaffle.services', ['ngResource', 'ngCookies'])
       var deferred = $q.defer();
       login_resource.save(user,
           function(successResult){ //success
-          //  $rootScope.player = successResult;        
+            $rootScope.player = successResult;        
             $log.log("Login Successful: " + successResult.name);
             deferred.resolve(successResult);
           }, function (failureResult){

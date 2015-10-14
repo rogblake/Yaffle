@@ -30,5 +30,9 @@ public interface ILeague {
 	
 	public Date getLastUpdated();
 	
+	public int getMatchDay();
+	
+	public void setMatchDay(int m);
+	
 	public void setLastUpdated(Date lastUpdate);
 }

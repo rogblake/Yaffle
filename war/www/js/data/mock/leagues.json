@@ -1,36 +1,55 @@
 {
     "leagues": [
+
+   
         {
             "id": "e1",
-            "name": "French Ligue 1"
+            "name": "French Ligue 1",
+            "flag_url": "/www/img/france.png",
+            "icon":"ion-spoon"
         },
         {
             "id": "e2",
-            "name": "La Liga Primera"
+            "name": "La Liga Primera",
+            "flag_url": "/www/img/spain.png",
+            "icon":"ion-spoon"
         },
         {
             "id": "e3",
-            "name": "Bundesliga Lge 1"
+            "name": "Bundesliga Lge 1",
+            "flag_url": "/www/img/germany.png",
+            "icon":"ion-spoon"
+
         },
         {
             "id": "e4",
-            "name": "Serie A"
+            "name": "Serie A",
+            "flag_url": "/www/img/italy.png",
+            "icon":"ion-spoon"
         },
         {
             "id": "s1",
-            "name": "French Ligue 2"
+            "name": "French Ligue 2",
+            "flag_url": "/www/img/france.png",
+            "icon":"ion-trophy"
         },
         {
             "id": "s2",
-            "name": "La Liga Segunda"
+            "name": "La Liga Segunda",
+            "flag_url": "/www/img/spain.png",
+            "icon":"ion-trophy"
         },
         {
             "id": "s3",
-            "name": "Bundesliga Lge 2"
+            "name": "Bundesliga Lge 2",
+            "flag_url": "/www/img/germany.png",
+            "icon":"ion-trophy"
         },
         {
             "id": "s4",
-            "name": "3. Bundesliga 2015/16"
+            "name": "3. Bundesliga 2015/16",
+            "flag_url": "/www/img/germany.png",
+            "icon":"ion-trophy"
         }
     ]
 }

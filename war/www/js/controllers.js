@@ -1,24 +1,36 @@
 angular.module('org.oatesonline.yaffle.controllers', [])
 
-.controller('DashCtrl', function($scope, $log, Player) {
+.controller('DashCtrl', function($rootScope, $scope, $log, Player, $rootScope) {
   $log.log("Dashboard controller Fired");
   $scope.onload = function(){
-    {
-      $log.log("Loading Player via Cookie")
-      $scope.loggedInPlayer = Player.loadPlayer().then(function(myPlayer){
-        $log.log("Player found from Cookie: " + myPlayer.name);    
-        $scope.loggedInPlayer = myPlayer;
-        $scope.initializePlayer(myPlayer);
-      });
-    }  
-  },
+    if ($rootScope.player != null){
+      $log.log ("Player already Loaded in Memory.");
+      $scope.initializePlayer($rootScope.player);
+    } else {
+      $log.log("Attempting to load Player via Cookie")
+      var player_id=Player.getPlayerIdFromCookie();
+      if (player_id != null){
+        Player.loadPlayer().then(function(){
+          $scope.initializePlayer($rootScope.player);
+        });
+      } else {
+        document.location.href = '/www/index.html#/login'
+      }
+    }
+  }
 
   $scope.initializePlayer = function(myPlayer){
+    if ((typeof(myPlayer) == "undefined")|| (myPlayer == null)){
+      $log.log("Player or Cookie not found. Redirect to Signin page.")
+      document.location.href = '/www/index.html#/login';
+      return;
+    }
+    myPlayer = $rootScope.player;
     $scope.loggedInPlayer = myPlayer;
     $scope.teams =    myPlayer.teams;
     $scope.myNickname = myPlayer.nickname;
-    $scope.rTeams = []
-    $scope.pTeams = []
+    $scope.rTeams = [] ;
+    $scope.pTeams = [] ;
     for (var i=0; i<myPlayer.teams.length; i++){
       $log.log("In Loop with " + myPlayer.teams[i].leagueCode.charAt(0).toLowerCase());
       if (myPlayer.teams[i].leagueCode.charAt(0).toLowerCase() == 's'){
@@ -27,8 +39,8 @@ angular.module('org.oatesonline.yaffle.controllers', [])
         $scope.rTeams.push(myPlayer.teams[i]);
       }
     }
-    $log.log("Length of rTeams: " +  $scope.pTeams.length)
-    $log.log("Length of pTeams: " +  $scope.pTeams.length)
+    // $log.log("Length of rTeams: " +  $scope.pTeams.length)
+    // $log.log("Length of pTeams: " +  $scope.pTeams.length)
 
     $scope.id=myPlayer.id;
     $scope.playerName = myPlayer.name;
@@ -38,77 +50,38 @@ angular.module('org.oatesonline.yaffle.controllers', [])
 
 .controller('LeaguesCtrl', function($scope, Leagues, $log) {
  $log.log("Leagues controller Fired");
-
   var lData =  Leagues.all();
   $scope.leagues = lData;
+
 })
 
 .controller('LeagueCtrl', function($scope, Leagues, $log, $stateParams) {
   $log.log("League Detail controller fired");
   $scope.leagueCode = $stateParams.leagueId;
-//  $scope.league = Leagues.get($scope.leagueCode);
- $scope.league = Leagues.findById($scope.leagueCode);
+  $scope.league = Leagues.findById($scope.leagueCode);
   if ($scope.league !=null){
   	$scope.teams= $scope.league.teams;
+    $scope.matchday = $scope.league.matchday;
   	$log.log("Selected League = " + $scope.league.name);
+    $log.log("Selected Matchday = " + $scope.league.matchday);
   } else {
     $log.log("Selected League Not Found.");
   }
 })
 
-.controller('SignInCtrl', function($scope, Login, $log, $state, Player) {
-
-  //TODO Refactor out to a service. This is a duplicate function of one found in DashCntrl
-  $scope.initializePlayer = function(myPlayer){
-    $scope.loggedInPlayer = myPlayer;
-    $scope.teams =    myPlayer.teams;
-    $scope.myNickname = myPlayer.nickname;
-    $scope.rTeams = []
-    $scope.pTeams = []
-    for (var i=0; i<myPlayer.teams.length; i++){
-      $log.log("In Loop with " + myPlayer.teams[i].leagueCode.charAt(0).toLowerCase());
-      if (myPlayer.teams[i].leagueCode.charAt(0).toLowerCase() == 's'){
-        $scope.pTeams.push(myPlayer.teams[i]);
-      } else {
-        $scope.rTeams.push(myPlayer.teams[i]);
-      }
-    }
-    $log.log("Length of rTeams: " +  $scope.pTeams.length)
-    $log.log("Length of pTeams: " +  $scope.pTeams.length)
-
-    $scope.id=myPlayer.id;
-    $scope.playerName = myPlayer.name;
-    document.location.href = '/www/index.html#/tab/dash';
-  }, 
-
-  $scope.onload = function(){
-    {
-      $log.log("Loading Player via Cookie")
-      $scope.loggedInPlayer = Player.loadPlayer().then(function(myPlayer){
-        $log.log("Player found from Cookie: " + myPlayer.name);    
-        $scope.loggedInPlayer = myPlayer;
-        $scope.initializePlayer(myPlayer);
-      });
-    }  
-  },
+.controller('SignInCtrl', function($rootScope, $scope, Login, $log, $state, Player) {
 
   $scope.signIn = function(user) {
-    if ($rootScope.loggedInPlayer == null){
-      var loggedInPlayer = Login.login(user).then(function(myPlayer){
-        $log.log("Player found from Login: " + myPlayer.name);    
-        $rootScope.loggedInPlayer = myPlayer;
-        $scope.initializePlayer(myPlayer);
+ //   if (typeof($scope.loggedInPlayer) != "undefined"){
+      Login.login(user).then(function(myPlayer){
+        $log.log("Player found from Login: " + myPlayer.name);
+        $log.log("RootScope Set on Login: " +  $rootScope.player.name);    
+        $scope.loggedInPlayer = myPlayer;
+  //      $scope.initializePlayer(myPlayer);
+        document.location.href = '/www/index.html#/tab/dash';
       });
-    }
+//    }
   },
-
-
-  function(myPlayer){
-    $log.log("Login Failure: " + myPlayer);
-      alert("Login Failed.  Please ensure you have the correct email address and Pin. Contact the administrator to get your correct details.");
-      document.location.href = '/www/index.html#/login';
-  },
-
   $scope.openHelp = function () {
     $modal.open({
         templateUrl: '/templates/help.html',

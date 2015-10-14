@@ -50,6 +50,9 @@ public class League extends DTOEntity implements ILeague, IDataObject {
 	@Attribute(name="lastUpdated", required=true)
 	private Date lastUpdated;
 	
+	@Attribute(name="matchday")
+	private int matchday;
+	
 	@Transient
 	private Set<Key<Team>> teams;
 	
@@ -109,6 +112,7 @@ public class League extends DTOEntity implements ILeague, IDataObject {
 		JSONObject jObj = new JSONObject();
 		DAOTeam daoT = DAOFactory.getDAOTeamInstance();
 		jObj.put("name", this.name);
+		jObj.put("matchday", this.matchday);
 		jObj.put("leagueCode", this.leagueCode);
 		List<JSONObject> teamList = new LinkedList<JSONObject>();
 		//convert team to a JSONObject and add to teamList
@@ -179,7 +183,6 @@ public class League extends DTOEntity implements ILeague, IDataObject {
 
 	@Override
 	public String getJSONData() {
-		// TODO Auto-generated method stub
 		return this.jsonData;
 	}
 
@@ -191,7 +194,6 @@ public class League extends DTOEntity implements ILeague, IDataObject {
 
 	@Override
 	public Date getLastUpdated() {
-		// TODO Auto-generated method stub
 		return this.lastUpdated;
 	}
 
@@ -199,7 +201,16 @@ public class League extends DTOEntity implements ILeague, IDataObject {
 	public void setLastUpdated(Date lastUpdate) {
 		this.lastUpdated = lastUpdate;
 	}
-	
-	
+
+	@Override
+	public int getMatchDay() {
+		
+		return matchday;
+	}
+
+	@Override
+	public void setMatchDay(int m) {
+		matchday = m;
+	}
 
 }
