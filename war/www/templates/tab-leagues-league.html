@@ -13,8 +13,8 @@
 	  	 <div class="col col-10" align="center">Pts</div>
 	  </div>
    </div> 
- <ion-view>  
-   <ion-content class='has-header has-subheader'>
+ <ion-view >  
+   <ion-content class='has-header has-subheader '>
    	  <ion-list> 
     	 <ion-item ng-repeat="team in league.teams" type="item-text-wrap" href="#/tab/league/{team.leagueCode}/{team.pos}">
    	  		<div class="row" height="20">
@@ -26,10 +26,10 @@
 	  		</div>
     	 </ion-item>
   	  </ion-list>
-  	  <ion-footer-bar align-title="left" class="bar-subfooter">
+<!--   	  <ion-footer-bar align-title="left" class="bar-footer">
 		  <div>
 		    <i>Last Updated: </i> {{league.lastUpdated}}
 		  </div>
-	</ion-footer-bar>
+	</ion-footer-bar> -->
   </ion-content>
 </ion-view>

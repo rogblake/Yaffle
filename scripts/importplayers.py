@@ -3,9 +3,9 @@ import csv, httplib, urllib
 
 DBL_QUOTE="\""
 COMMA = " , "
-
-host_env="127.0.0.1"
-host_env_port="8888"
+DEBUG_MODE=false
+host_env="http://yaffle-2016.appspot.com"
+host_env_port=80
 player_spreadsheet_path="./YafflePlayers1516.csv"
 
 all_players = None
@@ -14,6 +14,12 @@ conn = None
 
 def initialize():
 	global all_players
+	if DEBUG_MODE:
+		host_env="http://localhost"
+		host_env_port=8888
+	else:
+		host_env="http://yaffle-2016.appspot.com"
+		host_env_port=80		
 	all_players=[]
 	global conn
 	conn=httplib.HTTPConnection(host_env, host_env_port)
@@ -81,8 +87,11 @@ def createPlayers():
 		#updatePlayerTeams(p,id)
 
 def createPlayer(player):
-	targetUrl="/playerupdate/create"
-	conn.request("POST", targetUrl, player.toJSON())
+	targetUrl=host_env + ":" + host_port +  "/playerupdate/create"
+	jsonData = player.toJSON()
+	print "Sending json to " + host_env + "  on context path: " + targetUrl
+	print "Sending following POST data : \n" + jsonData
+	conn.request("POST", targetUrl, jsonData)
 	response = conn.getresponse()
 	conn.close()
 	ret = response.read()
